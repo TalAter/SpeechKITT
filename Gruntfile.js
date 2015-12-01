@@ -7,7 +7,8 @@ module.exports = function(grunt) {
     jshint: {
       all: [
         'src/speech-ui-kitt.js',
-        'Gruntfile.js'
+        'Gruntfile.js',
+        'test/spec/*Spec.js'
       ],
       options: {
         jshintrc: true
@@ -24,17 +25,31 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['src/speech-ui-kitt.js', '!**/node_modules/**'],
-      tasks: ['default'],
+      files: ['src/speech-ui-kitt.js', 'test/spec/**.js', '!**/node_modules/**'],
+      tasks: ['default']
+    },
+    jasmine: {
+      dist: {
+        src: 'src/*.js',
+        options: {
+          specs: 'test/spec/*Spec.js',
+          outfile: 'test/SpecRunner.html',
+          keepRunner: true
+        }
+      }
     }
   });
 
   // Load NPM Tasks
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'jasmine']);
+
+  // Test task
+  grunt.registerTask('test', ['jshint', 'jasmine']);
 
 };

@@ -23,9 +23,12 @@
   "bugs": {
     "url": "https://github.com/TalAter/Speech-UI-KITT/issues"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "grunt test"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-contrib-jasmine": "^0.9.2",
     "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-uglify": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1"
