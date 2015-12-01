@@ -15,10 +15,10 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
-      options: {
-        preserveComments: 'some'
-      },
-      all: {
+      dist: {
+        options: {
+          preserveComments: /^\! /
+        },
         files: {
           'dist/speechkitt.min.js': ['src/speechkitt.js']
         }
