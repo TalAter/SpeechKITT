@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">81.82% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>9/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>6/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">81.82% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>9/11</span>
       </div>
     </div>
   </div>
@@ -60,7 +60,60 @@
 15
 16
 17
-18</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -74,6 +127,59 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -91,6 +197,59 @@
 &nbsp;
   // Expose functionality
   _root.SpeechKITT = {
+&nbsp;
+    /**
+     * Define the function that should be called in order to start speech recognition.
+     *
+     * #### Examples:
+     * ````javascript
+     * // Will call annyang's start method
+     * SpeechKITT.setStart(annyang.start);
+     * // Will call a global function called listen with a local context.
+     * SpeechKITT.setStart(listen, this);
+     * // Functions can also be stated by name (string)
+     * SpeechKITT.setStart('listen', this);
+     * // Using the browser's native start function
+     * SpeechKITT.setStart(webkitSpeechRecognition.start);
+     * ````
+     *
+     * @param {Function|String} callback - The function to call to start speech recognition
+     * @param {Object} [context] - Optional context for the callback function
+     * @method setStart
+     */
+    setStart: function(callback, context) {
+      // This should work both when passed a function, or a name of a function
+      callback = _root[callback] || callback;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof callback !== 'function') {
+        throw new TypeError('invalid callback function');
+      }
+<span class="cstat-no" title="statement not covered" >      context = context || this;</span>
+    },
+&nbsp;
+    /**
+     * Define the function that should be called in order to abort (stop) speech recognition.
+     *
+     * #### Examples:
+     * ````javascript
+     * // Will call annyang's abort method
+     * SpeechKITT.setAbort(annyang.abort);
+     * // Using the browser's native abort function
+     * SpeechKITT.setAbort(webkitSpeechRecognition.abort);
+     * ````
+     *
+     * @param {Function|String} callback - The function to call to abort speech recognition
+     * @param {Object} [context] - Optional context for the callback function
+     * @method setAbort
+     */
+    setAbort: function(callback, context) {
+      // This should work both when passed a function, or a name of a function
+      callback = _root[callback] || callback;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof callback !== 'function') {
+        throw new TypeError('invalid callback function');
+      }
+<span class="cstat-no" title="statement not covered" >      context = context || this;</span>
+    }
+&nbsp;
   };
 &nbsp;
 }).call(this);
@@ -100,7 +259,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 01 2015 14:46:57 GMT-0500 (EST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Dec 01 2015 16:22:32 GMT-0500 (EST)
 </div>
 </div>
 <script src="../prettify.js"></script>
