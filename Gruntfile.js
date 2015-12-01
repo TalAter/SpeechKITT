@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
       all: [
-        'src/speech-ui-kitt.js',
+        'src/speechkitt.js',
         'Gruntfile.js',
         'test/spec/*Spec.js'
       ],
@@ -20,12 +20,12 @@ module.exports = function(grunt) {
       },
       all: {
         files: {
-          'dist/speech-ui-kitt.min.js': ['src/speech-ui-kitt.js']
+          'dist/speechkitt.min.js': ['src/speechkitt.js']
         }
       }
     },
     watch: {
-      files: ['src/speech-ui-kitt.js', 'test/spec/**.js', '!**/node_modules/**'],
+      files: ['src/speechkitt.js', 'test/spec/**.js', '!**/node_modules/**'],
       tasks: ['default']
     },
     jasmine: {
