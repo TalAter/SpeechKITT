@@ -29,19 +29,12 @@ module.exports = function(grunt) {
       tasks: ['default']
     },
     jasmine: {
-      src: {
-        src: 'src/*.js',
-        options: {
-          specs: 'test/spec/*Spec.js',
-          outfile: 'test/SpecRunner.html',
-          keepRunner: true
-        }
-      },
-      coverage: {
+      testAndCoverage: {
         src: 'src/*.js',
         options: {
           specs: ['test/spec/*Spec.js'],
-          outfile: 'test/SpecRunnerCoverage.html',
+          outfile: 'test/SpecRunner.html',
+          keepRunner: true,
           template: require('grunt-template-jasmine-istanbul'),
           templateOptions: {
             coverage: 'test/coverage/coverage.json',
