@@ -1,0 +1,30 @@
+{
+  "name": "speech-ui-kitt",
+  "version": "0.1.0",
+  "description": "A flexible GUI for interacting with Speech Recognition",
+  "homepage": "https://github.com/TalAter/Speech-UI-KITT",
+  "main": "speech-ui-kitt.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TalAter/Speech-UI-KITT.git"
+  },
+  "keywords": [
+    "speechrecognition",
+    "webkitspeechrecognition",
+    "voice",
+    "speech",
+    "recognition",
+    "gui",
+    "interface",
+    "controls"
+  ],
+  "author": "Tal Ater <tal@talater.com> (https://www.talater.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TalAter/Speech-UI-KITT/issues"
+  },
+  "scripts": {
+  },
+  "devDependencies": {
+  }
+}
