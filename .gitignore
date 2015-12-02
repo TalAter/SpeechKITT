@@ -1,3 +1,4 @@
 node_modules
 .grunt
 .idea
+test/coverage
