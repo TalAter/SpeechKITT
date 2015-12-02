@@ -8,6 +8,7 @@ module.exports = function(grunt) {
       all: [
         'src/speechkitt.js',
         'Gruntfile.js',
+        'test/corti.js',
         'test/spec/*Spec.js'
       ],
       options: {
@@ -25,12 +26,12 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['src/speechkitt.js', 'test/spec/**.js', '!**/node_modules/**'],
+      files: ['src/speechkitt.js', 'test/corti.js', 'test/spec/**.js', '!**/node_modules/**'],
       tasks: ['default']
     },
     jasmine: {
       testAndCoverage: {
-        src: 'src/*.js',
+        src: ['src/speechkitt.js', 'test/corti.js'],
         options: {
           specs: ['test/spec/*Spec.js'],
           outfile: 'test/SpecRunner.html',
