@@ -10,6 +10,10 @@
   // Save a reference to the global object (window in the browser)
   var _root = this;
 
+  var _startCommand;
+  var _abortCommand;
+
+
   // Expose functionality
   _root.SpeechKITT = {
 
@@ -39,6 +43,8 @@
         throw new TypeError('invalid callback function');
       }
       context = context || this;
+
+      _startCommand = {callback: callback, context: context};
     },
 
     /**
@@ -63,6 +69,28 @@
         throw new TypeError('invalid callback function');
       }
       context = context || this;
+
+      _abortCommand = {callback: callback, context: context};
+    },
+
+    /**
+     * Starts the speech recognition. Make sure to define the speech recognition command start first using setStartCommand()
+     */
+    startRecognition: function() {
+      if (!_startCommand) {
+        throw new TypeError('cannot start recognition. Start command not defined');
+      }
+      _startCommand.callback.apply(_startCommand.context);
+    },
+
+    /**
+     * Aborts the speech recognition. Make sure to define the speech recognition abort command first using setStartCommand()
+     */
+    abortRecognition: function() {
+      if (!_abortCommand) {
+        throw new TypeError('cannot abort recognition. Abort command not defined');
+      }
+      _abortCommand.callback.apply(_abortCommand.context);
     }
 
   };
