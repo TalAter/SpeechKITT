@@ -25,14 +25,15 @@
   "white"     : false,
   "indent"    : 2,
   "globals":  {
-    "afterEach":    false,
-    "beforeEach":   false,
-    "describe":     false,
-    "expect":       false,
-    "jasmine":      false,
-    "it":           false,
-    "xit":          false,
-    "georilla":     false,
-    "Carmen":       false
+    "afterEach":          false,
+    "beforeEach":         false,
+    "describe":           false,
+    "expect":             false,
+    "jasmine":            false,
+    "it":                 false,
+    "xit":                false,
+    "SpeechKITT":         false,
+    "Corti":              false,
+    "SpeechRecognition":  false
   }
 }

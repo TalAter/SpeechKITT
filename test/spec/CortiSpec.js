@@ -4,15 +4,15 @@
   describe('Corti', function() {
 
     it('should exist in global namespace', function () {
-      expect(window.Corti).toEqual(jasmine.any(Object));
+      expect(Corti).toEqual(jasmine.any(Object));
     });
 
     it('should contain patch method', function () {
-      expect(window.Corti.patch).toEqual(jasmine.any(Function));
+      expect(Corti.patch).toEqual(jasmine.any(Function));
     });
 
     it('should contain unpatch method', function () {
-      expect(window.Corti.unpatch).toEqual(jasmine.any(Function));
+      expect(Corti.unpatch).toEqual(jasmine.any(Function));
     });
 
   });
@@ -20,23 +20,23 @@
   describe('Corti.patch', function() {
 
     beforeEach(function() {
-      window.Corti.patch();
+      Corti.patch();
     });
 
     afterEach(function() {
-      window.Corti.unpatch();
+      Corti.unpatch();
     });
 
     it('should add the method isStarted', function () {
-      expect(window.SpeechRecognition.isStarted).toEqual(jasmine.any(Function));
+      expect(SpeechRecognition.isStarted).toEqual(jasmine.any(Function));
     });
 
     it('should add the method start', function () {
-      expect(window.SpeechRecognition.start).toEqual(jasmine.any(Function));
+      expect(SpeechRecognition.start).toEqual(jasmine.any(Function));
     });
 
     it('should add the method abort', function () {
-      expect(window.SpeechRecognition.abort).toEqual(jasmine.any(Function));
+      expect(SpeechRecognition.abort).toEqual(jasmine.any(Function));
     });
 
   });
@@ -44,12 +44,12 @@
   describe('Corti.unpatch', function() {
 
     beforeEach(function() {
-      window.Corti.patch();
-      window.Corti.unpatch();
+      Corti.patch();
+      Corti.unpatch();
     });
 
     it('should make SpeechRecognition undefined', function () {
-      expect(window.SpeechRecognition).toBeUndefined();
+      expect(SpeechRecognition).toBeUndefined();
     });
 
   });
@@ -57,19 +57,19 @@
   describe('SpeechRecognition.start', function() {
 
     beforeEach(function() {
-      window.Corti.patch();
+      Corti.patch();
     });
 
     afterEach(function() {
-      window.Corti.unpatch();
+      Corti.unpatch();
     });
 
     it('should start SpeechRecognition', function () {
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechRecognition.start();
-      expect(window.SpeechRecognition.isStarted()).toBe(true);
-      window.SpeechRecognition.start();
-      expect(window.SpeechRecognition.isStarted()).toBe(true);
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechRecognition.start();
+      expect(SpeechRecognition.isStarted()).toBe(true);
+      SpeechRecognition.start();
+      expect(SpeechRecognition.isStarted()).toBe(true);
     });
 
   });
@@ -77,21 +77,21 @@
   describe('SpeechRecognition.abort', function() {
 
     beforeEach(function() {
-      window.Corti.patch();
+      Corti.patch();
     });
 
     afterEach(function() {
-      window.Corti.unpatch();
+      Corti.unpatch();
     });
 
     it('should stop SpeechRecognition', function () {
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechRecognition.start();
-      expect(window.SpeechRecognition.isStarted()).toBe(true);
-      window.SpeechRecognition.abort();
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechRecognition.abort();
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechRecognition.start();
+      expect(SpeechRecognition.isStarted()).toBe(true);
+      SpeechRecognition.abort();
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechRecognition.abort();
+      expect(SpeechRecognition.isStarted()).toBe(false);
     });
 
   });
@@ -99,21 +99,21 @@
   describe('SpeechRecognition.stop', function() {
 
     beforeEach(function() {
-      window.Corti.patch();
+      Corti.patch();
     });
 
     afterEach(function() {
-      window.Corti.unpatch();
+      Corti.unpatch();
     });
 
     it('should stop SpeechRecognition', function () {
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechRecognition.start();
-      expect(window.SpeechRecognition.isStarted()).toBe(true);
-      window.SpeechRecognition.stop();
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechRecognition.stop();
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechRecognition.start();
+      expect(SpeechRecognition.isStarted()).toBe(true);
+      SpeechRecognition.stop();
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechRecognition.stop();
+      expect(SpeechRecognition.isStarted()).toBe(false);
     });
 
   });

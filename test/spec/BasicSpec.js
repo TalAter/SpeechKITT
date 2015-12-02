@@ -4,23 +4,23 @@
   describe('SpeechKITT', function() {
 
     it('should exist in global namespace', function () {
-      expect(window.SpeechKITT).toEqual(jasmine.any(Object));
+      expect(SpeechKITT).toEqual(jasmine.any(Object));
     });
 
     it('should contain setStartCommand method', function () {
-      expect(window.SpeechKITT.setStartCommand).toEqual(jasmine.any(Function));
+      expect(SpeechKITT.setStartCommand).toEqual(jasmine.any(Function));
     });
 
     it('should contain setAbortCommand method', function () {
-      expect(window.SpeechKITT.setAbortCommand).toEqual(jasmine.any(Function));
+      expect(SpeechKITT.setAbortCommand).toEqual(jasmine.any(Function));
     });
 
     it('should contain startRecognition method', function () {
-      expect(window.SpeechKITT.startRecognition).toEqual(jasmine.any(Function));
+      expect(SpeechKITT.startRecognition).toEqual(jasmine.any(Function));
     });
 
     it('should contain abortRecognition method', function () {
-      expect(window.SpeechKITT.abortRecognition).toEqual(jasmine.any(Function));
+      expect(SpeechKITT.abortRecognition).toEqual(jasmine.any(Function));
     });
 
   });
@@ -29,14 +29,14 @@
 
     it('should throw an error when called without a callback function', function () {
       expect(function() {
-        window.SpeechKITT.setStartCommand();
+        SpeechKITT.setStartCommand();
       }).toThrowError();
     });
 
     it('should throw an error when called with an invalid callback function', function () {
       expect(function() {
-        window.SpeechKITT.setStartCommand(undefined);
-        window.SpeechKITT.setStartCommand('blerg');
+        SpeechKITT.setStartCommand(undefined);
+        SpeechKITT.setStartCommand('blerg');
       }).toThrowError();
     });
 
@@ -48,14 +48,14 @@
 
     it('should throw an error when called without a callback function', function () {
       expect(function() {
-        window.SpeechKITT.setAbortCommand();
+        SpeechKITT.setAbortCommand();
       }).toThrowError();
     });
 
     it('should throw an error when called with an invalid callback function', function () {
       expect(function() {
-        window.SpeechKITT.setAbortCommand(undefined);
-        window.SpeechKITT.setAbortCommand('blerg');
+        SpeechKITT.setAbortCommand(undefined);
+        SpeechKITT.setAbortCommand('blerg');
       }).toThrowError();
     });
 
@@ -64,26 +64,26 @@
   describe('SpeechKITT.startRecognition', function() {
 
     beforeEach(function() {
-      window.Corti.patch();
+      Corti.patch();
     });
 
     afterEach(function() {
-      window.Corti.unpatch();
+      Corti.unpatch();
     });
 
     it('should throw an error when called before setting a start command', function () {
       expect(function() {
-        window.SpeechKITT.startRecognition();
+        SpeechKITT.startRecognition();
       }).toThrowError();
     });
 
     it('should start SpeechRecognition', function () {
-      window.SpeechKITT.setStartCommand(window.SpeechRecognition.start);
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechKITT.startRecognition();
-      expect(window.SpeechRecognition.isStarted()).toBe(true);
-      window.SpeechKITT.startRecognition();
-      expect(window.SpeechRecognition.isStarted()).toBe(true);
+      SpeechKITT.setStartCommand(SpeechRecognition.start);
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechKITT.startRecognition();
+      expect(SpeechRecognition.isStarted()).toBe(true);
+      SpeechKITT.startRecognition();
+      expect(SpeechRecognition.isStarted()).toBe(true);
     });
 
   });
@@ -91,29 +91,29 @@
   describe('SpeechKITT.abortRecognition', function() {
 
     beforeEach(function() {
-      window.Corti.patch();
+      Corti.patch();
     });
 
     afterEach(function() {
-      window.Corti.unpatch();
+      Corti.unpatch();
     });
 
     it('should throw an error when called before setting an abort command', function () {
       expect(function() {
-        window.SpeechKITT.abortRecognition();
+        SpeechKITT.abortRecognition();
       }).toThrowError();
     });
 
     it('should abort SpeechRecognition', function () {
-      window.SpeechKITT.setStartCommand(window.SpeechRecognition.start);
-      window.SpeechKITT.setAbortCommand(window.SpeechRecognition.abort);
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechKITT.startRecognition();
-      expect(window.SpeechRecognition.isStarted()).toBe(true);
-      window.SpeechKITT.abortRecognition();
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
-      window.SpeechKITT.abortRecognition();
-      expect(window.SpeechRecognition.isStarted()).toBe(false);
+      SpeechKITT.setStartCommand(SpeechRecognition.start);
+      SpeechKITT.setAbortCommand(SpeechRecognition.abort);
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechKITT.startRecognition();
+      expect(SpeechRecognition.isStarted()).toBe(true);
+      SpeechKITT.abortRecognition();
+      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechKITT.abortRecognition();
+      expect(SpeechRecognition.isStarted()).toBe(false);
     });
 
   });
