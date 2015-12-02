@@ -7,28 +7,28 @@
       expect(window.SpeechKITT).toEqual(jasmine.any(Object));
     });
 
-    it('should contain setStart method', function () {
-      expect(window.SpeechKITT.setStart).toEqual(jasmine.any(Function));
+    it('should contain setStartCommand method', function () {
+      expect(window.SpeechKITT.setStartCommand).toEqual(jasmine.any(Function));
     });
 
-    it('should contain setAbort method', function () {
-      expect(window.SpeechKITT.setAbort).toEqual(jasmine.any(Function));
+    it('should contain setAbortCommand method', function () {
+      expect(window.SpeechKITT.setAbortCommand).toEqual(jasmine.any(Function));
     });
 
   });
 
-  describe('SpeechKITT.setStart', function() {
+  describe('SpeechKITT.setStartCommand', function() {
 
     it('should throw an error when called without a callback function', function () {
       expect(function() {
-        window.SpeechKITT.setStart();
+        window.SpeechKITT.setStartCommand();
       }).toThrowError();
     });
 
     it('should throw an error when called with an invalid callback function', function () {
       expect(function() {
-        window.SpeechKITT.setStart(undefined);
-        window.SpeechKITT.setStart('blerg');
+        window.SpeechKITT.setStartCommand(undefined);
+        window.SpeechKITT.setStartCommand('blerg');
       }).toThrowError();
     });
 
@@ -38,18 +38,18 @@
 
   });
 
-  describe('SpeechKITT.setAbort', function() {
+  describe('SpeechKITT.setAbortCommand', function() {
 
     it('should throw an error when called without a callback function', function () {
       expect(function() {
-        window.SpeechKITT.setAbort();
+        window.SpeechKITT.setAbortCommand();
       }).toThrowError();
     });
 
     it('should throw an error when called with an invalid callback function', function () {
       expect(function() {
-        window.SpeechKITT.setAbort(undefined);
-        window.SpeechKITT.setAbort('blerg');
+        window.SpeechKITT.setAbortCommand(undefined);
+        window.SpeechKITT.setAbortCommand('blerg');
       }).toThrowError();
     });
 

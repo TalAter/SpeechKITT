@@ -19,20 +19,20 @@
      * #### Examples:
      * ````javascript
      * // Will call annyang's start method
-     * SpeechKITT.setStart(annyang.start);
+     * SpeechKITT.setStartCommand(annyang.start);
      * // Will call a global function called listen with a local context.
-     * SpeechKITT.setStart(listen, this);
+     * SpeechKITT.setStartCommand(listen, this);
      * // Functions can also be stated by name (string)
-     * SpeechKITT.setStart('listen', this);
+     * SpeechKITT.setStartCommand('listen', this);
      * // Using the browser's native start function
-     * SpeechKITT.setStart(webkitSpeechRecognition.start);
+     * SpeechKITT.setStartCommand(webkitSpeechRecognition.start);
      * ````
      *
      * @param {Function|String} callback - The function to call to start speech recognition
      * @param {Object} [context] - Optional context for the callback function
-     * @method setStart
+     * @method setStartCommand
      */
-    setStart: function(callback, context) {
+    setStartCommand: function(callback, context) {
       // This should work both when passed a function, or a name of a function
       callback = _root[callback] || callback;
       if (typeof callback !== 'function') {
@@ -47,16 +47,16 @@
      * #### Examples:
      * ````javascript
      * // Will call annyang's abort method
-     * SpeechKITT.setAbort(annyang.abort);
+     * SpeechKITT.setAbortCommand(annyang.abort);
      * // Using the browser's native abort function
-     * SpeechKITT.setAbort(webkitSpeechRecognition.abort);
+     * SpeechKITT.setAbortCommand(webkitSpeechRecognition.abort);
      * ````
      *
      * @param {Function|String} callback - The function to call to abort speech recognition
      * @param {Object} [context] - Optional context for the callback function
-     * @method setAbort
+     * @method setAbortCommand
      */
-    setAbort: function(callback, context) {
+    setAbortCommand: function(callback, context) {
       // This should work both when passed a function, or a name of a function
       callback = _root[callback] || callback;
       if (typeof callback !== 'function') {
