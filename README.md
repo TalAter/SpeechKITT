@@ -19,6 +19,12 @@ SpeechKITT.setStartCommand(recognition.start);
 // Tell KITT the command to use to abort listening
 SpeechKITT.setAbortCommand(recognition.abort);
 
+// Register KITT's recognition start event with the browser's Speech Recognition
+recognition.addEventListener('start', SpeechKITT.onStart);
+
+// Register KITT's recognition end event with the browser's Speech Recognition
+recognition.addEventListener('end', SpeechKITT.onEnd);
+
 // Render KITT's interface
 SpeechKITT.vroom();
 </script>

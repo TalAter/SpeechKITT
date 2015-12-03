@@ -91,6 +91,32 @@
         throw new TypeError('cannot abort recognition. Abort command not defined');
       }
       _abortCommand.callback.apply(_abortCommand.context);
+    },
+
+    /**
+     * This function should be called when the browser's SpeechRecognition start event fires.
+     * Attach this function to the Speech Recognition instance's start event.
+     *
+     * #### Examples:
+     * ````javascript
+     * var recognition = new webkitSpeechRecognition();
+     * recognition.addEventListener('start', SpeechKITT.onStart);
+     * ````
+     */
+    onStart: function() {
+    },
+
+    /**
+     * This function should be called when the browser's SpeechRecognition end event fires.
+     * Attach this function to the Speech Recognition instance's end event.
+     *
+     * #### Examples:
+     * ````javascript
+     * var recognition = new webkitSpeechRecognition();
+     * recognition.addEventListener('end', SpeechKITT.onEnd);
+     * ````
+     */
+    onEnd: function() {
     }
 
   };

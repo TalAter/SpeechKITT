@@ -23,6 +23,14 @@
       expect(SpeechKITT.abortRecognition).toEqual(jasmine.any(Function));
     });
 
+    it('should contain onStart method', function () {
+      expect(SpeechKITT.onStart).toEqual(jasmine.any(Function));
+    });
+
+    it('should contain onEnd method', function () {
+      expect(SpeechKITT.onEnd).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
@@ -130,6 +138,22 @@
       expect(recognition.isStarted()).toBe(false);
       SpeechKITT.abortRecognition();
       expect(recognition.isStarted()).toBe(false);
+    });
+
+  });
+
+  describe('SpeechKITT.onStart', function() {
+
+    it('should be callable', function () {
+      SpeechKITT.onStart();
+    });
+
+  });
+
+  describe('SpeechKITT.onEnd', function() {
+
+    it('should be callable', function () {
+      SpeechKITT.onEnd();
     });
 
   });
