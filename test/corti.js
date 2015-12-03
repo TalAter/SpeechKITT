@@ -11,7 +11,7 @@
   var _root = this;
 
   // Holds the browser's implementation
-  var _productionVersion;
+  var _productionVersion = false;
 
   var newSpeechRecognition = function() {
     var _started = false;
@@ -36,7 +36,7 @@
   // Expose functionality
   _root.Corti = {
     patch: function() {
-      if (_productionVersion === undefined) {
+      if (_productionVersion === false) {
         _productionVersion = _root.SpeechRecognition ||
           _root.webkitSpeechRecognition ||
           _root.mozSpeechRecognition ||
