@@ -35,12 +35,17 @@
 
     it('should throw an error when called with an invalid callback function', function () {
       expect(function() {
-        SpeechKITT.setStartCommand(undefined);
         SpeechKITT.setStartCommand('blerg');
       }).toThrowError();
     });
 
-    //@TODO: define test different contexts
+    it('should throw an error when called with an undefined callback function', function () {
+      expect(function() {
+        SpeechKITT.setStartCommand(undefined);
+      }).toThrowError();
+    });
+
+    //@TODO: define a test for different contexts
 
   });
 
@@ -54,8 +59,13 @@
 
     it('should throw an error when called with an invalid callback function', function () {
       expect(function() {
-        SpeechKITT.setAbortCommand(undefined);
         SpeechKITT.setAbortCommand('blerg');
+      }).toThrowError();
+    });
+
+    it('should throw an error when called with an undefined callback function', function () {
+      expect(function() {
+        SpeechKITT.setAbortCommand(undefined);
       }).toThrowError();
     });
 
@@ -63,8 +73,11 @@
 
   describe('SpeechKITT.startRecognition', function() {
 
+    var recognition;
+
     beforeEach(function() {
       Corti.patch();
+      recognition = new SpeechRecognition();
     });
 
     afterEach(function() {
@@ -78,20 +91,23 @@
     });
 
     it('should start SpeechRecognition', function () {
-      SpeechKITT.setStartCommand(SpeechRecognition.start);
-      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechKITT.setStartCommand(recognition.start);
+      expect(recognition.isStarted()).toBe(false);
       SpeechKITT.startRecognition();
-      expect(SpeechRecognition.isStarted()).toBe(true);
+      expect(recognition.isStarted()).toBe(true);
       SpeechKITT.startRecognition();
-      expect(SpeechRecognition.isStarted()).toBe(true);
+      expect(recognition.isStarted()).toBe(true);
     });
 
   });
 
   describe('SpeechKITT.abortRecognition', function() {
 
+    var recognition;
+
     beforeEach(function() {
       Corti.patch();
+      recognition = new SpeechRecognition();
     });
 
     afterEach(function() {
@@ -105,15 +121,15 @@
     });
 
     it('should abort SpeechRecognition', function () {
-      SpeechKITT.setStartCommand(SpeechRecognition.start);
-      SpeechKITT.setAbortCommand(SpeechRecognition.abort);
-      expect(SpeechRecognition.isStarted()).toBe(false);
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      expect(recognition.isStarted()).toBe(false);
       SpeechKITT.startRecognition();
-      expect(SpeechRecognition.isStarted()).toBe(true);
+      expect(recognition.isStarted()).toBe(true);
       SpeechKITT.abortRecognition();
-      expect(SpeechRecognition.isStarted()).toBe(false);
+      expect(recognition.isStarted()).toBe(false);
       SpeechKITT.abortRecognition();
-      expect(SpeechRecognition.isStarted()).toBe(false);
+      expect(recognition.isStarted()).toBe(false);
     });
 
   });

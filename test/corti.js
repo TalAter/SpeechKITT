@@ -11,44 +11,43 @@
   var _root = this;
 
   // Holds the browser's implementation
-  var productionVersion;
+  var _productionVersion;
 
   var newSpeechRecognition = function() {
-    var started = false;
+    var _started = false;
 
-    return {
+    this.start = function() {
+      _started = true;
+    };
 
-      start: function() {
-        started = true;
-      },
+    this.abort = function() {
+      _started = false;
+    };
 
-      abort: function() {
-        started = false;
-      },
+    this.stop = function() {
+      _started = false;
+    };
 
-      stop: function() {
-        this.abort();
-      },
-
-      isStarted: function() {
-        return started;
-      }
+    this.isStarted = function() {
+      return _started;
     };
   };
 
   // Expose functionality
   _root.Corti = {
     patch: function() {
-      productionVersion = _root.SpeechRecognition ||
-        _root.webkitSpeechRecognition ||
-        _root.mozSpeechRecognition ||
-        _root.msSpeechRecognition ||
-        _root.oSpeechRecognition;
-      _root.SpeechRecognition = newSpeechRecognition();
+      if (_productionVersion === undefined) {
+        _productionVersion = _root.SpeechRecognition ||
+          _root.webkitSpeechRecognition ||
+          _root.mozSpeechRecognition ||
+          _root.msSpeechRecognition ||
+          _root.oSpeechRecognition;
+      }
+      _root.SpeechRecognition = newSpeechRecognition;
     },
 
     unpatch: function() {
-      _root.SpeechRecognition = productionVersion;
+      _root.SpeechRecognition = _productionVersion;
     }
   };
 

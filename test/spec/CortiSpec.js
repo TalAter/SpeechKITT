@@ -19,8 +19,34 @@
 
   describe('Corti.patch', function() {
 
+    it('should make SpeechRecognition defined', function () {
+      expect(window.SpeechRecognition).toBeUndefined();
+      Corti.patch();
+      expect(window.SpeechRecognition).toBeDefined();
+      Corti.unpatch();
+    });
+
+  });
+
+  describe('Corti.unpatch', function() {
+
+    it('should make SpeechRecognition undefined', function () {
+      expect(window.SpeechRecognition).toBeUndefined();
+      Corti.patch();
+      expect(window.SpeechRecognition).toBeDefined();
+      Corti.unpatch();
+      expect(window.SpeechRecognition).toBeUndefined();
+    });
+
+  });
+
+  describe('new SpeechRecognition', function() {
+
+    var recognition;
+
     beforeEach(function() {
       Corti.patch();
+      recognition = new window.SpeechRecognition();
     });
 
     afterEach(function() {
@@ -28,36 +54,26 @@
     });
 
     it('should add the method isStarted', function () {
-      expect(SpeechRecognition.isStarted).toEqual(jasmine.any(Function));
+      expect(recognition.isStarted).toEqual(jasmine.any(Function));
     });
 
     it('should add the method start', function () {
-      expect(SpeechRecognition.start).toEqual(jasmine.any(Function));
+      expect(recognition.start).toEqual(jasmine.any(Function));
     });
 
     it('should add the method abort', function () {
-      expect(SpeechRecognition.abort).toEqual(jasmine.any(Function));
-    });
-
-  });
-
-  describe('Corti.unpatch', function() {
-
-    beforeEach(function() {
-      Corti.patch();
-      Corti.unpatch();
-    });
-
-    it('should make SpeechRecognition undefined', function () {
-      expect(SpeechRecognition).toBeUndefined();
+      expect(recognition.abort).toEqual(jasmine.any(Function));
     });
 
   });
 
   describe('SpeechRecognition.start', function() {
 
+    var recognition;
+
     beforeEach(function() {
       Corti.patch();
+      recognition = new window.SpeechRecognition();
     });
 
     afterEach(function() {
@@ -65,19 +81,22 @@
     });
 
     it('should start SpeechRecognition', function () {
-      expect(SpeechRecognition.isStarted()).toBe(false);
-      SpeechRecognition.start();
-      expect(SpeechRecognition.isStarted()).toBe(true);
-      SpeechRecognition.start();
-      expect(SpeechRecognition.isStarted()).toBe(true);
+      expect(recognition.isStarted()).toBe(false);
+      recognition.start();
+      expect(recognition.isStarted()).toBe(true);
+      recognition.start();
+      expect(recognition.isStarted()).toBe(true);
     });
 
   });
 
   describe('SpeechRecognition.abort', function() {
 
+    var recognition;
+
     beforeEach(function() {
       Corti.patch();
+      recognition = new window.SpeechRecognition();
     });
 
     afterEach(function() {
@@ -85,21 +104,24 @@
     });
 
     it('should stop SpeechRecognition', function () {
-      expect(SpeechRecognition.isStarted()).toBe(false);
-      SpeechRecognition.start();
-      expect(SpeechRecognition.isStarted()).toBe(true);
-      SpeechRecognition.abort();
-      expect(SpeechRecognition.isStarted()).toBe(false);
-      SpeechRecognition.abort();
-      expect(SpeechRecognition.isStarted()).toBe(false);
+      expect(recognition.isStarted()).toBe(false);
+      recognition.start();
+      expect(recognition.isStarted()).toBe(true);
+      recognition.abort();
+      expect(recognition.isStarted()).toBe(false);
+      recognition.abort();
+      expect(recognition.isStarted()).toBe(false);
     });
 
   });
 
   describe('SpeechRecognition.stop', function() {
 
+    var recognition;
+
     beforeEach(function() {
       Corti.patch();
+      recognition = new window.SpeechRecognition();
     });
 
     afterEach(function() {
@@ -107,13 +129,13 @@
     });
 
     it('should stop SpeechRecognition', function () {
-      expect(SpeechRecognition.isStarted()).toBe(false);
-      SpeechRecognition.start();
-      expect(SpeechRecognition.isStarted()).toBe(true);
-      SpeechRecognition.stop();
-      expect(SpeechRecognition.isStarted()).toBe(false);
-      SpeechRecognition.stop();
-      expect(SpeechRecognition.isStarted()).toBe(false);
+      expect(recognition.isStarted()).toBe(false);
+      recognition.start();
+      expect(recognition.isStarted()).toBe(true);
+      recognition.stop();
+      expect(recognition.isStarted()).toBe(false);
+      recognition.stop();
+      expect(recognition.isStarted()).toBe(false);
     });
 
   });
