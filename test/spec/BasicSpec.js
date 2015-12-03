@@ -103,8 +103,16 @@
       expect(recognition.isStarted()).toBe(false);
       SpeechKITT.startRecognition();
       expect(recognition.isStarted()).toBe(true);
+    });
+
+    it('should throw an exception if called on an already running SpeechRecognition object', function () {
+      SpeechKITT.setStartCommand(recognition.start);
+      expect(recognition.isStarted()).toBe(false);
       SpeechKITT.startRecognition();
       expect(recognition.isStarted()).toBe(true);
+      expect(function() {
+        SpeechKITT.startRecognition();
+      }).toThrowError();
     });
 
   });

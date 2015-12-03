@@ -13,10 +13,16 @@
   // Holds the browser's implementation
   var _productionVersion = false;
 
+  // Patch DOMException
+  var DOMException = DOMException || TypeError;
+
   var newSpeechRecognition = function() {
     var _started = false;
 
     this.start = function() {
+      if (_started) {
+        throw new DOMException('Failed to execute \'start\' on \'SpeechRecognition\': recognition has already started.');
+      }
       _started = true;
     };
 

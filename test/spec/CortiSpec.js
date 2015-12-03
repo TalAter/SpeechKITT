@@ -84,8 +84,15 @@
       expect(recognition.isStarted()).toBe(false);
       recognition.start();
       expect(recognition.isStarted()).toBe(true);
+    });
+
+    it('should throw an exception if called on an already running SpeechRecognition object', function () {
+      expect(recognition.isStarted()).toBe(false);
       recognition.start();
       expect(recognition.isStarted()).toBe(true);
+      expect(function() {
+        recognition.start();
+      }).toThrowError();
     });
 
   });
