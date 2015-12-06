@@ -35,7 +35,7 @@
     };
 
     this.stop = function() {
-      _self._started = false;
+      return this.abort();
     };
 
     this.isStarted = function() {
