@@ -125,6 +125,24 @@
      * @method onEnd
      */
     onEnd: function() {
+    },
+
+    /**
+     *
+     */
+    start: function() {
+
+    },
+
+    /**
+     * Call once done configuring KITT to render its interface.
+     * Identical to calling SpeechKITT.start();
+     *
+     * @method onEnd
+     * @see [start()](#start)
+     */
+    vroom: function() {
+      this.start();
     }
 
   };

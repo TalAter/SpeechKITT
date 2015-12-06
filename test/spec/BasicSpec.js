@@ -31,6 +31,14 @@
       expect(SpeechKITT.onEnd).toEqual(jasmine.any(Function));
     });
 
+    it('should contain start method', function () {
+      expect(SpeechKITT.start).toEqual(jasmine.any(Function));
+    });
+
+    it('should contain vroom method', function () {
+      expect(SpeechKITT.vroom).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
