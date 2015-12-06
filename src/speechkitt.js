@@ -75,6 +75,8 @@
 
     /**
      * Starts the speech recognition. Make sure to define the speech recognition command start first using setStartCommand()
+     *
+     * @method startRecognition
      */
     startRecognition: function() {
       if (!_startCommand) {
@@ -85,6 +87,8 @@
 
     /**
      * Aborts the speech recognition. Make sure to define the speech recognition abort command first using setStartCommand()
+     *
+     * @method abortRecognition
      */
     abortRecognition: function() {
       if (!_abortCommand) {
@@ -102,6 +106,8 @@
      * var recognition = new webkitSpeechRecognition();
      * recognition.addEventListener('start', SpeechKITT.onStart);
      * ````
+     *
+     * @method onStart
      */
     onStart: function() {
     },
@@ -115,6 +121,8 @@
      * var recognition = new webkitSpeechRecognition();
      * recognition.addEventListener('end', SpeechKITT.onEnd);
      * ````
+     *
+     * @method onEnd
      */
     onEnd: function() {
     }
