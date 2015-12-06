@@ -147,4 +147,32 @@
 
   });
 
+  describe('SpeechRecognition.onstart', function() {
+
+    var spyOnStart;
+    var recognition;
+
+    beforeEach(function() {
+      spyOnStart = jasmine.createSpy();
+      Corti.patch();
+      recognition = new window.SpeechRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should attach a callback to start event which will be called once on start', function () {
+      expect(spyOnStart).not.toHaveBeenCalled();
+      recognition.onstart = spyOnStart;
+      recognition.start();
+      expect(spyOnStart.calls.count()).toEqual(1);
+      expect(function() {
+        recognition.start();
+      }).toThrowError();
+      expect(spyOnStart.calls.count()).toEqual(1);
+    });
+
+  });
+
 })();

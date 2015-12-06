@@ -17,25 +17,29 @@
   var DOMException = DOMException || TypeError;
 
   var newSpeechRecognition = function() {
-    var _started = false;
+    var _self = this;
+    _self._started = false;
 
     this.start = function() {
-      if (_started) {
+      if (_self._started) {
         throw new DOMException('Failed to execute \'start\' on \'SpeechRecognition\': recognition has already started.');
       }
-      _started = true;
+      _self._started = true;
+      if (typeof _self.onstart === 'function') {
+        _self.onstart.call();
+      }
     };
 
     this.abort = function() {
-      _started = false;
+      _self._started = false;
     };
 
     this.stop = function() {
-      _started = false;
+      _self._started = false;
     };
 
     this.isStarted = function() {
-      return _started;
+      return _self._started;
     };
   };
 
