@@ -31,7 +31,13 @@
     };
 
     this.abort = function() {
+      if (!_self._started) {
+        return;
+      }
       _self._started = false;
+      if (typeof _self.onend === 'function') {
+        _self.onend.call();
+      }
     };
 
     this.stop = function() {

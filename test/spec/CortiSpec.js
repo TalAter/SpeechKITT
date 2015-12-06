@@ -174,5 +174,42 @@
     });
 
   });
+  describe('SpeechRecognition.onend', function() {
+
+    var spyOnEnd;
+    var recognition;
+
+    beforeEach(function() {
+      spyOnEnd = jasmine.createSpy();
+      Corti.patch();
+      recognition = new window.SpeechRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should attach a callback to end event which will be called once on stop', function () {
+      recognition.onend = spyOnEnd;
+      recognition.start();
+      expect(spyOnEnd).not.toHaveBeenCalled();
+      recognition.abort();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+      recognition.abort();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+    });
+
+    it('should attach a callback to end event which will be called once on abort', function () {
+      recognition.onend = spyOnEnd;
+      recognition.start();
+      expect(spyOnEnd).not.toHaveBeenCalled();
+      recognition.stop();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+      recognition.stop();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+    });
+
+  });
+
 
 })();
