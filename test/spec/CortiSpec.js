@@ -53,16 +53,24 @@
       Corti.unpatch();
     });
 
-    it('should add the method isStarted', function () {
+    it('should contain the method isStarted', function () {
       expect(recognition.isStarted).toEqual(jasmine.any(Function));
     });
 
-    it('should add the method start', function () {
+    it('should contain the method start', function () {
       expect(recognition.start).toEqual(jasmine.any(Function));
     });
 
-    it('should add the method abort', function () {
+    it('should contain the method abort', function () {
       expect(recognition.abort).toEqual(jasmine.any(Function));
+    });
+
+    it('should contain the method stop', function () {
+      expect(recognition.stop).toEqual(jasmine.any(Function));
+    });
+
+    it('should contain the method addEventListener', function () {
+      expect(recognition.addEventListener).toEqual(jasmine.any(Function));
     });
 
   });
@@ -171,9 +179,12 @@
         recognition.start();
       }).toThrowError();
       expect(spyOnStart.calls.count()).toEqual(1);
+      recognition.abort();
+      expect(spyOnStart.calls.count()).toEqual(1);
     });
 
   });
+
   describe('SpeechRecognition.onend', function() {
 
     var spyOnEnd;
@@ -211,5 +222,99 @@
 
   });
 
+  describe('SpeechRecognition.addEventListener("start")', function() {
+
+    var spyOnStart;
+    var spyOnEnd;
+    var recognition;
+
+    beforeEach(function() {
+      spyOnStart = jasmine.createSpy();
+      spyOnEnd = jasmine.createSpy();
+      Corti.patch();
+      recognition = new window.SpeechRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should attach a callback to start event which will be called once on start', function () {
+      expect(spyOnStart).not.toHaveBeenCalled();
+      recognition.addEventListener('start', spyOnStart);
+      recognition.start();
+      expect(spyOnStart.calls.count()).toEqual(1);
+      expect(function() {
+        recognition.start();
+      }).toThrowError();
+      expect(spyOnStart.calls.count()).toEqual(1);
+      recognition.abort();
+      expect(spyOnStart.calls.count()).toEqual(1);
+    });
+
+  });
+
+  describe('SpeechRecognition.addEventListener("end")', function() {
+
+    var spyOnEnd;
+    var recognition;
+
+    beforeEach(function() {
+      spyOnEnd = jasmine.createSpy();
+      Corti.patch();
+      recognition = new window.SpeechRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should attach a callback to end event which will be called once on stop', function () {
+      recognition.addEventListener('end', spyOnEnd);
+      recognition.start();
+      expect(spyOnEnd).not.toHaveBeenCalled();
+      recognition.abort();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+      recognition.abort();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+    });
+
+    it('should attach a callback to end event which will be called once on abort', function () {
+      recognition.addEventListener('end', spyOnEnd);
+      recognition.start();
+      expect(spyOnEnd).not.toHaveBeenCalled();
+      recognition.stop();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+      recognition.stop();
+      expect(spyOnEnd.calls.count()).toEqual(1);
+    });
+
+  });
+
+  describe('SpeechRecognition.addEventListener("blerg")', function() {
+
+    var spyOnBlerg;
+    var recognition;
+
+    beforeEach(function() {
+      spyOnBlerg = jasmine.createSpy();
+      Corti.patch();
+      recognition = new window.SpeechRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should not attach a callback to end or start events', function () {
+      expect(spyOnBlerg).not.toHaveBeenCalled();
+      recognition.addEventListener('blerg', spyOnBlerg);
+      recognition.start();
+      recognition.abort();
+      recognition.abort();
+      expect(spyOnBlerg).not.toHaveBeenCalled();
+    });
+
+  });
 
 })();

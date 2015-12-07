@@ -19,6 +19,7 @@
   var newSpeechRecognition = function() {
     var _self = this;
     _self._started = false;
+    _self.eventListeners = {'start': [], 'end': []};
 
     this.start = function() {
       if (_self._started) {
@@ -28,6 +29,9 @@
       if (typeof _self.onstart === 'function') {
         _self.onstart.call();
       }
+      _self.eventListeners['start'].forEach(function(callback) {
+        callback.call();
+      });
     };
 
     this.abort = function() {
@@ -38,14 +42,23 @@
       if (typeof _self.onend === 'function') {
         _self.onend.call();
       }
+      _self.eventListeners['end'].forEach(function(callback) {
+        callback.call();
+      });
     };
 
     this.stop = function() {
-      return this.abort();
+      return _self.abort();
     };
 
     this.isStarted = function() {
       return _self._started;
+    };
+
+    this.addEventListener = function(event, callback) {
+      if (_self.eventListeners[event]) {
+        _self.eventListeners[event].push(callback);
+      }
     };
   };
 
