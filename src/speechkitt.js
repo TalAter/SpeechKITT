@@ -138,13 +138,13 @@
 
     /**
      * Call once done configuring KITT, to render its interface.
-     * Identical to calling SpeechKITT.start();
+     * Identical to calling SpeechKITT.render();
      *
      * @method vroom
      * @see [render()](#render)
      */
     vroom: function() {
-      this.start();
+      this.render();
     }
 
   };
