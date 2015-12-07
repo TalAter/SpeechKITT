@@ -160,16 +160,16 @@
 
   describe('SpeechKITT.onStart', function() {
 
-    it('should be callable', function () {
-      SpeechKITT.onStart();
+    it('should be callable and return undefined', function () {
+      expect(SpeechKITT.onStart()).toBe(undefined);
     });
 
   });
 
   describe('SpeechKITT.onEnd', function() {
 
-    it('should be callable', function () {
-      SpeechKITT.onEnd();
+    it('should be callable and return undefined', function () {
+      expect(SpeechKITT.onEnd()).toBe(undefined);
     });
 
   });
