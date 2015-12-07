@@ -128,18 +128,20 @@
     },
 
     /**
+     * Call once done configuring KITT, to render its interface.
      *
+     * @method vroom
      */
-    start: function() {
+    render: function() {
 
     },
 
     /**
-     * Call once done configuring KITT to render its interface.
+     * Call once done configuring KITT, to render its interface.
      * Identical to calling SpeechKITT.start();
      *
-     * @method onEnd
-     * @see [start()](#start)
+     * @method vroom
+     * @see [render()](#render)
      */
     vroom: function() {
       this.start();

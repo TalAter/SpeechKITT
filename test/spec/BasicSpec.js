@@ -31,8 +31,8 @@
       expect(SpeechKITT.onEnd).toEqual(jasmine.any(Function));
     });
 
-    it('should contain start method', function () {
-      expect(SpeechKITT.start).toEqual(jasmine.any(Function));
+    it('should contain render method', function () {
+      expect(SpeechKITT.render).toEqual(jasmine.any(Function));
     });
 
     it('should contain vroom method', function () {
