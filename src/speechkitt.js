@@ -13,6 +13,15 @@
   var _startCommand;
   var _abortCommand;
 
+  // DOM elements
+  var _guiNodes;
+
+  var _createGUI = function() {
+    var wrapper = document.createElement('div');
+    wrapper.id = 'skitt_wrapper';
+    wrapper.innerHTML = '<a href="#" id="skitt_start_end_btn">&nbsp;</a>';
+    return wrapper;
+  };
 
   // Expose functionality
   _root.SpeechKITT = {
@@ -130,10 +139,14 @@
     /**
      * Call once done configuring KITT, to render its interface.
      *
-     * @method vroom
+     * @method render
      */
     render: function() {
-
+      if (_guiNodes === undefined) {
+        _guiNodes = _createGUI();
+        document.body.appendChild(_guiNodes);
+      }
+      //@TODO: set GUI status
     },
 
     /**
