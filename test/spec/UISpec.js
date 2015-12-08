@@ -19,6 +19,19 @@
 
   describe('SpeechKITT.vroom', function() {
 
+    var recognition;
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
     it('should add a visible gui to the DOM inside a div#skitt_wrapper', function () {
       expect(getWrappers()).toHaveLength(0);
       SpeechKITT.vroom();
@@ -31,6 +44,29 @@
       expect(getStartEndButtons()).toHaveLength(1);
       expect(getStartEndButton()).toBeInDOM();
       expect(getStartEndButton()).toBeVisible();
+    });
+
+    it('should start GUI in not listening mode', function () {
+      SpeechKITT.abortRecognition();
+      SpeechKITT.vroom();
+      expect(getWrapper()).toHaveClass('skitt_not_listening');
+      expect(getWrapper()).not.toHaveClass('skitt_listening');
+    });
+
+    it('should start GUI in listening mode if recognition previously started', function () {
+      SpeechKITT.startRecognition();
+      SpeechKITT.vroom();
+      expect(getWrapper()).not.toHaveClass('skitt_not_listening');
+      expect(getWrapper()).toHaveClass('skitt_listening');
+    });
+
+    it('should change the GUI based on listening mode', function () {
+      SpeechKITT.abortRecognition();
+      expect(getWrapper()).toHaveClass('skitt_not_listening');
+      expect(getWrapper()).not.toHaveClass('skitt_listening');
+      SpeechKITT.startRecognition();
+      expect(getWrapper()).not.toHaveClass('skitt_not_listening');
+      expect(getWrapper()).toHaveClass('skitt_listening');
     });
 
     it('should not panic when called more than once', function () {

@@ -14,16 +14,49 @@
   var _abortCommand;
 
   // Is speech recognition on?
-  var _statusOn = false;
+  var _statusListening = false;
 
   // DOM elements
   var _guiNodes;
 
+  // Called once to generate the GUI nodes
   var _createGUI = function() {
     var wrapper = document.createElement('div');
     wrapper.id = 'skitt_wrapper';
     wrapper.innerHTML = '<a href="#" id="skitt_start_end_btn">&nbsp;</a>';
     return wrapper;
+  };
+
+  // Called to change GUI look to listening
+  var _setGUIListening = function() {
+    if (_guiNodes === undefined) {
+      return;
+    }
+    _guiNodes.className = 'skitt_listening';
+  };
+
+  // Called to change GUI look to not listening
+  var _setGUINotListening = function() {
+    if (_guiNodes === undefined) {
+      return;
+    }
+    _guiNodes.className = 'skitt_not_listening';
+  };
+
+  // Called internally to set listening status to on, and update interface if needed
+  var _setStatusOn = function() {
+    if (!_statusListening) {
+      _statusListening = true;
+      _setGUIListening();
+    }
+  };
+
+  // Called internally to set listening status to off, and update interface if needed
+  var _setStatusOff = function() {
+    if (_statusListening) {
+      _statusListening = false;
+      _setGUINotListening();
+    }
   };
 
   // Expose functionality
@@ -95,7 +128,7 @@
         throw new TypeError('cannot start recognition. Start command not defined');
       }
       _startCommand.callback.apply(_startCommand.context);
-      _statusOn = true;
+      _setStatusOn();
     },
 
     /**
@@ -108,7 +141,7 @@
         throw new TypeError('cannot abort recognition. Abort command not defined');
       }
       _abortCommand.callback.apply(_abortCommand.context);
-      _statusOn = false;
+      _setStatusOff();
     },
 
     /**
@@ -124,7 +157,7 @@
      * @method onStart
      */
     onStart: function() {
-      _statusOn = true;
+      _setStatusOn();
     },
 
     /**
@@ -140,7 +173,7 @@
      * @method onEnd
      */
     onEnd: function() {
-      _statusOn = false;
+      _setStatusOff();
     },
 
     /**
@@ -153,7 +186,12 @@
         _guiNodes = _createGUI();
         document.body.appendChild(_guiNodes);
       }
-      //@TODO: set GUI status
+      //set GUI status
+      if (this.isListening()) {
+        _setGUIListening();
+      } else {
+        _setGUINotListening();
+      }
     },
 
     /**
@@ -173,11 +211,11 @@
      * This can be wrong KITT wasn't completely configured correctly, or was started
      * while Speech Recognition was already running/
      *
-     * @returns {boolean} true = listening
+     * @returns {boolean} true = listening or false = not listening
      * @method isListening
      */
     isListening: function() {
-      return _statusOn;
+      return _statusListening;
     }
 
   };
