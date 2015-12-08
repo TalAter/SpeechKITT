@@ -13,6 +13,9 @@
   var _startCommand;
   var _abortCommand;
 
+  // Is speech recognition on?
+  var _statusOn = false;
+
   // DOM elements
   var _guiNodes;
 
@@ -92,6 +95,7 @@
         throw new TypeError('cannot start recognition. Start command not defined');
       }
       _startCommand.callback.apply(_startCommand.context);
+      _statusOn = true;
     },
 
     /**
@@ -104,6 +108,7 @@
         throw new TypeError('cannot abort recognition. Abort command not defined');
       }
       _abortCommand.callback.apply(_abortCommand.context);
+      _statusOn = false;
     },
 
     /**
@@ -119,6 +124,7 @@
      * @method onStart
      */
     onStart: function() {
+      _statusOn = true;
     },
 
     /**
@@ -134,6 +140,7 @@
      * @method onEnd
      */
     onEnd: function() {
+      _statusOn = false;
     },
 
     /**
@@ -158,6 +165,19 @@
      */
     vroom: function() {
       this.render();
+    },
+
+    /**
+     * Returns true if Speech Recognition is currently on.
+     *
+     * This can be wrong KITT wasn't completely configured correctly, or was started
+     * while Speech Recognition was already running/
+     *
+     * @returns {boolean} true = listening
+     * @method isListening
+     */
+    isListening: function() {
+      return _statusOn;
     }
 
   };

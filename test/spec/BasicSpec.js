@@ -39,6 +39,10 @@
       expect(SpeechKITT.vroom).toEqual(jasmine.any(Function));
     });
 
+    it('should contain isListening method', function () {
+      expect(SpeechKITT.isListening).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
@@ -110,6 +114,7 @@
       SpeechKITT.setStartCommand(recognition.start);
       expect(recognition.isStarted()).toBe(false);
       SpeechKITT.startRecognition();
+      expect(SpeechKITT.isListening()).toBe(true);
       expect(recognition.isStarted()).toBe(true);
     });
 
@@ -117,6 +122,7 @@
       SpeechKITT.setStartCommand(recognition.start);
       expect(recognition.isStarted()).toBe(false);
       SpeechKITT.startRecognition();
+      expect(SpeechKITT.isListening()).toBe(true);
       expect(recognition.isStarted()).toBe(true);
       expect(function() {
         SpeechKITT.startRecognition();
@@ -149,10 +155,13 @@
       SpeechKITT.setAbortCommand(recognition.abort);
       expect(recognition.isStarted()).toBe(false);
       SpeechKITT.startRecognition();
+      expect(SpeechKITT.isListening()).toBe(true);
       expect(recognition.isStarted()).toBe(true);
       SpeechKITT.abortRecognition();
+      expect(SpeechKITT.isListening()).toBe(false);
       expect(recognition.isStarted()).toBe(false);
       SpeechKITT.abortRecognition();
+      expect(SpeechKITT.isListening()).toBe(false);
       expect(recognition.isStarted()).toBe(false);
     });
 
@@ -170,6 +179,32 @@
 
     it('should be callable and return undefined', function () {
       expect(SpeechKITT.onEnd()).toBe(undefined);
+    });
+
+  });
+
+  describe('SpeechKITT.isListening', function() {
+
+    var recognition;
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should return false initially', function () {
+      expect(SpeechKITT.isListening()).toBe(false);
+    });
+
+    it('should return true after starting SpeechKITT', function () {
+      SpeechKITT.setStartCommand(recognition.start);
+      expect(SpeechKITT.isListening()).toBe(false);
+      SpeechKITT.startRecognition();
+      expect(SpeechKITT.isListening()).toBe(true);
     });
 
   });
