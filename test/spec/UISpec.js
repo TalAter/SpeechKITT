@@ -27,7 +27,7 @@
       expect(getWrapper()).toBeVisible();
     });
 
-    it('should add a visible start button to the wrapper a#skitt_start_end_btn', function () {
+    it('should add a visible start/end button to the wrapper a#skitt_start_end_btn', function () {
       expect(getStartEndButtons()).toHaveLength(1);
       expect(getStartEndButton()).toBeInDOM();
       expect(getStartEndButton()).toBeVisible();
