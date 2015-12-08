@@ -70,13 +70,13 @@
     });
 
     it('should not panic when called more than once', function () {
-      expect($('#skitt_wrapper')).toHaveLength(1);
-      expect($('#skitt_wrapper')[0]).toBeInDOM();
-      expect($('#skitt_wrapper')[0]).toBeVisible();
+      expect(getWrappers()).toHaveLength(1);
+      expect(getWrapper()).toBeInDOM();
+      expect(getWrapper()).toBeVisible();
       SpeechKITT.vroom();
-      expect($('#skitt_wrapper')).toHaveLength(1);
-      expect($('#skitt_wrapper')[0]).toBeInDOM();
-      expect($('#skitt_wrapper')[0]).toBeVisible();
+      expect(getWrappers()).toHaveLength(1);
+      expect(getWrapper()).toBeInDOM();
+      expect(getWrapper()).toBeVisible();
     });
 
   });
