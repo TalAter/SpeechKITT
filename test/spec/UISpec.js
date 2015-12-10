@@ -17,6 +17,12 @@
     return getStartEndButtons()[0];
   };
 
+  var simulateClick = function(element) {
+    var event = document.createEvent("MouseEvents");
+    event.initEvent("click", true, false);
+    return element.dispatchEvent(event);
+  };
+
   describe('SpeechKITT.hide', function() {
     it('should throw error if called before render was called', function () {
       expect(getWrappers()).toHaveLength(0);
@@ -123,6 +129,34 @@
       expect(getWrapper()).toHaveClass('skitt-ui--hidden');
       SpeechKITT.show();
       expect(getWrapper()).not.toHaveClass('skitt-ui--hidden');
+    });
+
+  });
+
+  describe('SpeechKITT toggle button', function() {
+
+    var recognition;
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      SpeechKITT.vroom();
+      SpeechKITT.abortRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+
+    it('should turn on speech recognition when clicked', function () {
+      expect(getWrapper()).toHaveClass('skitt-ui--not-listening');
+      expect(recognition.isStarted()).toBe(false);
+      simulateClick(getStartEndButton());
+      expect(getWrapper()).toHaveClass('skitt-ui--listening');
+      expect(recognition.isStarted()).toBe(true);
     });
 
   });

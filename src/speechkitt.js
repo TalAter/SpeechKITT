@@ -27,6 +27,11 @@
     wrapper.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a>';
     _guiNodes = wrapper;
     document.body.appendChild(_guiNodes);
+
+    // Attach events
+    document.getElementById('skitt-toggle-button').addEventListener('click', function(){
+      _root.SpeechKITT.toggleRecognition();
+    });
   };
 
   // Called to change GUI look to listening
