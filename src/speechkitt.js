@@ -32,7 +32,8 @@
     if (_guiNodes === undefined) {
       return;
     }
-    _guiNodes.className = 'skitt-ui--listening';
+    _guiNodes.classList.remove('skitt-ui--not-listening');
+    _guiNodes.classList.add('skitt-ui--listening');
   };
 
   // Called to change GUI look to not listening
@@ -40,7 +41,8 @@
     if (_guiNodes === undefined) {
       return;
     }
-    _guiNodes.className = 'skitt-ui--not-listening';
+    _guiNodes.classList.add('skitt-ui--not-listening');
+    _guiNodes.classList.remove('skitt-ui--listening');
   };
 
   // Called internally to set listening status to on, and update interface if needed
