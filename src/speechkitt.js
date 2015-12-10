@@ -21,10 +21,12 @@
 
   // Called once to generate the GUI nodes
   var _createGUI = function() {
+    // create GUI
     var wrapper = document.createElement('div');
     wrapper.id = 'skitt-ui';
-    wrapper.innerHTML = '<a href="#" id="skitt-toggle-button">&nbsp;</a>';
-    return wrapper;
+    wrapper.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a>';
+    _guiNodes = wrapper;
+    document.body.appendChild(_guiNodes);
   };
 
   // Called to change GUI look to listening
@@ -147,6 +149,19 @@
     },
 
     /**
+     * Toggles speech recognition. Make sure to define the speech recognition abort and start commands first
+     *
+     * @method toggleRecognition
+     */
+    toggleRecognition: function() {
+      if (_statusListening) {
+        this.abortRecognition();
+      } else {
+        this.startRecognition();
+      }
+    },
+
+    /**
      * This function should be called when the browser's SpeechRecognition start event fires.
      * Attach this function to the Speech Recognition instance's start event.
      *
@@ -185,8 +200,7 @@
      */
     render: function() {
       if (_guiNodes === undefined) {
-        _guiNodes = _createGUI();
-        document.body.appendChild(_guiNodes);
+        _createGUI();
       }
       //set GUI status
       if (this.isListening()) {

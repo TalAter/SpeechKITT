@@ -23,6 +23,10 @@
       expect(SpeechKITT.abortRecognition).toEqual(jasmine.any(Function));
     });
 
+    it('should contain toggleRecognition method', function () {
+      expect(SpeechKITT.toggleRecognition).toEqual(jasmine.any(Function));
+    });
+
     it('should contain onStart method', function () {
       expect(SpeechKITT.onStart).toEqual(jasmine.any(Function));
     });
@@ -171,6 +175,36 @@
       SpeechKITT.abortRecognition();
       expect(SpeechKITT.isListening()).toBe(false);
       expect(recognition.isStarted()).toBe(false);
+    });
+
+  });
+
+  describe('SpeechKITT.toggleRecognition', function() {
+
+    var recognition;
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should alternate between aborting and starting SpeechRecognition', function () {
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      SpeechKITT.startRecognition();
+      expect(recognition.isStarted()).toBe(true);
+      expect(SpeechKITT.isListening()).toBe(true);
+      SpeechKITT.toggleRecognition();
+      expect(recognition.isStarted()).toBe(false);
+      expect(SpeechKITT.isListening()).toBe(false);
+      SpeechKITT.toggleRecognition();
+      expect(recognition.isStarted()).toBe(true);
+      expect(SpeechKITT.isListening()).toBe(true);
+      SpeechKITT.toggleRecognition();
     });
 
   });
