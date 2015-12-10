@@ -9,12 +9,12 @@
     return getWrappers()[0];
   };
 
-  var getStartEndButtons = function() {
+  var getToggleButtons = function() {
     return $('a#skitt-toggle-button', getWrapper());
   };
 
-  var getStartEndButton = function() {
-    return getStartEndButtons()[0];
+  var getToggleButton = function() {
+    return getToggleButtons()[0];
   };
 
   var simulateClick = function(element) {
@@ -67,9 +67,9 @@
     });
 
     it('should add a visible start/end button to the wrapper a#skitt-toggle-button', function () {
-      expect(getStartEndButtons()).toHaveLength(1);
-      expect(getStartEndButton()).toBeInDOM();
-      expect(getStartEndButton()).toBeVisible();
+      expect(getToggleButtons()).toHaveLength(1);
+      expect(getToggleButton()).toBeInDOM();
+      expect(getToggleButton()).toBeVisible();
     });
 
     it('should start GUI in not listening mode', function () {
@@ -154,7 +154,7 @@
     it('should turn on speech recognition when clicked', function () {
       expect(getWrapper()).toHaveClass('skitt-ui--not-listening');
       expect(recognition.isStarted()).toBe(false);
-      simulateClick(getStartEndButton());
+      simulateClick(getToggleButton());
       expect(getWrapper()).toHaveClass('skitt-ui--listening');
       expect(recognition.isStarted()).toBe(true);
     });
