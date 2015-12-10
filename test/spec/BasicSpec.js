@@ -39,6 +39,14 @@
       expect(SpeechKITT.vroom).toEqual(jasmine.any(Function));
     });
 
+    it('should contain hide method', function () {
+      expect(SpeechKITT.hide).toEqual(jasmine.any(Function));
+    });
+
+    it('should contain show method', function () {
+      expect(SpeechKITT.show).toEqual(jasmine.any(Function));
+    });
+
     it('should contain isListening method', function () {
       expect(SpeechKITT.isListening).toEqual(jasmine.any(Function));
     });

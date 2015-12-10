@@ -17,6 +17,26 @@
     return getStartEndButtons()[0];
   };
 
+  describe('SpeechKITT.hide', function() {
+    it('should throw error if called before render was called', function () {
+      expect(getWrappers()).toHaveLength(0);
+      expect(function() {
+        SpeechKITT.hide();
+      }).toThrowError();
+      expect(getWrappers()).toHaveLength(0);
+    });
+  });
+
+  describe('SpeechKITT.show', function() {
+    it('should throw error if called before render was called', function () {
+      expect(getWrappers()).toHaveLength(0);
+      expect(function() {
+        SpeechKITT.show();
+      }).toThrowError();
+      expect(getWrappers()).toHaveLength(0);
+    });
+  });
+
   describe('SpeechKITT.vroom', function() {
 
     var recognition;
@@ -77,6 +97,32 @@
       expect(getWrappers()).toHaveLength(1);
       expect(getWrapper()).toBeInDOM();
       expect(getWrapper()).toBeVisible();
+    });
+
+  });
+
+  describe('SpeechKITT.hide', function() {
+
+    beforeEach(function() {
+      SpeechKITT.vroom();
+    });
+
+    it('should add skitt-ui--hidden class to the GUI', function () {
+      SpeechKITT.show();
+      expect(getWrapper()).not.toHaveClass('skitt-ui--hidden');
+      SpeechKITT.hide();
+      expect(getWrapper()).toHaveClass('skitt-ui--hidden');
+    });
+
+  });
+
+  describe('SpeechKITT.show', function() {
+
+    it('should remove skitt-ui--hidden class from the GUI', function () {
+      SpeechKITT.hide();
+      expect(getWrapper()).toHaveClass('skitt-ui--hidden');
+      SpeechKITT.show();
+      expect(getWrapper()).not.toHaveClass('skitt-ui--hidden');
     });
 
   });

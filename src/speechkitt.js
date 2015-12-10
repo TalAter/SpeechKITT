@@ -206,6 +206,32 @@
     },
 
     /**
+     * Call to show the GUI if it has been hidden with hide()
+     * Interface must have been previously rendered with render()
+     *
+     * @method show
+     */
+    show: function() {
+      if (_guiNodes === undefined) {
+        throw new TypeError('cannot show interface. Must be rendered first');
+      }
+      _guiNodes.classList.remove('skitt-ui--hidden');
+    },
+
+    /**
+     * Call to hide the GUI
+     * Interface must have been previously rendered with render()
+     *
+     * @method hide
+     */
+    hide: function() {
+      if (_guiNodes === undefined) {
+        throw new TypeError('cannot hide interface. Must be rendered first');
+      }
+      _guiNodes.classList.add('skitt-ui--hidden');
+    },
+
+    /**
      * Returns true if Speech Recognition is currently on.
      *
      * This can be wrong KITT wasn't completely configured correctly, or was started
