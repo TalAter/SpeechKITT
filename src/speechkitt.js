@@ -22,8 +22,8 @@
   // Called once to generate the GUI nodes
   var _createGUI = function() {
     var wrapper = document.createElement('div');
-    wrapper.id = 'skitt_wrapper';
-    wrapper.innerHTML = '<a href="#" id="skitt_start_end_btn">&nbsp;</a>';
+    wrapper.id = 'skitt-ui';
+    wrapper.innerHTML = '<a href="#" id="skitt-toggle-button">&nbsp;</a>';
     return wrapper;
   };
 
@@ -32,7 +32,7 @@
     if (_guiNodes === undefined) {
       return;
     }
-    _guiNodes.className = 'skitt_listening';
+    _guiNodes.className = 'skitt-ui--listening';
   };
 
   // Called to change GUI look to not listening
@@ -40,7 +40,7 @@
     if (_guiNodes === undefined) {
       return;
     }
-    _guiNodes.className = 'skitt_not_listening';
+    _guiNodes.className = 'skitt-ui--not-listening';
   };
 
   // Called internally to set listening status to on, and update interface if needed
