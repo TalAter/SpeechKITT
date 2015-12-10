@@ -26,8 +26,18 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['src/speechkitt.js', 'test/corti.js', 'test/spec/**.js', '!**/node_modules/**'],
+      files: ['src/speechkitt.js', 'test/corti.js', 'test/spec/**.js', 'themes/**/*', '!**/node_modules/**'],
       tasks: ['default']
+    },
+    sass: {
+      dist: {
+        options: {
+          style: 'compressed'
+        },
+        files: {
+          'dist/themes/simple.css': 'themes/simple/simple.scss'
+        }
+      }
     },
     jasmine: {
       testAndCoverage: {
@@ -68,9 +78,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'uglify', 'jasmine']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'jasmine']);
 
   // Test task
   grunt.registerTask('test', ['jshint', 'jasmine']);
