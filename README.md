@@ -15,10 +15,10 @@ KITT makes it easy to add a GUI to pages using Speech Recognition. Whether you a
 var recognition = new webkitSpeechRecognition();
 
 // Tell KITT the command to use to start listening
-SpeechKITT.setStartCommand(recognition.start);
+SpeechKITT.setStartCommand(function() {recognition.start()});
 
 // Tell KITT the command to use to abort listening
-SpeechKITT.setAbortCommand(recognition.abort);
+SpeechKITT.setAbortCommand(function() {recognition.abort()});
 
 // Register KITT's recognition start event with the browser's Speech Recognition
 recognition.addEventListener('start', SpeechKITT.onStart);
