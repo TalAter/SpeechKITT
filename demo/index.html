@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Speech KITT</title>
+</head>
+<body>
+
+<script src="../dist/speechkitt.min.js"></script>
+<script>
+    // Init the browser's own Speech Recognition
+    var recognition = new webkitSpeechRecognition();
+
+    // Tell KITT the command to use to start listening
+    SpeechKITT.setStartCommand(function() {recognition.start()});
+
+    // Tell KITT the command to use to abort listening
+    SpeechKITT.setAbortCommand(function() {recognition.abort()});
+
+    // Register KITT's recognition start event with the browser's Speech Recognition
+    recognition.addEventListener('start', SpeechKITT.onStart);
+
+    // Register KITT's recognition end event with the browser's Speech Recognition
+    recognition.addEventListener('end', SpeechKITT.onEnd);
+
+    // Render KITT's interface
+    SpeechKITT.vroom();
+</script>
+</body>
+</html>

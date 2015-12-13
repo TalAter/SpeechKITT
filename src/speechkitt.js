@@ -28,6 +28,13 @@
     _guiNodes = wrapper;
     document.body.appendChild(_guiNodes);
 
+    // add stylesheet
+    var stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    // @TODO: allow defining the url to css dynamically
+    stylesheet.href = '../dist/themes/simple.css';
+    document.body.appendChild(stylesheet);
+
     // Attach events
     document.getElementById('skitt-toggle-button').addEventListener('click', function(){
       _root.SpeechKITT.toggleRecognition();
