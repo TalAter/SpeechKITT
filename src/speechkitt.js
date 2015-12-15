@@ -26,11 +26,10 @@
   // Called once to generate the GUI nodes
   var _createGUI = function() {
     // create GUI
-    var wrapper = document.createElement('div');
-    wrapper.id = 'skitt-ui';
+    _guiNodes = document.createElement('div');
+    _guiNodes.id = 'skitt-ui';
     // @TODO: Allow changing label text
-    wrapper.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">Activate Voice Control</label>';
-    _guiNodes = wrapper;
+    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">Activate Voice Control</label>';
     document.body.appendChild(_guiNodes);
 
     _attachStylesheet();
