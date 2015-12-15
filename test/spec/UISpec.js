@@ -25,6 +25,14 @@
     return getToggleButtonLabels()[0];
   };
 
+  var getStyleSheets = function() {
+    return $('#skitt-style-sheet');
+  };
+
+  var getStyleSheet = function() {
+    return getStyleSheets()[0];
+  };
+
   var simulateClick = function(element) {
     var event = document.createEvent("MouseEvents");
     event.initEvent("click", true, false);
@@ -107,6 +115,34 @@
       SpeechKITT.startRecognition();
       expect(getWrapper()).not.toHaveClass('skitt-ui--not-listening');
       expect(getWrapper()).toHaveClass('skitt-ui--listening');
+    });
+
+    it('should not attach a style sheet if non was defined', function () {
+      SpeechKITT.abortRecognition();
+      SpeechKITT.vroom();
+      expect(getStyleSheets()).toHaveLength(0);
+    });
+
+    it('should attach a style sheet if one was defined with SpeechKITT.setStyle', function () {
+      SpeechKITT.abortRecognition();
+      SpeechKITT.setStylesheet('simple.css');
+      SpeechKITT.vroom();
+      expect(getStyleSheets()).toHaveLength(1);
+      expect(getStyleSheet().id).toEqual('skitt-style-sheet');
+      expect(getStyleSheet().rel).toEqual('stylesheet');
+      expect(getStyleSheet().href).toContain('simple.css');
+    });
+
+    it('should change the stylesheet if it is called again', function () {
+      SpeechKITT.abortRecognition();
+      SpeechKITT.vroom();
+      SpeechKITT.setStylesheet('style1.css');
+      expect(getStyleSheets()).toHaveLength(1);
+      expect(getStyleSheet().href).toContain('style1.css');
+      SpeechKITT.setStylesheet('style2.css');
+      expect(getStyleSheets()).toHaveLength(1);
+      expect(getStyleSheet().href).not.toContain('style1.css');
+      expect(getStyleSheet().href).toContain('style2.css');
     });
 
     it('should not panic when called more than once', function () {

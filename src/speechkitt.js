@@ -16,6 +16,10 @@
   // Is speech recognition on?
   var _statusListening = false;
 
+  // URL to the stylesheet to use
+  var _stylesheet;
+  var _stylesheetNode;
+
   // DOM elements
   var _guiNodes;
 
@@ -29,17 +33,27 @@
     _guiNodes = wrapper;
     document.body.appendChild(_guiNodes);
 
-    // add stylesheet
-    var stylesheet = document.createElement('link');
-    stylesheet.rel = 'stylesheet';
-    // @TODO: allow defining the url to css dynamically
-    stylesheet.href = '../dist/themes/simple.css';
-    document.body.appendChild(stylesheet);
+    _attachStylesheet();
 
     // Attach events
     document.getElementById('skitt-toggle-button').addEventListener('click', function(){
       _root.SpeechKITT.toggleRecognition();
     });
+  };
+
+  // Attach a style sheet if GUI already attached
+  var _attachStylesheet = function() {
+    if (_stylesheet && _guiNodes) {
+      if (_stylesheetNode) {
+        _stylesheetNode.href = _stylesheet;
+      } else {
+        _stylesheetNode = document.createElement('link');
+        _stylesheetNode.rel = 'stylesheet';
+        _stylesheetNode.href = _stylesheet;
+        _stylesheetNode.id = 'skitt-style-sheet';
+        document.body.appendChild(_stylesheetNode);
+      }
+    }
   };
 
   // Called to change GUI look to listening
@@ -271,6 +285,11 @@
      */
     isListening: function() {
       return _statusListening;
+    },
+
+    setStylesheet: function(css) {
+      _stylesheet = css;
+      _attachStylesheet();
     }
 
   };

@@ -55,6 +55,10 @@
       expect(SpeechKITT.isListening).toEqual(jasmine.any(Function));
     });
 
+    it('should contain setStylesheet method', function () {
+      expect(SpeechKITT.setStylesheet).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
@@ -221,6 +225,14 @@
 
     it('should be callable and return undefined', function () {
       expect(SpeechKITT.onEnd()).toBe(undefined);
+    });
+
+  });
+
+  describe('SpeechKITT.setStylesheet', function() {
+
+    it('should be callable and return undefined', function () {
+      expect(SpeechKITT.setStylesheet()).toBe(undefined);
     });
 
   });
