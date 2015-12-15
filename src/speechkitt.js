@@ -24,7 +24,8 @@
     // create GUI
     var wrapper = document.createElement('div');
     wrapper.id = 'skitt-ui';
-    wrapper.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a>';
+    // @TODO: Allow changing label text
+    wrapper.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">Activate Voice Control</label>';
     _guiNodes = wrapper;
     document.body.appendChild(_guiNodes);
 

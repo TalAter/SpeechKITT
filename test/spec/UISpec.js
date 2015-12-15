@@ -17,6 +17,14 @@
     return getToggleButtons()[0];
   };
 
+  var getToggleButtonLabels = function() {
+    return $('label#skitt-toggle-button__label', getWrapper());
+  };
+
+  var getToggleButtonLabel = function() {
+    return getToggleButtonLabels()[0];
+  };
+
   var simulateClick = function(element) {
     var event = document.createEvent("MouseEvents");
     event.initEvent("click", true, false);
@@ -70,6 +78,12 @@
       expect(getToggleButtons()).toHaveLength(1);
       expect(getToggleButton()).toBeInDOM();
       expect(getToggleButton()).toBeVisible();
+    });
+
+    it('should add a label to the a#skitt-toggle-button', function () {
+      expect(getToggleButtonLabels()).toHaveLength(1);
+      expect(getToggleButtonLabel()).toBeInDOM();
+      expect(getToggleButtonLabel()).toBeVisible();
     });
 
     it('should start GUI in not listening mode', function () {
