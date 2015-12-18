@@ -94,6 +94,10 @@
       expect(getToggleButtonLabel()).toBeVisible();
     });
 
+    it('should add a label with the default text "Activate Voice Control"', function () {
+      expect(getToggleButtonLabel().innerText).toEqual('Activate Voice Control');
+    });
+
     it('should start GUI in not listening mode', function () {
       SpeechKITT.abortRecognition();
       SpeechKITT.vroom();
