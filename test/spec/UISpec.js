@@ -94,10 +94,6 @@
       expect(getToggleButtonLabel()).toBeVisible();
     });
 
-    it('should add a label with the default text "Activate Voice Control"', function () {
-      expect(getToggleButtonLabel().innerText).toEqual('Activate Voice Control');
-    });
-
     it('should start GUI in not listening mode', function () {
       SpeechKITT.abortRecognition();
       SpeechKITT.vroom();
@@ -204,13 +200,36 @@
       Corti.unpatch();
     });
 
-
     it('should turn on speech recognition when clicked', function () {
       expect(getWrapper()).toHaveClass('skitt-ui--not-listening');
       expect(recognition.isStarted()).toBe(false);
       simulateClick(getToggleButton());
       expect(getWrapper()).toHaveClass('skitt-ui--listening');
       expect(recognition.isStarted()).toBe(true);
+    });
+
+  });
+
+  describe('SpeechKITT.setToggleLabelText', function() {
+
+    var recognition;
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      SpeechKITT.vroom();
+      SpeechKITT.abortRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should change the text of the toggle button label', function () {
+      SpeechKITT.setToggleLabelText('Hi KITT');
+      expect(getToggleButtonLabel().innerText).toEqual('Hi KITT');
     });
 
   });

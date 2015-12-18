@@ -59,6 +59,10 @@
       expect(SpeechKITT.setStylesheet).toEqual(jasmine.any(Function));
     });
 
+    it('should contain setToggleLabelText method', function () {
+      expect(SpeechKITT.setToggleLabelText).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
@@ -233,6 +237,14 @@
 
     it('should be callable and return undefined', function () {
       expect(SpeechKITT.setStylesheet()).toBe(undefined);
+    });
+
+  });
+
+  describe('SpeechKITT.setToggleLabelText', function() {
+
+    it('should be callable and return undefined', function () {
+      expect(SpeechKITT.setToggleLabelText()).toBe(undefined);
     });
 
   });

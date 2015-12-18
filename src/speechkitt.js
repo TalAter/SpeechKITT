@@ -20,6 +20,8 @@
   var _stylesheet;
   var _stylesheetNode;
 
+  var _toggleLabelText = 'Activate Voice Control';
+
   // DOM elements
   var _guiNodes;
 
@@ -28,8 +30,7 @@
     // create GUI
     _guiNodes = document.createElement('div');
     _guiNodes.id = 'skitt-ui';
-    // @TODO: Allow changing label text
-    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">Activate Voice Control</label>';
+    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label>';
     document.body.appendChild(_guiNodes);
 
     _attachStylesheet();
@@ -289,6 +290,13 @@
     setStylesheet: function(css) {
       _stylesheet = css;
       _attachStylesheet();
+    },
+
+    setToggleLabelText: function(labelText) {
+      _toggleLabelText = labelText;
+      if (_guiNodes) {
+        document.getElementById('skitt-toggle-button__label').innerText = _toggleLabelText;
+      }
     }
 
   };
