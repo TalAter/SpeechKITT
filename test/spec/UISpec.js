@@ -33,6 +33,30 @@
     return getStyleSheets()[0];
   };
 
+  var getListeningTexts = function() {
+    return $('#skitt-listening-text');
+  };
+
+  var getListeningText = function() {
+    return getListeningTexts()[0];
+  };
+
+  var getInstructionsTexts = function() {
+    return $('#skitt-listening-text__instructions', getListeningTexts()[0]);
+  };
+
+  var getInstructionsText = function() {
+    return getInstructionsTexts()[0];
+  };
+
+  var getSamplesTexts = function() {
+    return $('#skitt-listening-text__samples', getListeningTexts()[0]);
+  };
+
+  var getSamplesText = function() {
+    return getSamplesTexts()[0];
+  };
+
   var simulateClick = function(element) {
     var event = document.createEvent("MouseEvents");
     event.initEvent("click", true, false);
@@ -92,6 +116,28 @@
       expect(getToggleButtonLabels()).toHaveLength(1);
       expect(getToggleButtonLabel()).toBeInDOM();
       expect(getToggleButtonLabel()).toBeVisible();
+    });
+
+    it('should add listening text', function () {
+      expect(getListeningTexts()).toHaveLength(1);
+      expect(getListeningText()).toBeInDOM();
+      expect(getListeningText()).toBeVisible();
+    });
+
+    it('should add instructions within listening text area', function () {
+      expect(getInstructionsTexts()).toHaveLength(1);
+      expect(getInstructionsText()).toBeInDOM();
+      expect(getInstructionsText()).toBeVisible();
+    });
+
+    it('should add instructions with default text', function () {
+      expect(getInstructionsText().innerText).toEqual('What can I help you with?');
+    });
+
+    it('should add samples within listening text area', function () {
+      expect(getSamplesTexts()).toHaveLength(1);
+      expect(getSamplesText()).toBeInDOM();
+      expect(getSamplesText()).toBeVisible();
     });
 
     it('should start GUI in not listening mode', function () {

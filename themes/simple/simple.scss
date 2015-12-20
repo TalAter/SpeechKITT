@@ -15,7 +15,6 @@ $buttonColorListening: #E40A5D;
   position: fixed;
   bottom: 20px;
   left: 20px;
-
 }
 
 #skitt-toggle-button {
@@ -66,4 +65,8 @@ label#skitt-toggle-button__label {
 }
 .skitt-ui--listening #skitt-toggle-button:hover {
   background-color: lighten($buttonColorListening, 10%);
+}
+
+.skitt-ui--not-listening #skitt-listening-text {
+  display: none;
 }

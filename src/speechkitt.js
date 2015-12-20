@@ -30,7 +30,7 @@
     // create GUI
     _guiNodes = document.createElement('div');
     _guiNodes.id = 'skitt-ui';
-    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label>';
+    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">What can I help you with?</span><span id="skitt-listening-text__samples"></span></div>';
     document.body.appendChild(_guiNodes);
 
     _attachStylesheet();
