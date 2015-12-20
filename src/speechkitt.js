@@ -10,16 +10,18 @@
   // Save a reference to the global object (window in the browser)
   var _root = this;
 
+  // Reference to functions used to start and abort speech recognition
   var _startCommand;
   var _abortCommand;
 
-  // Is speech recognition on?
+  // Is speech recognition currently on?
   var _statusListening = false;
 
   // URL to the stylesheet to use
   var _stylesheet;
   var _stylesheetNode;
 
+  // Texts used in UI
   var _toggleLabelText = 'Activate Voice Control';
   var _listeningInstructionsText = 'What can I help you with?';
   var _sampleCommands = [];
@@ -61,7 +63,7 @@
     }
   };
 
-  // Update listening texts
+  // Update texts shown while listening
   var _updateListeningText = function() {
     if (_sampleCommands.length && _guiNodes) {
       var samplesNode = document.getElementById('skitt-listening-text__samples');
@@ -109,6 +111,7 @@
     }
   };
 
+  // Helper function used by various public methods which change texts
   var _setText = function(text, id) {
     if (_guiNodes) {
       document.getElementById(id).innerText = text;
@@ -312,21 +315,48 @@
       return _statusListening;
     },
 
+    /**
+     * Set the URL to the stylesheet for the UI
+     *
+     * @param string css relative or absolute url to the stylesheet
+     * @method setStylesheet
+     */
     setStylesheet: function(css) {
       _stylesheet = css;
       _updateStylesheet();
     },
 
+    /**
+     * Pass this an array of sample textual commands which your application responds to.
+     * These will then be shown to the user to help him understand what commands he can use.
+     *
+     * @param array commands An array of strings, each a sample command.
+     * @method setSampleCommands
+     */
     setSampleCommands: function(commands) {
       _sampleCommands = commands;
       _updateListeningText();
     },
 
+    /**
+     * Set the text for the toggle button's label.
+     * Defaults to: 'Activate Voice Control'
+     *
+     * @param string text The text to show next to toggle button
+     * @method setSampleCommands
+     */
     setToggleLabelText: function(text) {
       _toggleLabelText = text;
       _setText(text, 'skitt-toggle-button__label');
     },
 
+    /**
+     * Set the instructional text which will be shown next to toggle button when listening.
+     * Defaults to: 'What can I help you with?'
+     *
+     * @param string text The text to show next to toggle button when listening
+     * @method setInstructionsText
+     */
     setInstructionsText: function(text) {
       _listeningInstructionsText = text;
       _setText(text, 'skitt-listening-text__instructions');
