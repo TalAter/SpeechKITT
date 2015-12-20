@@ -4,9 +4,9 @@
 
 $toggleButtonWidth: 50px;
 $toggleButtonHeight: 50px;
-$buttonColorNotListening: #0074D9;
-$buttonColorListening: #E40A5D;
-$listeningBoxColor: #0074D9;
+$buttonColor1: #2980B9;
+$buttonColor2: #3498DB;
+$listeningBoxColor: #2980B9;
 $instructionColor: #fff;
 
 /* Theme styles */
@@ -23,6 +23,7 @@ $instructionColor: #fff;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
   cursor: default;
+  font-family: Lato,Helvetica,Arial,sans-serif;
 }
 
 #skitt-toggle-button {
@@ -44,18 +45,31 @@ label#skitt-toggle-button__label {
 }
 
 .skitt-ui--not-listening #skitt-toggle-button {
-  background-color: $buttonColorNotListening;
+  background-color: $buttonColor1;
 }
 
 .skitt-ui--listening #skitt-toggle-button {
-  background-color: $buttonColorListening;
+  -webkit-animation: listen_pulse 2s ease-out;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes "listen_pulse" {
+  0% {
+    background-color: $buttonColor1;
+  }
+  50% {
+    background-color: $buttonColor2;
+  }
+  100% {
+    background-color: $buttonColor1;
+  }
 }
 
 .skitt-ui--not-listening #skitt-toggle-button:hover {
-  background-color: lighten($buttonColorNotListening, 10%);
+  background-color: $buttonColor2
 }
 .skitt-ui--listening #skitt-toggle-button:hover {
-  background-color: lighten($buttonColorListening, 10%);
+  background-color: $buttonColor2
 }
 
 #skitt-listening-text {
@@ -77,5 +91,5 @@ label#skitt-toggle-button__label {
 .skitt-ui--listening #skitt-listening-text__instructions {
   width: 100%;
   -webkit-transition: width 1s ease-in-out;
-  margin: 0 $toggleButtonWidth/2 0 10px;
+  margin: 0 $toggleButtonWidth/2 0 15px;
 }
