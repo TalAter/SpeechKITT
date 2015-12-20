@@ -91,6 +91,12 @@
     }
   };
 
+  var _setText = function(text, id) {
+    if (_guiNodes) {
+      document.getElementById(id).innerText = text;
+    }
+  };
+
   // Expose functionality
   _root.SpeechKITT = {
 
@@ -295,16 +301,12 @@
 
     setToggleLabelText: function(text) {
       _toggleLabelText = text;
-      if (_guiNodes) {
-        document.getElementById('skitt-toggle-button__label').innerText = _toggleLabelText;
-      }
+      _setText(text, 'skitt-toggle-button__label');
     },
 
     setInstructionsText: function(text) {
       _ListeningInstructionsText = text;
-      if (_guiNodes) {
-        document.getElementById('skitt-listening-text__instructions').innerText = _ListeningInstructionsText;
-      }
+      _setText(text, 'skitt-listening-text__instructions');
     }
 
   };
