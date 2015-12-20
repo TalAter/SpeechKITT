@@ -33,8 +33,9 @@
     _guiNodes = document.createElement('div');
     _guiNodes.id = 'skitt-ui';
     _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_listeningInstructionsText+'</span></div>';
-    _updateListeningText();
     document.body.appendChild(_guiNodes);
+
+    _updateListeningText();
 
     _updateStylesheet();
 
@@ -61,7 +62,7 @@
 
   // Update listening texts
   var _updateListeningText = function() {
-    if (_sampleCommands.length) {
+    if (_sampleCommands.length && _guiNodes) {
       var samplesNode = document.getElementById('skitt-listening-text__samples');
       if (!samplesNode) {
         var instructionsNode = document.getElementById('skitt-listening-text__instructions');
