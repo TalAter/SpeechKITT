@@ -71,7 +71,7 @@ label#skitt-toggle-button__label {
   background-color: $buttonColor2
 }
 
-#skitt-listening-text {
+#skitt-listening-box {
   float: left;
   display: inline-block;
   line-height: $toggleButtonHeight;
@@ -79,16 +79,21 @@ label#skitt-toggle-button__label {
   color: $instructionColor;
 }
 
-#skitt-listening-text__instructions {
+#skitt-listening-text {
   display: inline-block;
   overflow: hidden;
   height: $toggleButtonHeight;
 }
-.skitt-ui--not-listening #skitt-listening-text__instructions {
+.skitt-ui--not-listening #skitt-listening-text {
   width: 0;
 }
-.skitt-ui--listening #skitt-listening-text__instructions {
+.skitt-ui--listening #skitt-listening-text {
   width: 100%;
   -webkit-transition: width 1s ease-in-out;
   margin: 0 $toggleButtonWidth/2 0 15px;
+}
+
+#skitt-listening-text__samples {
+  font-weight: bold;
+  margin-left: 10px;
 }

@@ -46,6 +46,10 @@
     // Define a stylesheet for KITT to use
     SpeechKITT.setStylesheet('/dist/themes/simple.css');
 
+    // Add instructional texts
+    SpeechKITT.setInstructionsText('Some commands to try…');
+    SpeechKITT.setSampleCommands(['Show directions', 'Call restaurant']);
+
     // Render KITT's interface
     SpeechKITT.vroom();
 </script>
