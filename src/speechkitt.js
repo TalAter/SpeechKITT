@@ -22,6 +22,7 @@
 
   var _toggleLabelText = 'Activate Voice Control';
   var _listeningInstructionsText = 'What can I help you with?';
+  var _sampleCommands = [];
 
   // DOM elements
   var _guiNodes;
@@ -31,7 +32,8 @@
     // create GUI
     _guiNodes = document.createElement('div');
     _guiNodes.id = 'skitt-ui';
-    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_listeningInstructionsText+'</span><span id="skitt-listening-text__samples"></span></div>';
+    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_listeningInstructionsText+'</span></div>';
+    _updateListeningText();
     document.body.appendChild(_guiNodes);
 
     _updateStylesheet();
@@ -54,6 +56,20 @@
         _stylesheetNode.id = 'skitt-style-sheet';
         document.body.appendChild(_stylesheetNode);
       }
+    }
+  };
+
+  // Update listening texts
+  var _updateListeningText = function() {
+    if (_sampleCommands.length) {
+      var samplesNode = document.getElementById('skitt-listening-text__samples');
+      if (!samplesNode) {
+        var instructionsNode = document.getElementById('skitt-listening-text__instructions');
+        samplesNode = document.createElement('span');
+        samplesNode.id = 'skitt-listening-text__samples';
+        instructionsNode.parentNode.insertBefore(samplesNode, instructionsNode.nextSibling);
+      }
+      samplesNode.innerText = _sampleCommands.join('. ')+'.';
     }
   };
 
@@ -297,6 +313,11 @@
     setStylesheet: function(css) {
       _stylesheet = css;
       _updateStylesheet();
+    },
+
+    setSampleCommands: function(commands) {
+      _sampleCommands = commands;
+      _updateListeningText();
     },
 
     setToggleLabelText: function(text) {

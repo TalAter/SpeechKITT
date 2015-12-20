@@ -138,10 +138,8 @@
       expect(getInstructionsText().innerText).toEqual('What can I help you with?');
     });
 
-    it('should add samples within listening text area', function () {
-      expect(getSamplesTexts()).toHaveLength(1);
-      expect(getSamplesText()).toBeInDOM();
-      expect(getSamplesText()).toBeVisible();
+    it('should not add samples by default (until they have been set)', function () {
+      expect(getSamplesTexts()).toHaveLength(0);
     });
 
     it('should start GUI in not listening mode', function () {
@@ -306,6 +304,34 @@
       expect(getInstructionsText().innerText).toEqual('What can I help you with?');
       SpeechKITT.setInstructionsText('Talk to me Goose!');
       expect(getInstructionsText().innerText).toEqual('Talk to me Goose!');
+    });
+
+  });
+
+  describe('SpeechKITT.setSampleCommands', function() {
+
+    var recognition;
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      SpeechKITT.vroom();
+      SpeechKITT.abortRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should set the text of the sample commands and add it to the DOM', function () {
+      expect(getSamplesTexts()).toHaveLength(0);
+      SpeechKITT.setSampleCommands(['Show directions', 'Call restaurant']);
+      expect(getSamplesTexts()).toHaveLength(1);
+      expect(getSamplesText()).toBeInDOM();
+      expect(getSamplesText()).toBeVisible();
+      expect(getSamplesText().innerText).toEqual('Show directions. Call restaurant.');
     });
 
   });

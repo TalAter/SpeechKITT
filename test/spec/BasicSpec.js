@@ -67,6 +67,10 @@
       expect(SpeechKITT.setInstructionsText).toEqual(jasmine.any(Function));
     });
 
+    it('should contain setSampleCommands method', function () {
+      expect(SpeechKITT.setSampleCommands).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
