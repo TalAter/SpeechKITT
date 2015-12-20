@@ -280,4 +280,29 @@
 
   });
 
+  describe('SpeechKITT.setInstructionsText', function() {
+
+    var recognition;
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      SpeechKITT.vroom();
+      SpeechKITT.abortRecognition();
+    });
+
+    afterEach(function() {
+      Corti.unpatch();
+    });
+
+    it('should change the text of the listening instructions', function () {
+      expect(getInstructionsText().innerText).toEqual('What can I help you with?');
+      SpeechKITT.setInstructionsText('Talk to me Goose!');
+      expect(getInstructionsText().innerText).toEqual('Talk to me Goose!');
+    });
+
+  });
+
 })();

@@ -63,6 +63,10 @@
       expect(SpeechKITT.setToggleLabelText).toEqual(jasmine.any(Function));
     });
 
+    it('should contain getInstructionsText method', function () {
+      expect(SpeechKITT.setInstructionsText).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
