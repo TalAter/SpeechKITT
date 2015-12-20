@@ -245,14 +245,6 @@
 
   });
 
-  describe('SpeechKITT.setToggleLabelText', function() {
-
-    it('should be callable and return undefined', function () {
-      expect(SpeechKITT.setToggleLabelText()).toBe(undefined);
-    });
-
-  });
-
   describe('SpeechKITT.isListening', function() {
 
     var recognition;

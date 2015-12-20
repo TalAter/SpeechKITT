@@ -118,6 +118,10 @@
       expect(getToggleButtonLabel()).toBeVisible();
     });
 
+    it('should add label with default text of "Activate Voice Control"', function () {
+      expect(getToggleButtonLabel().innerText).toEqual('Activate Voice Control');
+    });
+
     it('should add listening text', function () {
       expect(getListeningTexts()).toHaveLength(1);
       expect(getListeningText()).toBeInDOM();
@@ -130,7 +134,7 @@
       expect(getInstructionsText()).toBeVisible();
     });
 
-    it('should add instructions with default text', function () {
+    it('should add instructions with default text of "What can I help you with?"', function () {
       expect(getInstructionsText().innerText).toEqual('What can I help you with?');
     });
 
@@ -274,6 +278,7 @@
     });
 
     it('should change the text of the toggle button label', function () {
+      expect(getToggleButtonLabel().innerText).toEqual('Activate Voice Control');
       SpeechKITT.setToggleLabelText('Hi KITT');
       expect(getToggleButtonLabel().innerText).toEqual('Hi KITT');
     });
