@@ -2,8 +2,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Speech KITT</title>
+    <style>
+        body {
+            margin: 0 0;
+            padding: 0 0;
+        }
+        img#sample_site {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+<script>
+    // For demo purposes only, show screenshots of different sites in the background
+    (function() {
+        var getRandomIntInclusive = function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var img = document.createElement('img');
+        img.src = 'sample_sites/'+getRandomIntInclusive(1,4)+'.jpg';
+        img.id = 'sample_site';
+        document.body.appendChild(img);
+    })();
+</script>
 
 <script src="../dist/speechkitt.min.js"></script>
 <script>
