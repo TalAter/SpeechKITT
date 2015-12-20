@@ -49,8 +49,7 @@ label#skitt-toggle-button__label {
 }
 
 .skitt-ui--listening #skitt-toggle-button {
-  -webkit-animation: listen_pulse 2s ease-out;
-  -webkit-animation-iteration-count: infinite;
+  -webkit-animation: listen_pulse 2s ease-out infinite;
 }
 
 @-webkit-keyframes "listen_pulse" {
