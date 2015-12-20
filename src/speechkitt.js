@@ -34,7 +34,7 @@
     _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_listeningInstructionsText+'</span><span id="skitt-listening-text__samples"></span></div>';
     document.body.appendChild(_guiNodes);
 
-    _attachStylesheet();
+    _updateStylesheet();
 
     // Attach events
     document.getElementById('skitt-toggle-button').addEventListener('click', function(){
@@ -43,7 +43,7 @@
   };
 
   // Attach a style sheet if GUI already attached
-  var _attachStylesheet = function() {
+  var _updateStylesheet = function() {
     if (_stylesheet && _guiNodes) {
       if (_stylesheetNode) {
         _stylesheetNode.href = _stylesheet;
@@ -296,7 +296,7 @@
 
     setStylesheet: function(css) {
       _stylesheet = css;
-      _attachStylesheet();
+      _updateStylesheet();
     },
 
     setToggleLabelText: function(text) {
