@@ -21,7 +21,7 @@
   var _stylesheetNode;
 
   var _toggleLabelText = 'Activate Voice Control';
-  var _ListeningInstructionsText = 'What can I help you with?';
+  var _listeningInstructionsText = 'What can I help you with?';
 
   // DOM elements
   var _guiNodes;
@@ -31,7 +31,7 @@
     // create GUI
     _guiNodes = document.createElement('div');
     _guiNodes.id = 'skitt-ui';
-    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_ListeningInstructionsText+'</span><span id="skitt-listening-text__samples"></span></div>';
+    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_listeningInstructionsText+'</span><span id="skitt-listening-text__samples"></span></div>';
     document.body.appendChild(_guiNodes);
 
     _attachStylesheet();
@@ -305,7 +305,7 @@
     },
 
     setInstructionsText: function(text) {
-      _ListeningInstructionsText = text;
+      _listeningInstructionsText = text;
       _setText(text, 'skitt-listening-text__instructions');
     }
 
