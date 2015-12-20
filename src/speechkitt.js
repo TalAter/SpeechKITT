@@ -42,7 +42,7 @@
     });
   };
 
-  // Attach a style sheet if GUI already attached
+  // Attach a style sheet if GUI already attached, if already attached, update it's href
   var _updateStylesheet = function() {
     if (_stylesheet && _guiNodes) {
       if (_stylesheetNode) {
