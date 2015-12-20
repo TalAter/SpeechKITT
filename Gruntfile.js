@@ -35,7 +35,8 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: {
-          'dist/themes/simple.css': 'themes/simple/simple.scss'
+          'dist/themes/simple.css': 'themes/simple/simple.scss',
+          'dist/themes/basic.css': 'themes/basic.scss'
         }
       }
     },
@@ -46,6 +47,7 @@ module.exports = function(grunt) {
           specs: ['test/spec/*Spec.js'],
           outfile: 'test/SpecRunner.html',
           vendor: ['test/vendor/jquery-2.1.4.min.js', 'test/vendor/jasmine-jquery.js'],
+          styles: ['dist/themes/basic.css'],
           keepRunner: true,
           template: require('grunt-template-jasmine-istanbul'),
           templateOptions: {
