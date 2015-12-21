@@ -26,6 +26,9 @@ recognition.addEventListener('start', SpeechKITT.onStart);
 // Register KITT's recognition end event with the browser's Speech Recognition
 recognition.addEventListener('end', SpeechKITT.onEnd);
 
+// Define a stylesheet for KITT to use
+SpeechKITT.setStylesheet('/themes/simple.css');
+
 // Render KITT's interface
 SpeechKITT.vroom();
 </script>
