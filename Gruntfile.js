@@ -40,6 +40,13 @@ module.exports = function(grunt) {
         }
       }
     },
+    markdox: {
+      target: {
+        files: [
+          {src: 'src/speechkitt.js', dest: 'docs/README.md'}
+        ]
+      }
+    },
     jasmine: {
       testAndCoverage: {
         src: ['src/speechkitt.js', 'test/corti.js'],
@@ -81,9 +88,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-markdox');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'jasmine']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'jasmine', 'markdox']);
 
   // Test task
   grunt.registerTask('test', ['jshint', 'jasmine']);
