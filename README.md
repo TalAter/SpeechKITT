@@ -27,7 +27,7 @@ recognition.addEventListener('start', SpeechKITT.onStart);
 recognition.addEventListener('end', SpeechKITT.onEnd);
 
 // Define a stylesheet for KITT to use
-SpeechKITT.setStylesheet('/themes/simple.css');
+SpeechKITT.setStylesheet('/themes/flat.css');
 
 // Render KITT's interface
 SpeechKITT.vroom();

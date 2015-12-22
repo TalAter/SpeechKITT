@@ -173,12 +173,12 @@
 
     it('should attach a style sheet if one was defined with SpeechKITT.setStyle', function () {
       SpeechKITT.abortRecognition();
-      SpeechKITT.setStylesheet('simple.css');
+      SpeechKITT.setStylesheet('flat.css');
       SpeechKITT.vroom();
       expect(getStyleSheets()).toHaveLength(1);
       expect(getStyleSheet().id).toEqual('skitt-style-sheet');
       expect(getStyleSheet().rel).toEqual('stylesheet');
-      expect(getStyleSheet().href).toContain('simple.css');
+      expect(getStyleSheet().href).toContain('flat.css');
     });
 
     it('should change the stylesheet if it is called again', function () {
