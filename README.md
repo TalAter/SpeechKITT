@@ -30,7 +30,7 @@ recognition.addEventListener('end', SpeechKITT.onEnd);
 SpeechKITT.setStylesheet('/themes/flat.css');
 
 // Render KITT's interface
-SpeechKITT.vroom(); // SpeechKITT.render() does the same, but isn't as fun!
+SpeechKITT.vroom(); // SpeechKITT.render() does the same thing, but isn't as much fun!
 </script>
 ````
 
