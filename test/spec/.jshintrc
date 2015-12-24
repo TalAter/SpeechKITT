@@ -35,6 +35,7 @@
     "SpeechKITT":         false,
     "Corti":              false,
     "SpeechRecognition":  false,
+    "annyang":            false,
     "$":                  false
   }
 }

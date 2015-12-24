@@ -360,6 +360,23 @@
     setInstructionsText: function(text) {
       _listeningInstructionsText = text;
       _setText(text, 'skitt-listening-text__instructions');
+    },
+
+    /**
+     * Call this if you're using annyang to automatically configure SpeechKITT to interact with it.
+     * Automatically does the following:
+     * Set SpeechKITT's start command to annyang.start
+     * Set SpeechKITT's abort command to annyang.abort
+     * Adds a callback to annyang's start event to call SpeechKITT.onStart
+     * Adds a callback to annyang's end   event to call SpeechKITT.onEnd
+     *
+     * @method annyang
+     */
+    annyang: function() {
+      this.setStartCommand(annyang.start);
+      this.setAbortCommand(annyang.abort);
+      annyang.addCallback('start', this.onStart);
+      annyang.addCallback('end', this.onEnd);
     }
 
   };

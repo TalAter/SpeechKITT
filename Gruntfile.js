@@ -53,7 +53,8 @@ module.exports = function(grunt) {
         options: {
           specs: ['test/spec/*Spec.js'],
           outfile: 'test/SpecRunner.html',
-          vendor: ['test/vendor/jquery-2.1.4.min.js', 'test/vendor/jasmine-jquery.js', 'test/vendor/corti.js'],
+          polyfills: ['test/vendor/corti.js', 'test/init_corti.js', 'test/vendor/annyang.min.js'],
+          vendor: ['test/vendor/jquery-2.1.4.min.js', 'test/vendor/jasmine-jquery.js'],
           styles: ['dist/themes/basic.css'],
           keepRunner: true,
           template: require('grunt-template-jasmine-istanbul'),

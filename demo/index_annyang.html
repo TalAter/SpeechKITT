@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Speech KITT</title>
+    <style>
+        body {
+            margin: 0 0;
+            padding: 0 0;
+        }
+        img#sample_site {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // For demo purposes only, show screenshots of different sites in the background
+    (function() {
+        var getRandomIntInclusive = function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var img = document.createElement('img');
+        img.src = 'sample_sites/'+getRandomIntInclusive(1,4)+'.jpg';
+        img.id = 'sample_site';
+        document.body.appendChild(img);
+    })();
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.0.0/annyang.min.js"></script>
+<script src="../dist/speechkitt.min.js"></script>
+<script>
+    if (annyang) {
+        // Let's define a command.
+        var commands = {
+            'hello': function() { console.log('Hello world!'); }
+        };
+
+        // Add our commands to annyang
+        annyang.addCommands(commands);
+
+        // Tell KITT to communicate with annyang
+        SpeechKITT.annyang();
+
+        // Define KITT's style
+        SpeechKITT.setStylesheet('/dist/themes/flat.css');
+
+        // Add instructional texts
+        SpeechKITT.setInstructionsText('Some commands to try…');
+        SpeechKITT.setSampleCommands(['Show directions', 'Call restaurant']);
+
+        // Render KITT's interface
+        SpeechKITT.vroom();
+    }
+</script>
+</body>
+</html>

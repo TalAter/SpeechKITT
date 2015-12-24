@@ -71,6 +71,10 @@
       expect(SpeechKITT.setSampleCommands).toEqual(jasmine.any(Function));
     });
 
+    it('should contain annyang method', function () {
+      expect(SpeechKITT.annyang).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
@@ -271,6 +275,44 @@
       expect(SpeechKITT.isListening()).toBe(false);
       SpeechKITT.startRecognition();
       expect(SpeechKITT.isListening()).toBe(true);
+    });
+
+  });
+
+  describe('SpeechKITT.annyang', function() {
+
+    it('should set start command to annyang.start', function () {
+      expect(annyang.isListening()).toBe(false);
+      SpeechKITT.annyang();
+      SpeechKITT.startRecognition();
+      expect(annyang.isListening()).toBe(true);
+    });
+
+    it('should set abort command to annyang.abort', function () {
+      annyang.abort();
+      expect(annyang.isListening()).toBe(false);
+      SpeechKITT.annyang();
+      SpeechKITT.startRecognition();
+      expect(annyang.isListening()).toBe(true);
+      SpeechKITT.abortRecognition();
+      expect(annyang.isListening()).toBe(false);
+    });
+
+    it('should add a callback to SpeechKITT.onStart to annyang\'s start event', function () {
+      SpeechKITT.annyang();
+      annyang.abort();
+      expect(SpeechKITT.isListening()).toBe(false);
+      annyang.start();
+      expect(SpeechKITT.isListening()).toBe(true);
+    });
+
+    it('should add a callback to SpeechKITT.onEnd to annyang\'s end event', function () {
+      SpeechKITT.annyang();
+      annyang.abort();
+      annyang.start();
+      expect(SpeechKITT.isListening()).toBe(true);
+      annyang.abort();
+      expect(SpeechKITT.isListening()).toBe(false);
     });
 
   });

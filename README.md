@@ -34,10 +34,31 @@ SpeechKITT.vroom(); // SpeechKITT.render() does the same thing, but isn't as muc
 </script>
 ````
 
-## Speech KITT is currently under heavy construction!
-Feel free to **Star** and **Watch** it, but watch out for falling debris, and a wildly changing API.
+## Hello World - With annyang
 
-Feedback and contributions are always welcome and appreciated.
+If you're doing [Speech Recognition with annyang](https://www.talater.com/annyang/), you can skip most of the configuration above.
+
+````html
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.0.0/annyang.min.js"></script>
+<script src="speechkitt.min.js"></script>
+<script>
+if (annyang) {
+  // Add our commands to annyang
+  annyang.addCommands({
+    'hello': function() { alert('Hello world!'); }
+  });
+
+  // Tell KITT to use annyang
+  SpeechKITT.annyang();
+
+  // Define a stylesheet for KITT to use
+  SpeechKITT.setStylesheet('/themes/flat.css');
+
+  // Render KITT's interface
+  SpeechKITT.vroom();
+}
+</script>
+````
 
 ### Author
 Tal Ater: [@TalAter](https://twitter.com/TalAter)

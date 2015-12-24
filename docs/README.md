@@ -141,5 +141,14 @@ Defaults to: 'What can I help you with?'
 
 * *string* text The text to show next to toggle button when listening
 
+## annyang()
+
+Call this if you're using annyang to automatically configure SpeechKITT to interact with it.
+Automatically does the following:
+Set SpeechKITT's start command to annyang.start
+Set SpeechKITT's abort command to annyang.abort
+Adds a callback to annyang's start event to call SpeechKITT.onStart
+Adds a callback to annyang's end   event to call SpeechKITT.onEnd
+
 <!-- End src/speechkitt.js -->
 
