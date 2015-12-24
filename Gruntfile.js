@@ -49,11 +49,11 @@ module.exports = function(grunt) {
     },
     jasmine: {
       testAndCoverage: {
-        src: ['src/speechkitt.js', 'test/corti.js'],
+        src: ['src/speechkitt.js'],
         options: {
           specs: ['test/spec/*Spec.js'],
           outfile: 'test/SpecRunner.html',
-          vendor: ['test/vendor/jquery-2.1.4.min.js', 'test/vendor/jasmine-jquery.js'],
+          vendor: ['test/vendor/jquery-2.1.4.min.js', 'test/vendor/jasmine-jquery.js', 'test/vendor/corti.js'],
           styles: ['dist/themes/basic.css'],
           keepRunner: true,
           template: require('grunt-template-jasmine-istanbul'),
