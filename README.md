@@ -8,6 +8,13 @@ KITT makes it easy to add a GUI to pages using Speech Recognition. Whether you a
 
 ## Hello World
 
+The most basic implementation requires 6 commands.
+
+1. Let KITT know how to start and stop the SpeechRecognition engine you use with `SpeechKITT.setStartCommand()` and `SpeechKITT.setAbortCommand`.
+2. Add events to your SpeechRecognition engine so it calls `SpeechKITT.onStart()` when it starts, and `SpeechKITT.onEnd()` when it stops.
+3. Tell KITT which stylesheet to use for its GUI with `SpeechKITT.setStylesheet()` (KITT comes with a number of pre-made [styles](https://github.com/TalAter/SpeechKITT/tree/master/dist/themes)).
+4. Start your engines with `SpeechKITT.vroom()`
+
 ````html
 <script src="speechkitt.min.js"></script>
 <script>
@@ -36,7 +43,7 @@ SpeechKITT.vroom(); // SpeechKITT.render() does the same thing, but isn't as muc
 
 ## Hello World - With annyang
 
-If you're doing [Speech Recognition with annyang](https://www.talater.com/annyang/), you can skip most of the configuration above.
+If you're doing [Speech Recognition with annyang](https://www.talater.com/annyang/), you can skip most of the configuration above. Just calling `SpeechKITT.annyang()` will take care of the configuration explained in steps 1 & 2 above.
 
 ````html
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.0.0/annyang.min.js"></script>
@@ -59,6 +66,10 @@ if (annyang) {
 }
 </script>
 ````
+
+## API Docs
+
+For details on all available methods, options and more details, check out the [API documentation](https://github.com/TalAter/SpeechKITT/blob/master/docs/README.md)
 
 ### Author
 Tal Ater: [@TalAter](https://twitter.com/TalAter)
