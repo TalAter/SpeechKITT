@@ -2,6 +2,14 @@
 
 <!-- Start src/speechkitt.js -->
 
+# Getting Started
+
+The quickest way to get started is described in the project's [README](https://github.com/TalAter/SpeechKITT/blob/master/README.md).
+
+Additional details and methods to interact with KITT are described below.
+
+# API Reference
+
 ## setStartCommand(callback, [context])
 
 Define the function that should be called in order to start speech recognition.
@@ -42,15 +50,18 @@ SpeechKITT.setAbortCommand(webkitSpeechRecognition.abort);
 
 ## startRecognition()
 
-Starts the speech recognition. Make sure to define the speech recognition command start first using setStartCommand()
+Starts the speech recognition. This is equivalent to the user pushing KITT's buttons.
+Make sure to define the speech recognition command start first using setStartCommand()
 
 ## abortRecognition()
 
-Aborts the speech recognition. Make sure to define the speech recognition abort command first using setStartCommand()
+Aborts the speech recognition. This is equivalent to the user pushing KITT's buttons.
+Make sure to define the speech recognition abort command first using setStartCommand()
 
 ## toggleRecognition()
 
-Toggles speech recognition. Make sure to define the speech recognition abort and start commands first
+Toggles speech recognition. This is equivalent to the user pushing KITT's buttons.
+Make sure to define the speech recognition abort and start commands first
 
 ## onStart()
 
@@ -74,6 +85,14 @@ var recognition = new webkitSpeechRecognition();
 recognition.addEventListener('end', SpeechKITT.onEnd);
 ````
 
+## setStylesheet(string)
+
+Set the URL to the stylesheet for the UI
+
+### Params:
+
+* *string* css relative or absolute url to the stylesheet
+
 ## render()
 
 Call once done configuring KITT, to render its interface.
@@ -85,14 +104,14 @@ Identical to calling SpeechKITT.render();
 
 See: [render()](#render)
 
-## show()
-
-Call to show the GUI if it has been hidden with hide()
-Interface must have been previously rendered with render()
-
 ## hide()
 
 Call to hide the GUI
+Interface must have been previously rendered with render()
+
+## show()
+
+Call to show the GUI if it has been hidden with hide()
 Interface must have been previously rendered with render()
 
 ## isListening()
@@ -105,23 +124,6 @@ while Speech Recognition was already running/
 ### Return:
 
 * **boolean** true = listening or false = not listening
-
-## setStylesheet(string)
-
-Set the URL to the stylesheet for the UI
-
-### Params:
-
-* *string* css relative or absolute url to the stylesheet
-
-## setSampleCommands(array)
-
-Pass this an array of sample textual commands which your application responds to.
-These will then be shown to the user to help him understand what commands he can use.
-
-### Params:
-
-* *array* commands An array of strings, each a sample command.
 
 ## setSampleCommands(string)
 
@@ -140,6 +142,15 @@ Defaults to: 'What can I help you with?'
 ### Params:
 
 * *string* text The text to show next to toggle button when listening
+
+## setSampleCommands(array)
+
+Pass this an array of sample textual commands which your application responds to.
+These will then be shown to the user to help him understand what commands he can use.
+
+### Params:
+
+* *array* commands An array of strings, each a sample command.
 
 ## annyang()
 

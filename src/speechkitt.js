@@ -4,6 +4,16 @@
 //! license : MIT
 //! https://github.com/TalAter/SpeechKITT
 
+/**
+ * # Getting Started
+ *
+ * The quickest way to get started is described in the project's [README](https://github.com/TalAter/SpeechKITT/blob/master/README.md).
+ *
+ * Additional details and methods to interact with KITT are described below.
+ *
+ * # API Reference
+ */
+
 (function (undefined) {
   "use strict";
 
@@ -178,7 +188,8 @@
     },
 
     /**
-     * Starts the speech recognition. Make sure to define the speech recognition command start first using setStartCommand()
+     * Starts the speech recognition. This is equivalent to the user pushing KITT's buttons.
+     * Make sure to define the speech recognition command start first using setStartCommand()
      *
      * @method startRecognition
      */
@@ -191,7 +202,8 @@
     },
 
     /**
-     * Aborts the speech recognition. Make sure to define the speech recognition abort command first using setStartCommand()
+     * Aborts the speech recognition. This is equivalent to the user pushing KITT's buttons.
+     * Make sure to define the speech recognition abort command first using setStartCommand()
      *
      * @method abortRecognition
      */
@@ -204,7 +216,8 @@
     },
 
     /**
-     * Toggles speech recognition. Make sure to define the speech recognition abort and start commands first
+     * Toggles speech recognition. This is equivalent to the user pushing KITT's buttons.
+     * Make sure to define the speech recognition abort and start commands first
      *
      * @method toggleRecognition
      */
@@ -249,6 +262,17 @@
     },
 
     /**
+     * Set the URL to the stylesheet for the UI
+     *
+     * @param string css relative or absolute url to the stylesheet
+     * @method setStylesheet
+     */
+    setStylesheet: function(css) {
+      _stylesheet = css;
+      _updateStylesheet();
+    },
+
+    /**
      * Call once done configuring KITT, to render its interface.
      *
      * @method render
@@ -277,19 +301,6 @@
     },
 
     /**
-     * Call to show the GUI if it has been hidden with hide()
-     * Interface must have been previously rendered with render()
-     *
-     * @method show
-     */
-    show: function() {
-      if (_guiNodes === undefined) {
-        throw new TypeError('cannot show interface. Must be rendered first');
-      }
-      _guiNodes.classList.remove('skitt-ui--hidden');
-    },
-
-    /**
      * Call to hide the GUI
      * Interface must have been previously rendered with render()
      *
@@ -303,6 +314,19 @@
     },
 
     /**
+     * Call to show the GUI if it has been hidden with hide()
+     * Interface must have been previously rendered with render()
+     *
+     * @method show
+     */
+    show: function() {
+      if (_guiNodes === undefined) {
+        throw new TypeError('cannot show interface. Must be rendered first');
+      }
+      _guiNodes.classList.remove('skitt-ui--hidden');
+    },
+
+    /**
      * Returns true if Speech Recognition is currently on.
      *
      * This can be wrong KITT wasn't completely configured correctly, or was started
@@ -313,29 +337,6 @@
      */
     isListening: function() {
       return _statusListening;
-    },
-
-    /**
-     * Set the URL to the stylesheet for the UI
-     *
-     * @param string css relative or absolute url to the stylesheet
-     * @method setStylesheet
-     */
-    setStylesheet: function(css) {
-      _stylesheet = css;
-      _updateStylesheet();
-    },
-
-    /**
-     * Pass this an array of sample textual commands which your application responds to.
-     * These will then be shown to the user to help him understand what commands he can use.
-     *
-     * @param array commands An array of strings, each a sample command.
-     * @method setSampleCommands
-     */
-    setSampleCommands: function(commands) {
-      _sampleCommands = commands;
-      _updateListeningText();
     },
 
     /**
@@ -360,6 +361,18 @@
     setInstructionsText: function(text) {
       _listeningInstructionsText = text;
       _setText(text, 'skitt-listening-text__instructions');
+    },
+
+    /**
+     * Pass this an array of sample textual commands which your application responds to.
+     * These will then be shown to the user to help him understand what commands he can use.
+     *
+     * @param array commands An array of strings, each a sample command.
+     * @method setSampleCommands
+     */
+    setSampleCommands: function(commands) {
+      _sampleCommands = commands;
+      _updateListeningText();
     },
 
     /**

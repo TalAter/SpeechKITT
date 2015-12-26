@@ -69,7 +69,7 @@ if (annyang) {
 
 ## API Docs
 
-For details on all available methods, options and more details, check out the [API documentation](https://github.com/TalAter/SpeechKITT/blob/master/docs/README.md)
+For details on all available methods, options and more details, check out the [API documentation](https://github.com/TalAter/SpeechKITT/blob/master/docs/README.md).
 
 ### Author
 Tal Ater: [@TalAter](https://twitter.com/TalAter)
