@@ -35,6 +35,7 @@ module.exports = function(grunt) {
           style: 'compressed'
         },
         files: {
+          'dist/themes/flat-pomegranate.css': 'themes/flat-pomegranate/flat-pomegranate.scss',
           'dist/themes/flat-concrete.css': 'themes/flat-concrete/flat-concrete.scss',
           'dist/themes/flat.css': 'themes/flat/flat.scss',
           'dist/themes/basic.css': 'themes/basic.scss'
