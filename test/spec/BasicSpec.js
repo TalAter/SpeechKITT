@@ -317,4 +317,36 @@
 
   });
 
+  describe('SpeechKITT.onStart', function() {
+
+    it('should set SpeechKITT to listening mode if it was not already listening', function () {
+      expect(SpeechKITT.isListening()).toBe(false);
+      SpeechKITT.onStart();
+      expect(SpeechKITT.isListening()).toBe(true);
+    });
+
+    it('should leave SpeechKITT in listening mode if it was already listening', function () {
+      expect(SpeechKITT.isListening()).toBe(true);
+      SpeechKITT.onStart();
+      expect(SpeechKITT.isListening()).toBe(true);
+    });
+
+  });
+
+  describe('SpeechKITT.onEnd', function() {
+
+    it('should set SpeechKITT to not listening mode if it was listening', function () {
+      expect(SpeechKITT.isListening()).toBe(true);
+      SpeechKITT.onEnd();
+      expect(SpeechKITT.isListening()).toBe(false);
+    });
+
+    it('should leave SpeechKITT in not listening mode if it was not listening', function () {
+      expect(SpeechKITT.isListening()).toBe(false);
+      SpeechKITT.onEnd();
+      expect(SpeechKITT.isListening()).toBe(false);
+    });
+
+  });
+
 })();
