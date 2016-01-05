@@ -30,6 +30,10 @@
 <script src="../dist/speechkitt.min.js"></script>
 <script>
     if (annyang) {
+
+        // Set annyang in debug mode
+        annyang.debug();
+
         // Let's define a command.
         var commands = {
             'hello': function() { console.log('Hello world!'); }
