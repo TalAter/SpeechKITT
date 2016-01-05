@@ -265,6 +265,14 @@
 
   describe('SpeechKITT.annyang', function() {
 
+    beforeEach(function() {
+      jasmine.clock().install();
+    });
+
+    afterEach(function() {
+      jasmine.clock().uninstall();
+    });
+
     it('should set start command to annyang.start', function () {
       expect(annyang.isListening()).toBe(false);
       SpeechKITT.annyang();
@@ -296,6 +304,7 @@
       annyang.start();
       expect(SpeechKITT.isListening()).toBe(true);
       annyang.abort();
+      jasmine.clock().tick(101);
       expect(SpeechKITT.isListening()).toBe(false);
     });
 
@@ -319,13 +328,34 @@
 
   describe('SpeechKITT.onEnd', function() {
 
-    it('should set SpeechKITT to not listening mode if it was listening', function () {
+    beforeEach(function() {
+      jasmine.clock().install();
+    });
+
+    afterEach(function() {
+      jasmine.clock().uninstall();
+    });
+
+    it('should set SpeechKITT to not listening mode if it was listening only after 100ms have passed without it being restarted', function () {
       expect(SpeechKITT.isListening()).toBe(true);
       SpeechKITT.onEnd();
+      expect(SpeechKITT.isListening()).toBe(true);
+      jasmine.clock().tick(101);
       expect(SpeechKITT.isListening()).toBe(false);
     });
 
+    it('should leave SpeechKITT in listening mode if it was called, but then onStart was called within 100ms', function () {
+      SpeechKITT.startRecognition();
+      expect(SpeechKITT.isListening()).toBe(true);
+      SpeechKITT.onEnd();
+      expect(SpeechKITT.isListening()).toBe(true);
+      SpeechKITT.onStart();
+      jasmine.clock().tick(101);
+      expect(SpeechKITT.isListening()).toBe(true);
+    });
+
     it('should leave SpeechKITT in not listening mode if it was not listening', function () {
+      SpeechKITT.abortRecognition();
       expect(SpeechKITT.isListening()).toBe(false);
       SpeechKITT.onEnd();
       expect(SpeechKITT.isListening()).toBe(false);
