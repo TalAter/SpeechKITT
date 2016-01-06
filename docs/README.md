@@ -79,8 +79,10 @@ recognition.addEventListener('start', SpeechKITT.onStart);
 This function should be called when the browser's SpeechRecognition end event fires.
 Attach this function to the Speech Recognition instance's end event.
 
-It will only change KITT's interface to stopped after 100ms. If Speech Recognition restarts
-before 100ms have passed, the interface will just stay as (this is
+KITT's interface will only change to 'stopped' 100ms after this method is called.
+If Speech Recognition restarts before 100ms have passed, the interface will just remain
+in 'started' mode (this is to prevent the interface from flickering when Speech
+Recognition is stopped and immediately restarted programmatically)
 
 #### Examples:
 ````javascript
