@@ -16,7 +16,7 @@ The most basic implementation requires 6 commands.
 4. Start your engines with `SpeechKITT.vroom()`
 
 ````html
-<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.1.0/speechkitt.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.2.0/speechkitt.min.js"></script>
 <script>
 // Init the browser's own Speech Recognition
 var recognition = new webkitSpeechRecognition();
@@ -34,7 +34,7 @@ recognition.addEventListener('start', SpeechKITT.onStart);
 recognition.addEventListener('end', SpeechKITT.onEnd);
 
 // Define a stylesheet for KITT to use
-SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.1.0/themes/flat.css');
+SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.2.0/themes/flat.css');
 
 // Render KITT's interface
 SpeechKITT.vroom(); // SpeechKITT.render() does the same thing, but isn't as much fun!
@@ -46,8 +46,8 @@ SpeechKITT.vroom(); // SpeechKITT.render() does the same thing, but isn't as muc
 If you're doing [Speech Recognition with annyang](https://www.talater.com/annyang/), you can skip most of the configuration above. Just calling `SpeechKITT.annyang()` will take care of the configuration explained in steps 1 & 2 above.
 
 ````html
-<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.1.0/speechkitt.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.1.0/annyang.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.2.0/speechkitt.min.js"></script>
 <script>
 if (annyang) {
   // Add our commands to annyang
@@ -59,7 +59,7 @@ if (annyang) {
   SpeechKITT.annyang();
 
   // Define a stylesheet for KITT to use
-  SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.1.0/themes/flat.css');
+  SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.2.0/themes/flat.css');
 
   // Render KITT's interface
   SpeechKITT.vroom();
