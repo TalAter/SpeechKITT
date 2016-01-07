@@ -15,7 +15,7 @@ $instructionColor: #fff !default;
   display: inline-block;
   background-color: $listeningBoxColor;
   z-index: 200;
-  border-radius: 50%;
+  border-radius: $toggleButtonWidth / 2;
   position: fixed;
   bottom: 20px;
   left: 20px;
@@ -24,6 +24,7 @@ $instructionColor: #fff !default;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
   cursor: default;
   font-family: Lato,Helvetica,Arial,sans-serif;
+  font-size: 16px;
 }
 
 #skitt-toggle-button {
@@ -75,7 +76,7 @@ label#skitt-toggle-button__label {
   float: left;
   display: inline-block;
   line-height: $toggleButtonHeight;
-  height: $toggleButtonHeight;
+  height: 100%;
   color: $instructionColor;
 }
 
@@ -96,4 +97,42 @@ label#skitt-toggle-button__label {
 #skitt-listening-text__samples {
   font-weight: bold;
   margin-left: 10px;
+}
+
+@media (max-width: 1200px) and (orientation: portrait)  {
+  $sizeMultipliers: 2.5;
+  #skitt-ui {
+    border-radius: $toggleButtonWidth * $sizeMultipliers / 2;
+    font-size: 35px;
+  }
+  #skitt-toggle-button {
+    width: $toggleButtonWidth * $sizeMultipliers;
+    height: $toggleButtonHeight * $sizeMultipliers;
+    background-position: $toggleButtonHeight * $sizeMultipliers * 0.14 $toggleButtonWidth * $sizeMultipliers * 0.12;
+  }
+  #skitt-listening-box {
+    line-height: $toggleButtonHeight * $sizeMultipliers;
+  }
+  #skitt-listening-text {
+    height: $toggleButtonHeight * $sizeMultipliers;
+  }
+}
+
+@media (max-width: 1200px) and (orientation: landscape)  {
+  $sizeMultipliers: 1.6;
+  #skitt-ui {
+    border-radius: $toggleButtonWidth * $sizeMultipliers / 2;
+    font-size: 25px;
+  }
+  #skitt-toggle-button {
+    width: $toggleButtonWidth * $sizeMultipliers;
+    height: $toggleButtonHeight * $sizeMultipliers;
+    background-position: $toggleButtonHeight * $sizeMultipliers * 0.14 $toggleButtonWidth * $sizeMultipliers * 0.12;
+  }
+  #skitt-listening-box {
+    line-height: $toggleButtonHeight * $sizeMultipliers;
+  }
+  #skitt-listening-text {
+    height: $toggleButtonHeight * $sizeMultipliers;
+  }
 }
