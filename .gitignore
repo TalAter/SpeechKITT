@@ -3,3 +3,4 @@ node_modules
 .idea
 test/coverage
 .sass-cache
+.DS_Store
