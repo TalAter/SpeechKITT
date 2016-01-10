@@ -23,6 +23,9 @@
   // Internal variable pointing to the timeout used to make sure KITT isn't stopped and immediately started (See `onEnd()`)
   var _listeningStoppedTimeout;
 
+  // Set by SpeechKITT.rememberStatus() - Number of minutes after KITT has been activated by user to remember his choice
+  var _minutesToRememberStatus = 0;
+
   // Reference to functions used to start and abort speech recognition
   var _startCommand;
   var _abortCommand;
@@ -131,6 +134,23 @@
     }
   };
 
+  // Saves a cookie called skittremember which signifies that the user has chosen to turn on Speech Recognition
+  var _saveListeningStatusCookie = function() {
+    var dtExpiration = new Date();
+    dtExpiration.setTime(dtExpiration.getTime() + 60000 * _minutesToRememberStatus);
+    document.cookie="skittremember=1; expires="+dtExpiration.toUTCString()+"; path=/";
+  };
+
+  // Deletes the skittremember cookie because the user has chosen to stop Speech Recognition
+  var _deleteListeningStatusCookie = function() {
+    document.cookie="skittremember=1; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+  };
+
+  // Checks for existence of the skittremember cookie which signifies that Speech Recognition should be turned on
+  var _listeningStatusCookieExists = function() {
+    return document.cookie.indexOf('skittremember') !== -1;
+  };
+
   // Expose functionality
   _root.SpeechKITT = {
 
@@ -200,6 +220,10 @@
       if (!_startCommand) {
         throw new TypeError('cannot start recognition. Start command not defined');
       }
+      // If need to remember status, save a cookie now
+      if (_minutesToRememberStatus) {
+        _saveListeningStatusCookie();
+      }
       _startCommand.callback.apply(_startCommand.context);
       _setStatusOn();
     },
@@ -214,6 +238,8 @@
       if (!_abortCommand) {
         throw new TypeError('cannot abort recognition. Abort command not defined');
       }
+      // Clear status cookie
+      _deleteListeningStatusCookie();
       _abortCommand.callback.apply(_abortCommand.context);
       _setStatusOff();
     },
@@ -289,6 +315,10 @@
     render: function() {
       if (_guiNodes === undefined) {
         _createGUI();
+      }
+      // If cookie for on status exists, start listening immediately
+      if (_listeningStatusCookieExists() && !this.isListening()) {
+        this.startRecognition();
       }
       //set GUI status
       if (this.isListening()) {
@@ -382,6 +412,29 @@
     setSampleCommands: function(commands) {
       _sampleCommands = commands;
       _updateListeningText();
+    },
+
+    /**
+     * Set this and KITT will remember when the user clicks the button to turn on Speech Recognition, and next time
+     * they visit the site, Speech Recognition will be turned on again (unless user turned it off, or a certain number
+     * of minutes has passed since it was last on).
+     *
+     * Disabled by default. To disable manually after you enabled, pass 0 to it.
+     *
+     * Example:
+     * ````javascript
+     * SpeechKITT.rememberStatus(120);  // Automatically start Speech Recognition for any consecutive visit to this
+     *                                  // page in the next 120 minutes, or until the user has clicked the button
+     *                                  // to stop listening
+     * ````
+     *
+     * @param minutes integer Number of minutes to remember choice to turn on Speech Recognition
+     */
+    rememberStatus: function(minutes) {
+      if (typeof minutes !== "number" || minutes < 0) {
+        throw new TypeError('rememberStatus() only accepts positive integers');
+      }
+      _minutesToRememberStatus = minutes;
     },
 
     /**

@@ -157,6 +157,25 @@ These will then be shown to the user to help him understand what commands he can
 
 * *array* commands An array of strings, each a sample command.
 
+## rememberStatus(minutes)
+
+Set this and KITT will remember when the user clicks the button to turn on Speech Recognition, and next time
+they visit the site, Speech Recognition will be turned on again (unless user turned it off, or a certain number
+of minutes has passed since it was last on).
+
+Disabled by default. To disable manually after you enabled, pass 0 to it.
+
+Example:
+````javascript
+SpeechKITT.rememberStatus(120);  // Automatically start Speech Recognition for any consecutive visit to this
+                                 // page in the next 120 minutes, or until the user has clicked the button
+                                 // to stop listening
+````
+
+### Params:
+
+* *minutes* integer Number of minutes to remember choice to turn on Speech Recognition
+
 ## annyang()
 
 Call this if you're using annyang to automatically configure SpeechKITT to interact with it.

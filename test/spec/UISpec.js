@@ -336,4 +336,84 @@
 
   });
 
+  describe('SpeechKITT.rememberStatus', function() {
+
+    var recognition;
+
+    beforeEach(function() {
+      jasmine.clock().install();
+      Corti.patch();
+      recognition = new SpeechRecognition();
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      recognition.addEventListener('end', SpeechKITT.onEnd);
+      SpeechKITT.vroom();
+      SpeechKITT.abortRecognition();
+    });
+
+    afterEach(function() {
+      jasmine.clock().uninstall();
+      Corti.unpatch();
+    });
+
+    it('should throw an error when called without a parameter or an invalid parameter', function () {
+      expect(function() {
+        SpeechKITT.rememberStatus();
+      }).toThrowError();
+      expect(function() {
+        SpeechKITT.rememberStatus('Michael');
+      }).toThrowError();
+      expect(function() {
+        SpeechKITT.rememberStatus(-12);
+      }).toThrowError();
+    });
+
+    it('should accept one parameter which is an integer equal to or greater than zero', function () {
+      expect(function() {
+        SpeechKITT.rememberStatus(0);
+      }).not.toThrowError();
+      expect(function() {
+        SpeechKITT.rememberStatus(Infinity);
+      }).not.toThrowError();
+      expect(function() {
+        SpeechKITT.rememberStatus(60);
+      }).not.toThrowError();
+    });
+
+    it('should save a cookie called `skittremember` that will expire n minutes after startRecognition() was last called', function () {
+      expect(document.cookie.indexOf('skittremember')).toBe(-1);
+      SpeechKITT.rememberStatus(60);
+      SpeechKITT.vroom();
+      expect(document.cookie.indexOf('skittremember')).toBe(-1);
+      SpeechKITT.startRecognition();
+      expect(document.cookie.indexOf('skittremember')).not.toBe(-1);
+    });
+
+    it('should clear the cookie called `skittremember` when abortRecognition() is called', function () {
+      expect(document.cookie.indexOf('skittremember')).toBe(-1);
+      SpeechKITT.startRecognition();
+      expect(document.cookie.indexOf('skittremember')).not.toBe(-1);
+      SpeechKITT.abortRecognition();
+      expect(document.cookie.indexOf('skittremember')).toBe(-1);
+    });
+
+    it('should start listening immediately on render() if startRecognition() was previously called, abortRecognition() has not been called since and cookie hasn\'t expired', function () {
+      expect(SpeechKITT.isListening()).toBe(false);
+      expect(document.cookie.indexOf('skittremember')).toBe(-1);
+      SpeechKITT.rememberStatus(60);
+      SpeechKITT.render();
+      expect(SpeechKITT.isListening()).toBe(false);
+      SpeechKITT.startRecognition();
+      expect(document.cookie.indexOf('skittremember')).not.toBe(-1);
+      expect(SpeechKITT.isListening()).toBe(true);
+      recognition.abort();
+      jasmine.clock().tick(101);
+      expect(SpeechKITT.isListening()).toBe(false);
+      expect(document.cookie.indexOf('skittremember')).not.toBe(-1);
+      SpeechKITT.render();
+      expect(SpeechKITT.isListening()).toBe(true);
+    });
+
+  });
+
 })();

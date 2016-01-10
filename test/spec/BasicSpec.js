@@ -75,6 +75,10 @@
       expect(SpeechKITT.annyang).toEqual(jasmine.any(Function));
     });
 
+    it('should contain rememberStatus method', function () {
+      expect(SpeechKITT.rememberStatus).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {

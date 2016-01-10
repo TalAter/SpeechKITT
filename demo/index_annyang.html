@@ -52,6 +52,9 @@
         SpeechKITT.setInstructionsText('Some commands to try…');
         SpeechKITT.setSampleCommands(['Show directions', 'Call restaurant']);
 
+        // If user clicks start button, remember his choice for 1 minute
+        SpeechKITT.rememberStatus(1);
+
         // Render KITT's interface
         SpeechKITT.vroom();
     }
