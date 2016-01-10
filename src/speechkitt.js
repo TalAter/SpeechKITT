@@ -20,6 +20,7 @@
   // Save a reference to the global object (window in the browser)
   var _root = this;
 
+  // Internal variable pointing to the timeout used to make sure KITT isn't stopped and immediately started (See `onEnd()`)
   var _listeningStoppedTimeout;
 
   // Reference to functions used to start and abort speech recognition
