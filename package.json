@@ -1,6 +1,6 @@
 {
   "name": "speechkitt",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A flexible GUI for interacting with Speech Recognition",
   "homepage": "https://github.com/TalAter/SpeechKITT",
   "main": "speechkitt.js",
