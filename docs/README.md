@@ -167,9 +167,9 @@ Disabled by default. To disable manually after you enabled, pass 0 to it.
 
 Example:
 ````javascript
-SpeechKITT.rememberStatus(120);  // Automatically start Speech Recognition for any consecutive visit to this
-                                 // page in the next 120 minutes, or until the user has clicked the button
-                                 // to stop listening
+SpeechKITT.rememberStatus(120);  // Automatically start Speech Recognition for any consecutive
+                                 // visit to this page in the next 120 minutes, or until the user
+                                 // has clicked the button to stop listening.
 ````
 
 ### Params:
