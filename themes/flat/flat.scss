@@ -12,6 +12,7 @@ $instructionColor: #fff !default;
 /* Theme styles */
 
 #skitt-ui {
+  height: $toggleButtonHeight;
   display: inline-block;
   background-color: $listeningBoxColor;
   z-index: 200;
@@ -76,14 +77,12 @@ label#skitt-toggle-button__label {
   float: left;
   display: inline-block;
   line-height: $toggleButtonHeight;
-  height: 100%;
   color: $instructionColor;
 }
 
 #skitt-listening-text {
   display: inline-block;
   overflow: hidden;
-  height: $toggleButtonHeight;
 }
 .skitt-ui--not-listening #skitt-listening-text {
   width: 0;
@@ -104,6 +103,7 @@ label#skitt-toggle-button__label {
   #skitt-ui {
     border-radius: $toggleButtonWidth * $sizeMultipliers / 2;
     font-size: 35px;
+    height: $toggleButtonHeight * $sizeMultipliers;
   }
   #skitt-toggle-button {
     width: $toggleButtonWidth * $sizeMultipliers;
@@ -112,9 +112,6 @@ label#skitt-toggle-button__label {
   }
   #skitt-listening-box {
     line-height: $toggleButtonHeight * $sizeMultipliers;
-  }
-  #skitt-listening-text {
-    height: $toggleButtonHeight * $sizeMultipliers;
   }
 }
 
@@ -123,6 +120,7 @@ label#skitt-toggle-button__label {
   #skitt-ui {
     border-radius: $toggleButtonWidth * $sizeMultipliers / 2;
     font-size: 25px;
+    height: $toggleButtonHeight * $sizeMultipliers;
   }
   #skitt-toggle-button {
     width: $toggleButtonWidth * $sizeMultipliers;
@@ -131,8 +129,5 @@ label#skitt-toggle-button__label {
   }
   #skitt-listening-box {
     line-height: $toggleButtonHeight * $sizeMultipliers;
-  }
-  #skitt-listening-text {
-    height: $toggleButtonHeight * $sizeMultipliers;
   }
 }
