@@ -64,6 +64,11 @@
     });
   };
 
+  // Checks if GUI was already created
+  var _guiCreated = function () {
+    return _guiNodes !== undefined;
+  };
+
   // Attach a style sheet if GUI already attached, if already attached, update it's href
   var _updateStylesheet = function() {
     if (_stylesheet && _guiNodes) {
@@ -95,7 +100,7 @@
 
   // Called to change GUI look to listening
   var _setGUIListening = function() {
-    if (_guiNodes === undefined) {
+    if (!_guiCreated()) {
       return;
     }
     _guiNodes.classList.remove('skitt-ui--not-listening');
@@ -104,7 +109,7 @@
 
   // Called to change GUI look to not listening
   var _setGUINotListening = function() {
-    if (_guiNodes === undefined) {
+    if (!_guiCreated()) {
       return;
     }
     _guiNodes.classList.add('skitt-ui--not-listening');
@@ -313,7 +318,7 @@
      * @method render
      */
     render: function() {
-      if (_guiNodes === undefined) {
+      if (!_guiCreated()) {
         _createGUI();
       }
       // If cookie for on status exists, start listening immediately
@@ -346,7 +351,7 @@
      * @method hide
      */
     hide: function() {
-      if (_guiNodes === undefined) {
+      if (!_guiCreated()) {
         throw new TypeError('cannot hide interface. Must be rendered first');
       }
       _guiNodes.classList.add('skitt-ui--hidden');
@@ -359,7 +364,7 @@
      * @method show
      */
     show: function() {
-      if (_guiNodes === undefined) {
+      if (!_guiCreated()) {
         throw new TypeError('cannot show interface. Must be rendered first');
       }
       _guiNodes.classList.remove('skitt-ui--hidden');
