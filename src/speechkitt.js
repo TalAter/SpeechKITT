@@ -156,6 +156,12 @@
     return document.cookie.indexOf('skittremember') !== -1;
   };
 
+  var _ifNotFunctionThrowError = function(func, errorText) {
+    if (typeof func !== 'function') {
+      throw new TypeError(errorText);
+    }
+  };
+
   // Expose functionality
   _root.SpeechKITT = {
 
@@ -181,9 +187,7 @@
     setStartCommand: function(callback, context) {
       // This should work both when passed a function, or a name of a function
       callback = _root[callback] || callback;
-      if (typeof callback !== 'function') {
-        throw new TypeError('invalid callback function');
-      }
+      _ifNotFunctionThrowError(callback, 'invalid callback function');
       context = context || this;
 
       _startCommand = {callback: callback, context: context};
@@ -207,9 +211,7 @@
     setAbortCommand: function(callback, context) {
       // This should work both when passed a function, or a name of a function
       callback = _root[callback] || callback;
-      if (typeof callback !== 'function') {
-        throw new TypeError('invalid callback function');
-      }
+      _ifNotFunctionThrowError(callback, 'invalid callback function');
       context = context || this;
 
       _abortCommand = {callback: callback, context: context};
