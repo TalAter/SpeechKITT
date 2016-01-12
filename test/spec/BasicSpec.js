@@ -316,13 +316,13 @@
 
   describe('SpeechKITT.onStart', function() {
 
-    it('should set SpeechKITT to listening mode if it was not already listening', function () {
+    it('should set Speech KITT to listening mode if it was not already listening', function () {
       expect(SpeechKITT.isListening()).toBe(false);
       SpeechKITT.onStart();
       expect(SpeechKITT.isListening()).toBe(true);
     });
 
-    it('should leave SpeechKITT in listening mode if it was already listening', function () {
+    it('should leave Speech KITT in listening mode if it was already listening', function () {
       expect(SpeechKITT.isListening()).toBe(true);
       SpeechKITT.onStart();
       expect(SpeechKITT.isListening()).toBe(true);
@@ -340,7 +340,7 @@
       jasmine.clock().uninstall();
     });
 
-    it('should set SpeechKITT to not listening mode if it was listening only after 100ms have passed without it being restarted', function () {
+    it('should set Speech KITT to not listening mode if it was listening only after 100ms have passed without it being restarted', function () {
       expect(SpeechKITT.isListening()).toBe(true);
       SpeechKITT.onEnd();
       expect(SpeechKITT.isListening()).toBe(true);
@@ -348,7 +348,7 @@
       expect(SpeechKITT.isListening()).toBe(false);
     });
 
-    it('should leave SpeechKITT in listening mode if it was called, but then onStart was called within 100ms', function () {
+    it('should leave Speech KITT in listening mode if it was called, but then onStart was called within 100ms', function () {
       SpeechKITT.startRecognition();
       expect(SpeechKITT.isListening()).toBe(true);
       SpeechKITT.onEnd();
@@ -358,7 +358,7 @@
       expect(SpeechKITT.isListening()).toBe(true);
     });
 
-    it('should leave SpeechKITT in not listening mode if it was not listening', function () {
+    it('should leave Speech KITT in not listening mode if it was not listening', function () {
       SpeechKITT.abortRecognition();
       expect(SpeechKITT.isListening()).toBe(false);
       SpeechKITT.onEnd();
