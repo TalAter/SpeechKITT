@@ -45,30 +45,6 @@
   // DOM elements
   var _guiNodes;
 
-  // Called once to generate the GUI nodes
-  var _createGUI = function() {
-    // create GUI
-    _guiNodes = document.createElement('div');
-    _guiNodes.id = 'skitt-ui';
-    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-box"><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_listeningInstructionsText+'</span></div></div>';
-    _guiNodes.style.display = 'none';
-    document.body.appendChild(_guiNodes);
-
-    _updateListeningText();
-
-    _updateStylesheet();
-
-    // Attach events
-    document.getElementById('skitt-toggle-button').addEventListener('click', function(){
-      _root.SpeechKITT.toggleRecognition();
-    });
-  };
-
-  // Checks if GUI was already created
-  var _guiCreated = function () {
-    return _guiNodes !== undefined;
-  };
-
   // Attach a style sheet if GUI already attached, if already attached, update it's href
   var _updateStylesheet = function() {
     if (_stylesheet && _guiNodes) {
@@ -96,6 +72,30 @@
       }
       samplesNode.innerText = _sampleCommands.join('. ')+'.';
     }
+  };
+
+  // Called once to generate the GUI nodes
+  var _createGUI = function() {
+    // create GUI
+    _guiNodes = document.createElement('div');
+    _guiNodes.id = 'skitt-ui';
+    _guiNodes.innerHTML = '<a id="skitt-toggle-button">&nbsp;</a><label for="skitt-toggle-button" id="skitt-toggle-button__label">'+_toggleLabelText+'</label><div id="skitt-listening-box"><div id="skitt-listening-text"><span id="skitt-listening-text__instructions">'+_listeningInstructionsText+'</span></div></div>';
+    _guiNodes.style.display = 'none';
+    document.body.appendChild(_guiNodes);
+
+    _updateListeningText();
+
+    _updateStylesheet();
+
+    // Attach events
+    document.getElementById('skitt-toggle-button').addEventListener('click', function(){
+      _root.SpeechKITT.toggleRecognition();
+    });
+  };
+
+  // Checks if GUI was already created
+  var _guiCreated = function () {
+    return _guiNodes !== undefined;
   };
 
   // Called to change GUI look to listening
