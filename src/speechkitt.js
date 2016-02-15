@@ -67,7 +67,10 @@
 
   // Update texts shown while listening
   var _updateListeningText = function() {
-    if (_sampleCommands.length && _guiCreated()) {
+    if (!_guiCreated()) {
+      return;
+    }
+    if (_sampleCommands.length) {
       var samplesNode = document.getElementById('skitt-listening-text__samples');
       if (!samplesNode) {
         var instructionsNode = document.getElementById('skitt-listening-text__instructions');
