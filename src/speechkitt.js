@@ -45,9 +45,14 @@
   // DOM elements
   var _guiNodes;
 
+  // Checks if GUI was already created
+  var _guiCreated = function () {
+    return _guiNodes !== undefined;
+  };
+
   // Attach a style sheet if GUI already attached, if already attached, update it's href
   var _updateStylesheet = function() {
-    if (_stylesheet && _guiNodes) {
+    if (_stylesheet && _guiCreated()) {
       if (_stylesheetNode) {
         _stylesheetNode.href = _stylesheet;
       } else {
@@ -62,7 +67,7 @@
 
   // Update texts shown while listening
   var _updateListeningText = function() {
-    if (_sampleCommands.length && _guiNodes) {
+    if (_sampleCommands.length && _guiCreated()) {
       var samplesNode = document.getElementById('skitt-listening-text__samples');
       if (!samplesNode) {
         var instructionsNode = document.getElementById('skitt-listening-text__instructions');
@@ -91,11 +96,6 @@
     document.getElementById('skitt-toggle-button').addEventListener('click', function(){
       _root.SpeechKITT.toggleRecognition();
     });
-  };
-
-  // Checks if GUI was already created
-  var _guiCreated = function () {
-    return _guiNodes !== undefined;
   };
 
   // Called to change GUI look to listening
@@ -134,7 +134,7 @@
 
   // Helper function used by various public methods which change texts
   var _setText = function(text, id) {
-    if (_guiNodes) {
+    if (_guiCreated()) {
       document.getElementById(id).innerText = text;
     }
   };
