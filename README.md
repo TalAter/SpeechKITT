@@ -2,8 +2,6 @@
 <img src="https://raw.githubusercontent.com/TalAter/SpeechKITT/master/demo/README-logo.png" align="right" />
 > A flexible GUI for interacting with Speech Recognition
 
-[![Build Status](https://travis-ci.org/TalAter/SpeechKITT.svg?branch=master)](https://travis-ci.org/TalAter/SpeechKITT) [![Dependency Status](https://gemnasium.com/TalAter/SpeechKITT.svg)](https://gemnasium.com/TalAter/SpeechKITT)
-
 KITT makes it easy to add a GUI to pages using Speech Recognition. Whether you are using [annyang](https://github.com/TalAter/annyang), a different library or even webkitSpeechRecognition directly, KITT will take care of the GUI.
 
 ## Hello World
@@ -71,8 +69,14 @@ if (annyang) {
 
 For details on all available methods, options and more details, check out the [API documentation](https://github.com/TalAter/SpeechKITT/blob/master/docs/README.md).
 
+## Pretty Badges
+
+[![Build Status](https://travis-ci.org/TalAter/SpeechKITT.svg?branch=master)](https://travis-ci.org/TalAter/SpeechKITT) [![Dependency Status](https://gemnasium.com/TalAter/SpeechKITT.svg)](https://gemnasium.com/TalAter/SpeechKITT)
+
 ### Author
+
 Tal Ater: [@TalAter](https://twitter.com/TalAter)
 
 ### License
+
 Licensed under [MIT](https://github.com/TalAter/SpeechKITT/blob/master/LICENSE).
