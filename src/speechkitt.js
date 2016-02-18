@@ -70,8 +70,8 @@
     if (!_guiCreated()) {
       return;
     }
+    var samplesNode = document.getElementById('skitt-listening-text__samples');
     if (_sampleCommands.length) {
-      var samplesNode = document.getElementById('skitt-listening-text__samples');
       if (!samplesNode) {
         var instructionsNode = document.getElementById('skitt-listening-text__instructions');
         samplesNode = document.createElement('span');
@@ -79,6 +79,10 @@
         instructionsNode.parentNode.insertBefore(samplesNode, instructionsNode.nextSibling);
       }
       samplesNode.innerText = _sampleCommands.join('. ')+'.';
+    } else {
+      if (samplesNode) {
+        samplesNode.parentNode.removeChild(samplesNode);
+      }
     }
   };
 
@@ -420,6 +424,9 @@
      * @method setSampleCommands
      */
     setSampleCommands: function(commands) {
+      if (!Array.isArray(commands)) {
+        commands = [];
+      }
       _sampleCommands = commands;
       _updateListeningText();
     },

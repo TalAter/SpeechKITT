@@ -334,6 +334,18 @@
       expect(getSamplesText().innerText).toEqual('Show directions. Call restaurant.');
     });
 
+    it('should delete the sample commands and remove them from the DOM when passed with no parameters', function () {
+      SpeechKITT.setSampleCommands(['Show directions', 'Call restaurant']);
+      SpeechKITT.setSampleCommands();
+      expect(getSamplesTexts()).toHaveLength(0);
+    });
+
+    it('should delete the sample commands and remove them from the DOM when passed with an empty array', function () {
+      SpeechKITT.setSampleCommands(['Show directions', 'Call restaurant']);
+      SpeechKITT.setSampleCommands();
+      expect(getSamplesTexts()).toHaveLength(0);
+    });
+
   });
 
   describe('SpeechKITT.rememberStatus', function() {
