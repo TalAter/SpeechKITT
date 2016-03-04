@@ -143,6 +143,7 @@ Defaults to: 'Activate Voice Control'
 
 Set the instructional text which will be shown next to toggle button when listening.
 Defaults to: 'What can I help you with?'
+Accepts simple text or HTML.
 
 ### Params:
 

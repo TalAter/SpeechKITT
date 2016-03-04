@@ -306,6 +306,12 @@
       expect(getInstructionsText().innerText).toEqual('Talk to me Goose!');
     });
 
+    it('should accept HTML', function () {
+      SpeechKITT.setInstructionsText('Talk to me <strong>Goose</strong>!');
+      expect($('strong', getInstructionsTexts()).length).toEqual(1);
+      expect($('strong', getInstructionsTexts())[0].innerText).toEqual('Goose');
+    });
+
   });
 
   describe('SpeechKITT.setSampleCommands', function() {

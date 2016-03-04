@@ -142,7 +142,7 @@
   // Helper function used by various public methods which change texts
   var _setText = function(text, id) {
     if (_guiCreated()) {
-      document.getElementById(id).innerText = text;
+      document.getElementById(id).innerHTML = text;
     }
   };
 
@@ -407,6 +407,7 @@
     /**
      * Set the instructional text which will be shown next to toggle button when listening.
      * Defaults to: 'What can I help you with?'
+     * Accepts simple text or HTML.
      *
      * @param string text The text to show next to toggle button when listening
      * @method setInstructionsText
