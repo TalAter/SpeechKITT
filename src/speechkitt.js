@@ -465,7 +465,7 @@
      * *If you are using annyang, this happens automatically.*
      *
      * @returns undefined|string
-     * @see [setRecognizedSentence()](#setRecognizedSentence)
+     * @see [setRecognizedSentence()](#setrecognizedsentencesentence)
      */
     getLastRecognizedSentence: function() {
       if (_recognizedSentences.length === 0) {
@@ -502,11 +502,12 @@
 
     /**
      * Call this if you're using annyang to automatically configure Speech KITT to interact with it.
+     *
      * Automatically does the following:
-     * Set Speech KITT's start command to annyang.start
-     * Set Speech KITT's abort command to annyang.abort
-     * Adds a callback to annyang's start event to call SpeechKITT.onStart
-     * Adds a callback to annyang's end   event to call SpeechKITT.onEnd
+     * - Set Speech KITT's start command to annyang.start
+     * - Set Speech KITT's abort command to annyang.abort
+     * - Adds a callback to annyang's start event to call SpeechKITT.onStart
+     * - Adds a callback to annyang's end   event to call SpeechKITT.onEnd
      *
      * @method annyang
      */
