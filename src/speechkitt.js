@@ -42,6 +42,9 @@
   var _listeningInstructionsText = 'What can I help you with?';
   var _sampleCommands = [];
 
+  // A list of sentences recognized
+  var _recognizedSentences = [];
+
   // DOM elements
   var _guiNodes;
 
@@ -453,6 +456,48 @@
         throw new TypeError('rememberStatus() only accepts positive integers');
       }
       _minutesToRememberStatus = minutes;
+    },
+
+    /**
+     * Returns the last sentenced recognized by speech recognition.
+     *
+     * *Note: You need to set sentences as they are recognized with setRecognizedSentence().*
+     * *If you are using annyang, this happens automatically.*
+     *
+     * @returns undefined|string
+     * @see [setRecognizedSentence()](#setRecognizedSentence)
+     */
+    getLastRecognizedSentence: function() {
+      if (_recognizedSentences.length === 0) {
+        return undefined;
+      } else {
+        return _recognizedSentences[_recognizedSentences.length-1];
+      }
+    },
+
+    /**
+     * Add a sentence that was recognized.
+     * You will usually want to call this from the SpeechRecognition's result event.
+     *
+     * Example:
+     * ````javascript
+     * var recognition = new webkitSpeechRecognition();
+     * recognition.addEventListener('result', function(ev) {
+     *   SpeechKITT.setRecognizedSentence(
+     *     ev.results[ev.resultIndex][0].transcript // This is where the browser hides the text the user said
+     *   );
+     * });
+     * ````
+     *
+     * *Note: If you're using annyang, this gets called automatically for you.*
+     *
+     * @param sentence string
+     * @see [annyang()](#annyang)
+     */
+    setRecognizedSentence : function(sentence) {
+      if (typeof sentence === 'string') {
+        _recognizedSentences.push(sentence);
+      }
     },
 
     /**

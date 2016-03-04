@@ -79,6 +79,15 @@
       expect(SpeechKITT.rememberStatus).toEqual(jasmine.any(Function));
     });
 
+    it('should contain setRecognizedSentence method', function () {
+      expect(SpeechKITT.setRecognizedSentence).toEqual(jasmine.any(Function));
+      // @TODO: annyang should call this automatically.
+    });
+
+    it('should contain getLastRecognizedSentence method', function () {
+      expect(SpeechKITT.getLastRecognizedSentence).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('SpeechKITT.setStartCommand', function() {
@@ -363,6 +372,37 @@
       expect(SpeechKITT.isListening()).toBe(false);
       SpeechKITT.onEnd();
       expect(SpeechKITT.isListening()).toBe(false);
+    });
+
+  });
+
+  describe('SpeechKITT.getLastRecognizedSentence', function() {
+
+    it('should return undefined if called before anything said', function () {
+      expect(SpeechKITT.getLastRecognizedSentence()).toBe(undefined);
+    });
+
+    it('should return the last said sentence if one was set by setRecognizedSentence', function () {
+      var sentence1 = 'Next time you want to stab me in the back, have the guts to do it to my face';
+      var sentence2 = "Man walks down the street in a hat like that, you know he's not afraid of anything";
+      SpeechKITT.setRecognizedSentence(sentence1);
+      SpeechKITT.setRecognizedSentence(sentence2);
+      expect(SpeechKITT.getLastRecognizedSentence()).toEqual(sentence2);
+    });
+
+  });
+
+  describe('SpeechKITT.setRecognizedSentence', function() {
+
+    it('should always return undefined', function () {
+      expect(SpeechKITT.setRecognizedSentence()).toBe(undefined);
+      expect(SpeechKITT.setRecognizedSentence('Next time you want to stab me in the back, have the guts to do it to my face')).toBe(undefined);
+    });
+
+    it('should add the sentence said to Speech KITT', function () {
+      var sentence = 'Next time you want to stab me in the back, have the guts to do it to my face';
+      SpeechKITT.setRecognizedSentence(sentence);
+      expect(SpeechKITT.getLastRecognizedSentence()).toEqual(sentence);
     });
 
   });

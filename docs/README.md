@@ -177,6 +177,42 @@ SpeechKITT.rememberStatus(120);  // Automatically start Speech Recognition for a
 
 * *minutes* integer Number of minutes to remember choice to turn on Speech Recognition
 
+## getLastRecognizedSentence()
+
+Returns the last sentenced recognized by speech recognition.
+
+*Note: You need to set sentences as they are recognized with setRecognizedSentence().*
+*If you are using annyang, this happens automatically.*
+
+See: [setRecognizedSentence()](#setRecognizedSentence)
+
+### Return:
+
+* undefined|string
+
+## setRecognizedSentence(sentence)
+
+Add a sentence that was recognized.
+You will usually want to call this from the SpeechRecognition's result event.
+
+Example:
+````javascript
+var recognition = new webkitSpeechRecognition();
+recognition.addEventListener('result', function(ev) {
+  SpeechKITT.setRecognizedSentence(
+    ev.results[ev.resultIndex][0].transcript // This is where the browser hides the text the user said
+  );
+});
+````
+
+*Note: If you're using annyang, this gets called automatically for you.*
+
+See: [annyang()](#annyang)
+
+### Params:
+
+* *sentence* string
+
 ## annyang()
 
 Call this if you're using annyang to automatically configure Speech KITT to interact with it.
