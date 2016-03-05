@@ -229,7 +229,8 @@
 
     /**
      * Starts the speech recognition. This is equivalent to the user pushing KITT's buttons.
-     * Make sure to define the speech recognition command start first using setStartCommand()
+     *
+     * Make sure to define the speech recognition start command first using setStartCommand()
      *
      * @method startRecognition
      */
@@ -247,7 +248,8 @@
 
     /**
      * Aborts the speech recognition. This is equivalent to the user pushing KITT's buttons.
-     * Make sure to define the speech recognition abort command first using setStartCommand()
+     *
+     * Make sure to define the speech recognition abort command first using setAbortCommand()
      *
      * @method abortRecognition
      */
@@ -263,6 +265,7 @@
 
     /**
      * Toggles speech recognition. This is equivalent to the user pushing KITT's buttons.
+     *
      * Make sure to define the speech recognition abort and start commands first
      *
      * @method toggleRecognition
@@ -277,6 +280,7 @@
 
     /**
      * This function should be called when the browser's SpeechRecognition start event fires.
+     *
      * Attach this function to the Speech Recognition instance's start event.
      *
      * #### Examples:
@@ -294,12 +298,13 @@
 
     /**
      * This function should be called when the browser's SpeechRecognition end event fires.
+     *
      * Attach this function to the Speech Recognition instance's end event.
      *
-     * KITT's interface will only change to 'stopped' 100ms after this method is called.
-     * If Speech Recognition restarts before 100ms have passed, the interface will just remain
-     * in 'started' mode (this is to prevent the interface from flickering when Speech
-     * Recognition is stopped and immediately restarted programmatically)
+     * *Note: KITT's interface will only change to 'stopped' 100ms after this method is called.*
+     * *If Speech Recognition restarts before 100ms have passed, the interface will just remain*
+     * *in 'started' mode (this is to prevent the interface from flickering when Speech*
+     * *Recognition is stopped and immediately restarted programmatically)*
      *
      * #### Examples:
      * ````javascript
@@ -314,7 +319,7 @@
     },
 
     /**
-     * Set the URL to the stylesheet for the UI
+     * Set the URL for the stylesheet for the UI
      *
      * @param string css relative or absolute url to the stylesheet
      * @method setStylesheet
@@ -325,7 +330,7 @@
     },
 
     /**
-     * Call once done configuring KITT, to render its interface.
+     * Call after configuring KITT, to render its interface.
      *
      * @method render
      */
@@ -346,7 +351,8 @@
     },
 
     /**
-     * Call once done configuring KITT, to render its interface.
+     * Call after configuring KITT, to render its interface.
+     *
      * Identical to calling SpeechKITT.render();
      *
      * @method vroom
@@ -357,7 +363,8 @@
     },
 
     /**
-     * Call to hide the GUI
+     * Call to hide the GUI.
+     *
      * Interface must have been previously rendered with render()
      *
      * @method hide
@@ -371,6 +378,7 @@
 
     /**
      * Call to show the GUI if it has been hidden with hide()
+     *
      * Interface must have been previously rendered with render()
      *
      * @method show
@@ -385,8 +393,8 @@
     /**
      * Returns true if Speech Recognition is currently on.
      *
-     * This can be wrong KITT wasn't completely configured correctly, or was started
-     * while Speech Recognition was already running/
+     * This can be wrong if KITT wasn't completely configured correctly, or was
+     * started while Speech Recognition was already running.
      *
      * @returns {boolean} true = listening or false = not listening
      * @method isListening
@@ -397,10 +405,11 @@
 
     /**
      * Set the text for the toggle button's label.
+     *
      * Defaults to: 'Activate Voice Control'
      *
      * @param string text The text to show next to toggle button
-     * @method setSampleCommands
+     * @method setToggleLabelText
      */
     setToggleLabelText: function(text) {
       _toggleLabelText = text;
@@ -409,8 +418,10 @@
 
     /**
      * Set the instructional text which will be shown next to toggle button when listening.
-     * Defaults to: 'What can I help you with?'
+     *
      * Accepts simple text or HTML.
+     *
+     * Defaults to: 'What can I help you with?'
      *
      * @param string text The text to show next to toggle button when listening
      * @method setInstructionsText
@@ -422,6 +433,7 @@
 
     /**
      * Pass this an array of sample textual commands which your application responds to.
+     *
      * These will then be shown to the user to help him understand what commands he can use.
      *
      * @param array commands An array of strings, each a sample command.
@@ -440,7 +452,8 @@
      * they visit the site, Speech Recognition will be turned on again (unless user turned it off, or a certain number
      * of minutes has passed since it was last on).
      *
-     * Disabled by default. To disable manually after you enabled, pass 0 to it.
+     * Disabled by default. Enable by passing an integer which is the number of minutes to remember.
+     * To disable manually after you enabled, pass 0 to it.
      *
      * Example:
      * ````javascript
