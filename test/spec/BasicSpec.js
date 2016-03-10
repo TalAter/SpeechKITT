@@ -283,6 +283,8 @@
     });
 
     afterEach(function() {
+      annyang.abort();
+      jasmine.clock().tick(101);
       jasmine.clock().uninstall();
     });
 
@@ -294,7 +296,6 @@
     });
 
     it('should set abort command to annyang.abort', function () {
-      annyang.abort();
       expect(annyang.isListening()).toBe(false);
       SpeechKITT.annyang();
       SpeechKITT.startRecognition();
@@ -305,7 +306,6 @@
 
     it('should add a callback to SpeechKITT.onStart to annyang\'s start event', function () {
       SpeechKITT.annyang();
-      annyang.abort();
       expect(SpeechKITT.isListening()).toBe(false);
       annyang.start();
       expect(SpeechKITT.isListening()).toBe(true);
@@ -313,7 +313,6 @@
 
     it('should add a callback to SpeechKITT.onEnd to annyang\'s end event', function () {
       SpeechKITT.annyang();
-      annyang.abort();
       annyang.start();
       expect(SpeechKITT.isListening()).toBe(true);
       annyang.abort();
