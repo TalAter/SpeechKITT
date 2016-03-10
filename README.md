@@ -2,7 +2,14 @@
 <img src="https://raw.githubusercontent.com/TalAter/SpeechKITT/master/demo/README-logo.png" align="right" />
 > A flexible GUI for interacting with Speech Recognition
 
-KITT makes it easy to add a GUI to pages using Speech Recognition. Whether you are using [annyang](https://github.com/TalAter/annyang), a different library or even webkitSpeechRecognition directly, KITT will take care of the GUI.
+Speech KITT makes it easy to add a GUI to sites using Speech Recognition. Whether you are using [annyang](https://github.com/TalAter/annyang), a different library or webkitSpeechRecognition directly, KITT will take care of the GUI.
+
+Speech KITT provides a graphical interface for the user to start or stop Speech Recognition and see its current status. It can also help guide the user on how to interact with your site using their voice, providing instructions and sample commands. It can even be used to carry a natural conversation with the user, asking questions the user can answer with his voice, and then asking follow up questions.
+
+Speech KITT is fully customizable, and comes with many different themes (and instructions on how to create your own designs).
+
+[![Speech Recognition GUI with Speech KITT](https://raw.githubusercontent.com/TalAter/SpeechKITT/master/demo/speechkitt-demo.gif)](https://github.com/TalAter/SpeechKITT)
+
 
 ## Hello World
 
