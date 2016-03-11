@@ -290,8 +290,15 @@
 
   describe('SpeechKITT.annyang', function() {
 
+    var recognition;
+
     beforeEach(function() {
       jasmine.clock().install();
+      recognition = annyang.getSpeechRecognizer();
+      annyang.removeCommands();
+      annyang.addCommands({
+        'Time for some thrilling :action': function() {}
+      });
     });
 
     afterEach(function() {
@@ -330,6 +337,22 @@
       annyang.abort();
       jasmine.clock().tick(101);
       expect(SpeechKITT.isListening()).toBe(false);
+    });
+
+    it('should capture recognized sentence from `resultMatch` event and call SpeechKITT.setRecognizedSentence()', function () {
+      var sentence = 'Time for some thrilling heroics';
+      SpeechKITT.annyang();
+      annyang.start();
+      recognition.say(sentence);
+      expect(SpeechKITT.getLastRecognizedSentence()).toBe(sentence);
+    });
+
+    it('should capture most probable sentence from `resultNoMatch` event and call SpeechKITT.setRecognizedSentence()', function () {
+      var sentence = "You can't take the sky from me";
+      SpeechKITT.annyang();
+      annyang.start();
+      recognition.say(sentence);
+      expect(SpeechKITT.getLastRecognizedSentence()).toBe(sentence);
     });
 
   });

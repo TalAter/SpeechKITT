@@ -149,6 +149,13 @@
     }
   };
 
+  var _annyangSetRecognizedSentence = function(sentences) {
+    if (Array.isArray(sentences)) {
+      sentences = sentences[0];
+    }
+    _root.SpeechKITT.setRecognizedSentence(sentences);
+  };
+
   // Saves a cookie called skittremember which signifies that the user has chosen to turn on Speech Recognition
   var _saveListeningStatusCookie = function() {
     var dtExpiration = new Date();
@@ -529,6 +536,8 @@
       this.setAbortCommand(annyang.abort);
       annyang.addCallback('start', this.onStart);
       annyang.addCallback('end', this.onEnd);
+      annyang.addCallback('resultMatch', _annyangSetRecognizedSentence);
+      annyang.addCallback('resultNoMatch', _annyangSetRecognizedSentence);
     }
 
   };
