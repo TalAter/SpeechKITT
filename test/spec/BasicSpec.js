@@ -424,13 +424,14 @@
 
   describe('SpeechKITT.setRecognizedSentence', function() {
 
+    var sentence = 'Next time you want to stab me in the back, have the guts to do it to my face';
+
     it('should always return undefined', function () {
       expect(SpeechKITT.setRecognizedSentence()).toBe(undefined);
-      expect(SpeechKITT.setRecognizedSentence('Next time you want to stab me in the back, have the guts to do it to my face')).toBe(undefined);
+      expect(SpeechKITT.setRecognizedSentence(sentence)).toBe(undefined);
     });
 
     it('should add the sentence said to Speech KITT', function () {
-      var sentence = 'Next time you want to stab me in the back, have the guts to do it to my face';
       SpeechKITT.setRecognizedSentence(sentence);
       expect(SpeechKITT.getLastRecognizedSentence()).toEqual(sentence);
     });
