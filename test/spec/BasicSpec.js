@@ -90,6 +90,18 @@
 
   });
 
+  describe('Initial state', function() {
+
+    describe('SpeechKITT.getLastRecognizedSentence', function() {
+
+      it('should return undefined if called before anything said', function () {
+        expect(SpeechKITT.getLastRecognizedSentence()).toBe(undefined);
+      });
+
+    });
+
+  });
+
   describe('SpeechKITT.setStartCommand', function() {
 
     it('should throw an error when called without a callback function', function () {
@@ -376,10 +388,6 @@
   });
 
   describe('SpeechKITT.getLastRecognizedSentence', function() {
-
-    it('should return undefined if called before anything said', function () {
-      expect(SpeechKITT.getLastRecognizedSentence()).toBe(undefined);
-    });
 
     it('should return the last said sentence if one was set by setRecognizedSentence', function () {
       var sentence1 = 'Next time you want to stab me in the back, have the guts to do it to my face';
