@@ -254,14 +254,6 @@
 
   });
 
-  describe('SpeechKITT.setStylesheet', function() {
-
-    it('should be callable and return undefined', function () {
-      expect(SpeechKITT.setStylesheet()).toBe(undefined);
-    });
-
-  });
-
   describe('SpeechKITT.isListening', function() {
 
     var recognition;

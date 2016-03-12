@@ -63,6 +63,14 @@
     return element.dispatchEvent(event);
   };
 
+  describe('SpeechKITT.setStylesheet', function() {
+
+    it('should be callable and return undefined', function () {
+      expect(SpeechKITT.setStylesheet()).toBe(undefined);
+    });
+
+  });
+
   describe('SpeechKITT.hide', function() {
     it('should throw error if called before render was called', function () {
       expect(getWrappers()).toHaveLength(0);
