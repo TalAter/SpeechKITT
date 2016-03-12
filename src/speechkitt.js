@@ -328,6 +328,10 @@
     /**
      * Set the URL for the stylesheet for the UI
      *
+     * If a stylesheet was previously set, calling this again will update the
+     * interface with a new stylesheet (if the interface was already rendered,
+     * it will be updated)
+     * 
      * @param string css relative or absolute url to the stylesheet
      * @method setStylesheet
      */
