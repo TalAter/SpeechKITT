@@ -81,7 +81,6 @@
 
     it('should contain setRecognizedSentence method', function () {
       expect(SpeechKITT.setRecognizedSentence).toEqual(jasmine.any(Function));
-      // @TODO: annyang should call this automatically.
     });
 
     it('should contain getLastRecognizedSentence method', function () {
