@@ -98,6 +98,9 @@ label#skitt-toggle-button__label {
   margin-left: 10px;
 }
 
+#skitt-listening-text__recognized-sentence {
+  display: none;
+}
 @media (max-width: 1200px) and (orientation: portrait)  {
   $sizeMultipliers: 2.5;
   #skitt-ui {
