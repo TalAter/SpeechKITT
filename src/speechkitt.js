@@ -79,10 +79,10 @@
     var samplesNode = document.getElementById('skitt-listening-text__samples');
     if (_sampleCommands.length) {
       if (!samplesNode) {
-        var instructionsNode = document.getElementById('skitt-listening-text__instructions');
+        var nodeToInsertAfter = document.getElementById('skitt-listening-text__instructions');
         samplesNode = document.createElement('span');
         samplesNode.id = 'skitt-listening-text__samples';
-        instructionsNode.parentNode.insertBefore(samplesNode, instructionsNode.nextSibling);
+        nodeToInsertAfter.parentNode.insertBefore(samplesNode, nodeToInsertAfter.nextSibling);
       }
       samplesNode.innerText = _sampleCommands.join('. ')+'.';
     } else {
