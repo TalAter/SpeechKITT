@@ -57,6 +57,14 @@
     return getSamplesTexts()[0];
   };
 
+  var getLastSentenceTexts = function () {
+    return $('#skitt-listening-text', getWrapper());
+  };
+
+  var getLastSentenceText = function () {
+    return getLastSentenceTexts()[0];
+  };
+
   var simulateClick = function(element) {
     var event = document.createEvent("MouseEvents");
     event.initEvent("click", true, false);
@@ -438,6 +446,57 @@
       expect(document.cookie.indexOf('skittremember')).not.toBe(-1);
       SpeechKITT.render();
       expect(SpeechKITT.isListening()).toBe(true);
+    });
+
+  });
+
+  describe('SpeechKITT.displayRecognizedSentence', function() {
+
+    var recognition;
+    var sentence1 = 'That sounds like something out of science-fiction';
+    var sentence2 = 'We live in a spaceship, dear';
+
+    beforeEach(function() {
+      Corti.patch();
+      recognition = new SpeechRecognition();
+      SpeechKITT.setStartCommand(recognition.start);
+      SpeechKITT.setAbortCommand(recognition.abort);
+      SpeechKITT.vroom();
+    });
+
+    afterEach(function() {
+      SpeechKITT.abortRecognition();
+      Corti.unpatch();
+    });
+
+    it('should be off by default and add nothing to the DOM', function () {
+      expect(getLastSentenceTexts()).toHaveLength(0);
+      SpeechKITT.setRecognizedSentence(sentence1);
+      expect(getLastSentenceTexts()).toHaveLength(0);
+    });
+
+    it('should add the text of the last recognized sentence to the DOM even if turned on after it was said', function () {
+      expect(getLastSentenceTexts()).toHaveLength(0);
+      SpeechKITT.displayRecognizedSentence(true);
+      expect(getLastSentenceTexts()).toHaveLength(1);
+      expect(getLastSentenceText()).toBeInDOM();
+      expect(getLastSentenceText()).toBeVisible();
+      expect(getLastSentenceText().innerText).toEqual(sentence1);
+    });
+
+    it('should replace the last recognized sentence in the div with a new one after another sentence has been recognized', function () {
+      SpeechKITT.setRecognizedSentence(sentence1);
+      expect(getLastSentenceText().innerText).toEqual(sentence1);
+      SpeechKITT.setRecognizedSentence(sentence2);
+      expect(getLastSentenceText().innerText).toEqual(sentence2);
+    });
+
+    it('should remove the last recognized sentence div from the DOM when turned off', function () {
+      SpeechKITT.displayRecognizedSentence(true);
+      SpeechKITT.setRecognizedSentence(sentence1);
+      expect(getLastSentenceTexts()).toHaveLength(1);
+      SpeechKITT.displayRecognizedSentence(false);
+      expect(getLastSentenceTexts()).toHaveLength(0);
     });
 
   });

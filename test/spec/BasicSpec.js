@@ -87,6 +87,10 @@
       expect(SpeechKITT.getLastRecognizedSentence).toEqual(jasmine.any(Function));
     });
 
+    it('should contain displayRecognizedSentence method', function () {
+     expect(SpeechKITT.displayRecognizedSentence).toEqual(jasmine.any(Function));
+    });
+
   });
 
   describe('Initial state', function() {
