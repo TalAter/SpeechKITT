@@ -45,6 +45,9 @@
   // A list of sentences recognized
   var _recognizedSentences = [];
 
+  // Should sentences recognized be rendered to DOM?
+  var _displayRecognizedSentence = false;
+
   // DOM elements
   var _guiNodes;
 
@@ -85,6 +88,27 @@
     } else {
       if (samplesNode) {
         samplesNode.parentNode.removeChild(samplesNode);
+      }
+    }
+  };
+
+  var _updateRecognizedSentenceText = function() {
+    if (!_guiCreated()) {
+      return;
+    }
+    var recognizedSentenceNode = document.getElementById('skitt-listening-text__recognized-sentence');
+    var lastRecognizedSentenceText = _root.SpeechKITT.getLastRecognizedSentence();
+    if (lastRecognizedSentenceText && _displayRecognizedSentence) {
+      if (!recognizedSentenceNode) {
+        var nodeToInsertAfter = document.getElementById('skitt-listening-text__samples') || document.getElementById('skitt-listening-text__instructions');
+        recognizedSentenceNode = document.createElement('span');
+        recognizedSentenceNode.id = 'skitt-listening-text__recognized-sentence';
+        nodeToInsertAfter.parentNode.insertBefore(recognizedSentenceNode, nodeToInsertAfter.nextSibling);
+      }
+      recognizedSentenceNode.innerText = lastRecognizedSentenceText;
+    } else {
+      if (recognizedSentenceNode) {
+        recognizedSentenceNode.parentNode.removeChild(recognizedSentenceNode);
       }
     }
   };
@@ -521,7 +545,17 @@
     setRecognizedSentence : function(sentence) {
       if (typeof sentence === 'string') {
         _recognizedSentences.push(sentence);
+        _updateRecognizedSentenceText();
       }
+    },
+
+    displayRecognizedSentence: function(newState) {
+      if (arguments.length > 0) {
+        _displayRecognizedSentence = !!newState;
+      } else {
+        _displayRecognizedSentence = true;
+      }
+      _updateRecognizedSentenceText();
     },
 
     /**

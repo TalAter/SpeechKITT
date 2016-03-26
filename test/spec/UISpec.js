@@ -58,7 +58,7 @@
   };
 
   var getLastSentenceTexts = function () {
-    return $('#skitt-listening-text', getWrapper());
+    return $('#skitt-listening-text__recognized-sentence', getWrapper());
   };
 
   var getLastSentenceText = function () {
@@ -497,6 +497,14 @@
       expect(getLastSentenceTexts()).toHaveLength(1);
       SpeechKITT.displayRecognizedSentence(false);
       expect(getLastSentenceTexts()).toHaveLength(0);
+    });
+
+    it('should default to true when passed with no parameters', function () {
+      SpeechKITT.setRecognizedSentence(sentence1);
+      SpeechKITT.displayRecognizedSentence(false);
+      expect(getLastSentenceTexts()).toHaveLength(0);
+      SpeechKITT.displayRecognizedSentence();
+      expect(getLastSentenceTexts()).toHaveLength(1);
     });
 
   });
