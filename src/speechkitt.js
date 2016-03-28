@@ -540,6 +540,7 @@
      * *Note: If you're using annyang, this gets called automatically for you.*
      *
      * @param sentence string
+     * @method setRecognizedSentence
      * @see [annyang()](#annyang)
      */
     setRecognizedSentence : function(sentence) {
