@@ -550,6 +550,16 @@
       }
     },
 
+    /**
+     * Speech KITT can display the last sentence the user said in the GUI.
+     * Set this to true to display the last sentence. Set it to false to remove it from the DOM.
+     *
+     * For more details on how to track the sentences said, see the documentation for setRecognizedSentence()
+     *
+     * @param {boolean} [newState=true] - Turn on/off display of recognized sentences
+     * @method displayRecognizedSentence
+     * @see [setRecognizedSentence()](#setRecognizedSentence)
+     */
     displayRecognizedSentence: function(newState) {
       if (arguments.length > 0) {
         _displayRecognizedSentence = !!newState;

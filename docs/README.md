@@ -230,6 +230,19 @@ See: [annyang()](#annyang)
 
 * *sentence* string
 
+## displayRecognizedSentence([newState=true])
+
+Speech KITT can display the last sentence the user said in the GUI.
+Set this to true to display the last sentence. Set it to false to remove it from the DOM.
+
+For more details on how to track the sentences said, see the documentation for setRecognizedSentence()
+
+See: [setRecognizedSentence()](#setRecognizedSentence)
+
+### Params:
+
+* **boolean** *[newState=true]* - Turn on/off display of recognized sentences
+
 ## annyang()
 
 Call this if you're using annyang to automatically configure Speech KITT to interact with it.
