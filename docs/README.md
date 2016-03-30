@@ -237,7 +237,7 @@ Set this to true to display the last sentence. Set it to false to remove it from
 
 For more details on how to track the sentences said, see the documentation for setRecognizedSentence()
 
-See: [setRecognizedSentence()](#setRecognizedSentence)
+See: [setRecognizedSentence()](#setrecognizedsentencesentence)
 
 ### Params:
 

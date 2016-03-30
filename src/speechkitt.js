@@ -558,7 +558,7 @@
      *
      * @param {boolean} [newState=true] - Turn on/off display of recognized sentences
      * @method displayRecognizedSentence
-     * @see [setRecognizedSentence()](#setRecognizedSentence)
+     * @see [setRecognizedSentence()](#setrecognizedsentencesentence)
      */
     displayRecognizedSentence: function(newState) {
       if (arguments.length > 0) {
