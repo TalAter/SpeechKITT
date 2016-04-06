@@ -30,7 +30,7 @@
   "devDependencies": {
     "grunt": "^1.0.0",
     "async": "^1.5.0",
-    "grunt-contrib-jasmine": "^1.0.0",
+    "grunt-contrib-jasmine": "git://github.com/gruntjs/grunt-contrib-jasmine#1e78d891704fa13fe7c7abf4cabf43cefacafcaf",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.0",
