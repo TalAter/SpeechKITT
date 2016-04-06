@@ -60,7 +60,7 @@ module.exports = function(grunt) {
       testAndCoverage: {
         src: ['src/speechkitt.js'],
         options: {
-          specs: ['test/spec/BasicSpec.js', 'test/spec/UISpec.js'],
+          specs: ['test/spec/*Spec.js'],
           outfile: 'test/SpecRunner.html',
           polyfills: ['test/vendor/corti.js', 'test/init_corti.js', 'test/vendor/annyang.min.js'],
           vendor: ['test/vendor/jquery-2.1.4.min.js', 'test/vendor/jasmine-jquery.js'],
