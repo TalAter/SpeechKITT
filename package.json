@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "^1.0.0",
+    "grunt": "^0.4.5",
     "async": "^1.5.0",
     "grunt-contrib-jasmine": "^1.0.3",
     "grunt-contrib-jshint": "^1.0.0",
