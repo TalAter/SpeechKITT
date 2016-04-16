@@ -368,12 +368,12 @@
       expect(getSamplesTexts()).toHaveLength(0);
     });
 
-    xit('should add a class `skitt-ui--sample-commands-shown` to the root node when sample commands are shown', function () {
+    it('should add a class `skitt-ui--sample-commands-shown` to the root node when sample commands are shown', function () {
       SpeechKITT.setSampleCommands(['Show directions', 'Call restaurant']);
       expect($(getWrapper()).hasClass('skitt-ui--sample-commands-shown')).toBeTruthy();
     });
 
-    xit('should remove the class `skitt-ui--sample-commands-shown` from the root node when sample commands are not shown', function () {
+    it('should remove the class `skitt-ui--sample-commands-shown` from the root node when sample commands are not shown', function () {
       SpeechKITT.setSampleCommands();
       expect($(getWrapper()).hasClass('skitt-ui--sample-commands-shown')).toBeFalsy();
     });
@@ -517,13 +517,13 @@
       expect(getLastSentenceTexts()).toHaveLength(1);
     });
 
-    xit('should add a class `skitt-ui--recognized-sentence-shown` to the root node when last recognized sentence is shown', function () {
+    it('should add a class `skitt-ui--recognized-sentence-shown` to the root node when last recognized sentence is shown', function () {
       SpeechKITT.setRecognizedSentence(sentence1);
       SpeechKITT.displayRecognizedSentence(true);
       expect($(getWrapper()).hasClass('skitt-ui--recognized-sentence-shown')).toBeTruthy();
     });
 
-    xit('should remove the class `skitt-ui--recognized-sentence-shown` from the root node when last recognized sentence is shown', function () {
+    it('should remove the class `skitt-ui--recognized-sentence-shown` from the root node when last recognized sentence is shown', function () {
       SpeechKITT.setRecognizedSentence(sentence1);
       SpeechKITT.displayRecognizedSentence(false);
       expect($(getWrapper()).hasClass('skitt-ui--recognized-sentence-shown')).toBeFalsy();

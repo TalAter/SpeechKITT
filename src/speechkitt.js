@@ -85,10 +85,12 @@
         nodeToInsertAfter.parentNode.insertBefore(samplesNode, nodeToInsertAfter.nextSibling);
       }
       samplesNode.innerText = _sampleCommands.join('. ')+'.';
+      _guiNodes.classList.add('skitt-ui--sample-commands-shown');
     } else {
       if (samplesNode) {
         samplesNode.parentNode.removeChild(samplesNode);
       }
+      _guiNodes.classList.remove('skitt-ui--sample-commands-shown');
     }
   };
 
@@ -106,10 +108,12 @@
         nodeToInsertAfter.parentNode.insertBefore(recognizedSentenceNode, nodeToInsertAfter.nextSibling);
       }
       recognizedSentenceNode.innerText = lastRecognizedSentenceText;
+      _guiNodes.classList.add('skitt-ui--recognized-sentence-shown');
     } else {
       if (recognizedSentenceNode) {
         recognizedSentenceNode.parentNode.removeChild(recognizedSentenceNode);
       }
+      _guiNodes.classList.remove('skitt-ui--recognized-sentence-shown');
     }
   };
 
