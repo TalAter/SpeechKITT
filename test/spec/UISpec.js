@@ -476,27 +476,9 @@
     });
 
     it('should create a span node', function() {
-      var getSpanChildren = function() {
-        return $("#skitt-listening-text").children("span");
-      };
-
       expect(getLastSentenceText()).toBeUndefined();
-
-      var startingChildren = getSpanChildren();
-      var startingChildCount = startingChildren.length;
-
       SpeechKITT.displayRecognizedSentence(true);
-
-      var endingChildren = getSpanChildren();
-      var endingChildCount = endingChildren.length;
-
-      expect(endingChildCount).toEqual(startingChildCount + 1);
-
-      var addedChildren = endingChildren.filter(startingChildren);
-
-      expect(addedChildren.length).toEqual(1);
-      expect($(addedChildren[0]).is("span")).toEqual(true);
-
+      expect(getLastSentenceTexts().is("span")).toEqual(true);
       SpeechKITT.displayRecognizedSentence(false);
     });
 
