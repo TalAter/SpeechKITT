@@ -485,6 +485,21 @@
       expect(getLastSentenceTexts()).toHaveLength(0);
     });
 
+    it('should create a span node', function() {
+      expect(getLastSentenceText()).toBeUndefined();
+      SpeechKITT.displayRecognizedSentence(true);
+      expect(getLastSentenceTexts().is('span')).toEqual(true);
+      SpeechKITT.displayRecognizedSentence(false);
+    });
+
+    it('should create the new node with the id `skitt-listening-text__recognized-sentence`', function() {
+      expect(getLastSentenceText()).toBeUndefined();
+      SpeechKITT.displayRecognizedSentence(true);
+      var expectedID = 'skitt-listening-text__recognized-sentence';
+      expect($(getLastSentenceText()).attr('id')).toEqual(expectedID);
+      SpeechKITT.displayRecognizedSentence(false);
+    });
+
     it('should add the text of the last recognized sentence to the DOM even if turned on after it was said', function () {
       expect(getLastSentenceTexts()).toHaveLength(0);
       SpeechKITT.displayRecognizedSentence(true);
