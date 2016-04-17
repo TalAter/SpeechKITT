@@ -485,7 +485,8 @@
     it('should create the new node with the id `skitt-listening-text__recognized-sentence`', function() {
       expect(getLastSentenceText()).toBeUndefined();
       SpeechKITT.displayRecognizedSentence(true);
-      expect(getLastSentenceText()).toBeInDOM();
+      var expectedID = 'skitt-listening-text__recognized-sentence';
+      expect($(getLastSentenceText()).attr('id')).toEqual(expectedID);
       SpeechKITT.displayRecognizedSentence(false);
     });
 
