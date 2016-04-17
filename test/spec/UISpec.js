@@ -478,7 +478,7 @@
     it('should create a span node', function() {
       expect(getLastSentenceText()).toBeUndefined();
       SpeechKITT.displayRecognizedSentence(true);
-      expect(getLastSentenceTexts().is("span")).toEqual(true);
+      expect(getLastSentenceTexts().is('span')).toEqual(true);
       SpeechKITT.displayRecognizedSentence(false);
     });
 
