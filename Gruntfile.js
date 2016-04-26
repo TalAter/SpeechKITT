@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         options: {
           specs: ['test/spec/*Spec.js'],
           outfile: 'test/SpecRunner.html',
-          polyfills: ['test/vendor/corti.js', 'test/init_corti.js', 'test/vendor/annyang.min.js'],
+          polyfills: ['test/vendor/corti.js', 'test/init_corti.js', 'test/vendor/annyang.min.js', 'test/helper_functions.js'],
           vendor: ['test/vendor/jquery-2.1.4.min.js', 'test/vendor/jasmine-jquery.js'],
           styles: ['dist/themes/basic.css'],
           keepRunner: true,

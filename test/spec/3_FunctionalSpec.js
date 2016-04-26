@@ -1,28 +1,6 @@
 (function() {
   "use strict";
 
-  var getWrappers = function() {
-    return $('div#skitt-ui');
-  };
-
-  var getWrapper = function() {
-    return getWrappers()[0];
-  };
-
-  var getToggleButtons = function() {
-    return $('a#skitt-toggle-button', getWrapper());
-  };
-
-  var getToggleButton = function() {
-    return getToggleButtons()[0];
-  };
-
-  var simulateClick = function(element) {
-    var event = document.createEvent("MouseEvents");
-    event.initEvent("click", true, false);
-    return element.dispatchEvent(event);
-  };
-
   describe('SpeechKITT toggle button', function() {
 
     beforeEach(function() {
