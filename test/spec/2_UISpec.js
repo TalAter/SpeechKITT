@@ -155,15 +155,13 @@
     it('should start GUI in not listening mode', function () {
       SpeechKITT.abortRecognition();
       SpeechKITT.vroom();
-      expect(getWrapper()).toHaveClass('skitt-ui--not-listening');
-      expect(getWrapper()).not.toHaveClass('skitt-ui--listening');
+      expect(SpeechKITT.isListening()).toBe(false);
     });
 
     it('should start GUI in listening mode if recognition previously started', function () {
       SpeechKITT.startRecognition();
       SpeechKITT.vroom();
-      expect(getWrapper()).not.toHaveClass('skitt-ui--not-listening');
-      expect(getWrapper()).toHaveClass('skitt-ui--listening');
+      expect(SpeechKITT.isListening()).toBe(true);
     });
 
     it('should change the GUI based on listening mode', function () {
