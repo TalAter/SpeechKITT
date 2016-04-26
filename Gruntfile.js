@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['src/speechkitt.js', 'test/corti.js', 'test/spec/**.js', 'themes/**/*', '!**/node_modules/**'],
+      files: ['src/speechkitt.js', 'test/*.js', 'test/spec/**.js', 'themes/**/*', '!**/node_modules/**'],
       tasks: ['default']
     },
     sass: {
