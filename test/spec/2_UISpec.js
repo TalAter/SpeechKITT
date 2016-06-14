@@ -160,8 +160,10 @@
     it('should add skitt-ui--hidden class to the GUI', function () {
       SpeechKITT.show();
       expect(getWrapper()).not.toHaveClass('skitt-ui--hidden');
+      expect(getWrapper()).toBeVisible();
       SpeechKITT.hide();
       expect(getWrapper()).toHaveClass('skitt-ui--hidden');
+      expect(getWrapper()).not.toBeVisible();
     });
 
   });
@@ -171,8 +173,10 @@
     it('should remove skitt-ui--hidden class from the GUI', function () {
       SpeechKITT.hide();
       expect(getWrapper()).toHaveClass('skitt-ui--hidden');
+      expect(getWrapper()).not.toBeVisible();
       SpeechKITT.show();
       expect(getWrapper()).not.toHaveClass('skitt-ui--hidden');
+      expect(getWrapper()).toBeVisible();
     });
 
   });

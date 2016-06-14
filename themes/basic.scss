@@ -1,6 +1,6 @@
 #skitt-ui {
   display: block!important;
 }
-.skitt-ui--hidden {
-  display: none;
+#skitt-ui.skitt-ui--hidden {
+  display: none !important;
 }
