@@ -50,12 +50,14 @@
       expect(getWrappers()).toHaveLength(1);
       expect(getWrapper()).toBeInDOM();
       expect(getWrapper()).toBeVisible();
+      expect($(getWrapper()).attr('id')).toEqual('skitt-ui');
     });
 
     it('should add a visible start/end button to the wrapper a#skitt-toggle-button', function () {
       expect(getToggleButtons()).toHaveLength(1);
       expect(getToggleButton()).toBeInDOM();
       expect(getToggleButton()).toBeVisible();
+      expect($(getToggleButton()).attr('id')).toEqual('skitt-toggle-button');
     });
 
     it('should add a label to the a#skitt-toggle-button', function () {
