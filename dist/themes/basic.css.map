@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,SAAU,CACR,OAAO,CAAE,gBAAe,CAE1B,iBAAkB,CAChB,OAAO,CAAE,IAAI",
+"mappings": "AAAA,SAAU,CACR,OAAO,CAAE,gBAAe,CAE1B,0BAA2B,CACzB,OAAO,CAAE,eAAe",
 "sources": ["../../themes/basic.scss"],
 "names": [],
 "file": "basic.css"
