@@ -15,7 +15,7 @@
  */
 
 (function (undefined) {
-  "use strict";
+  'use strict';
 
   // Save a reference to the global object (window in the browser)
   var _root = this;
@@ -188,12 +188,12 @@
   var _saveListeningStatusCookie = function() {
     var dtExpiration = new Date();
     dtExpiration.setTime(dtExpiration.getTime() + 60000 * _minutesToRememberStatus);
-    document.cookie="skittremember=1; expires="+dtExpiration.toUTCString()+"; path=/";
+    document.cookie='skittremember=1; expires='+dtExpiration.toUTCString()+'; path=/';
   };
 
   // Deletes the skittremember cookie because the user has chosen to stop Speech Recognition
   var _deleteListeningStatusCookie = function() {
-    document.cookie="skittremember=1; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    document.cookie='skittremember=1; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
   };
 
   // Checks for existence of the skittremember cookie which signifies that Speech Recognition should be turned on
@@ -359,7 +359,7 @@
      * If a stylesheet was previously set, calling this again will update the
      * interface with a new stylesheet (if the interface was already rendered,
      * it will be updated)
-     * 
+     *
      * @param string css relative or absolute url to the stylesheet
      * @method setStylesheet
      */
@@ -504,7 +504,7 @@
      * @param minutes integer Number of minutes to remember choice to turn on Speech Recognition
      */
     rememberStatus: function(minutes) {
-      if (typeof minutes !== "number" || minutes < 0) {
+      if (typeof minutes !== 'number' || minutes < 0) {
         throw new TypeError('rememberStatus() only accepts positive integers');
       }
       _minutesToRememberStatus = minutes;
