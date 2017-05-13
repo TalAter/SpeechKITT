@@ -1,5 +1,4 @@
 # Speech KITT
-
 <img src="https://raw.githubusercontent.com/TalAter/SpeechKITT/master/demo/README-logo.png" align="right" />
 > A flexible GUI for interacting with Speech Recognition
 
