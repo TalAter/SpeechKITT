@@ -1,4 +1,6 @@
 # Speech KITT
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/TalAter/SpeechKITT.svg)](https://greenkeeper.io/)
 <img src="https://raw.githubusercontent.com/TalAter/SpeechKITT/master/demo/README-logo.png" align="right" />
 > A flexible GUI for interacting with Speech Recognition
 
