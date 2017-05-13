@@ -1,6 +1,5 @@
 # Speech KITT
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/TalAter/SpeechKITT.svg)](https://greenkeeper.io/)
 <img src="https://raw.githubusercontent.com/TalAter/SpeechKITT/master/demo/README-logo.png" align="right" />
 > A flexible GUI for interacting with Speech Recognition
 
@@ -80,7 +79,7 @@ For details on all available methods, options and more details, check out the [A
 
 ## Pretty Badges
 
-[![Build Status](https://travis-ci.org/TalAter/SpeechKITT.svg?branch=master)](https://travis-ci.org/TalAter/SpeechKITT) [![Dependency Status](https://gemnasium.com/TalAter/SpeechKITT.svg)](https://gemnasium.com/TalAter/SpeechKITT)
+[![Build Status](https://travis-ci.org/TalAter/SpeechKITT.svg?branch=master)](https://travis-ci.org/TalAter/SpeechKITT) [![Greenkeeper badge](https://badges.greenkeeper.io/TalAter/SpeechKITT.svg)](https://greenkeeper.io/)
 
 ### Author
 
