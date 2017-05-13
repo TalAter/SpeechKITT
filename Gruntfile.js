@@ -18,7 +18,9 @@ module.exports = function(grunt) {
     uglify: {
       dist: {
         options: {
-          preserveComments: /^\! /
+          output: {
+            comments: /^\! /
+          }
         },
         files: {
           'dist/speechkitt.min.js': ['src/speechkitt.js']
