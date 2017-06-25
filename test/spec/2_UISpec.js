@@ -223,6 +223,14 @@
       Corti.unpatch();
     });
 
+    it('should use the default instructions with text "What can I help you with?"', function () {
+      expect(getInstructionsText().innerText).toEqual('What can I help you with?');
+      SpeechKITT.setInstructionsText();
+      expect(getInstructionsText().innerText).toEqual('What can I help you with?');
+      SpeechKITT.setInstructionsText(123456789);
+      expect(getInstructionsText().innerText).toEqual('What can I help you with?');
+    });
+
     it('should change the text of the listening instructions', function () {
       expect(getInstructionsText().innerText).toEqual('What can I help you with?');
       SpeechKITT.setInstructionsText('Talk to me Goose!');

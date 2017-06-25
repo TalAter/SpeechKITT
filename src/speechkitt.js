@@ -39,7 +39,8 @@
 
   // Texts used in UI
   var _toggleLabelText = 'Activate Voice Control';
-  var _listeningInstructionsText = 'What can I help you with?';
+  var _defaultListeningInstructionsText = 'What can I help you with?';
+  var _listeningInstructionsText = _defaultListeningInstructionsText;
   var _sampleCommands = [];
 
   // A list of sentences recognized
@@ -466,8 +467,12 @@
      * @method setInstructionsText
      */
     setInstructionsText: function(text) {
-      _listeningInstructionsText = text;
-      _setText(text, 'skitt-listening-text__instructions');
+      if (typeof text === 'string') {
+        _listeningInstructionsText = text;
+        _setText(text, 'skitt-listening-text__instructions');
+      } else {
+        _listeningInstructionsText = _defaultListeningInstructionsText;
+      }
     },
 
     /**
