@@ -2,40 +2,41 @@
   "name": "speechkitt",
   "version": "0.3.0",
   "description": "A flexible GUI for interacting with Speech Recognition",
+  "keywords": [
+    "controls",
+    "gui",
+    "interface",
+    "recognition",
+    "speech",
+    "speechrecognition",
+    "ui",
+    "voice",
+    "webkitspeechrecognition"
+  ],
   "homepage": "https://github.com/TalAter/SpeechKITT",
+  "bugs": {
+    "url": "https://github.com/TalAter/SpeechKITT/issues"
+  },
+  "license": "MIT",
+  "author": "Tal Ater <tal@talater.com> (https://www.talater.com/)",
   "main": "speechkitt.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/TalAter/SpeechKITT.git"
   },
-  "keywords": [
-    "speechrecognition",
-    "voice",
-    "speech",
-    "recognition",
-    "ui",
-    "gui",
-    "interface",
-    "webkitspeechrecognition",
-    "controls"
-  ],
-  "author": "Tal Ater <tal@talater.com> (https://www.talater.com/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TalAter/SpeechKITT/issues"
-  },
   "scripts": {
     "test": "grunt test"
   },
   "devDependencies": {
+    "async": "^2.6.0",
     "grunt": "^1.0.1",
-    "async": "^2.3.0",
+    "grunt-cli": "^1.2.0",
     "grunt-contrib-jasmine": "^1.1.0",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^3.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-template-jasmine-istanbul": "^0.5.0",
-    "grunt-markdox": "^1.2.1"
+    "grunt-markdox": "^1.2.1",
+    "grunt-template-jasmine-istanbul": "^0.5.0"
   }
 }
