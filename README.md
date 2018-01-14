@@ -21,7 +21,7 @@ The most basic implementation requires 6 commands.
 4. Start your engines with `SpeechKITT.vroom()`
 
 ````html
-<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/speechkitt.min.js"></script>
 <script>
 // Init the browser's own Speech Recognition
 var recognition = new webkitSpeechRecognition();
@@ -39,7 +39,7 @@ recognition.addEventListener('start', SpeechKITT.onStart);
 recognition.addEventListener('end', SpeechKITT.onEnd);
 
 // Define a stylesheet for KITT to use
-SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
+SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/themes/flat.css');
 
 // Render KITT's interface
 SpeechKITT.vroom(); // SpeechKITT.render() does the same thing, but isn't as much fun!
@@ -52,7 +52,7 @@ If you're doing [Speech Recognition with annyang](https://www.talater.com/annyan
 
 ````html
 <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/speechkitt.min.js"></script>
 <script>
 if (annyang) {
   // Add our commands to annyang
@@ -64,7 +64,7 @@ if (annyang) {
   SpeechKITT.annyang();
 
   // Define a stylesheet for KITT to use
-  SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
+  SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/themes/flat.css');
 
   // Render KITT's interface
   SpeechKITT.vroom();

@@ -1,6 +1,6 @@
 {
   "name": "speechkitt",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "A flexible GUI for interacting with Speech Recognition",
   "keywords": [
     "controls",
