@@ -466,8 +466,10 @@
      * @method setInstructionsText
      */
     setInstructionsText: function(text) {
-      _listeningInstructionsText = text;
-      _setText(text, 'skitt-listening-text__instructions');
+      if (typeof text === 'string') {
+        _listeningInstructionsText = text;
+        _setText(text, 'skitt-listening-text__instructions');
+      }
     },
 
     /**

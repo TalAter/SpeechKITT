@@ -217,10 +217,23 @@
       SpeechKITT.setAbortCommand(recognition.abort);
       SpeechKITT.vroom();
       SpeechKITT.abortRecognition();
+      SpeechKITT.setInstructionsText('What can I help you with?');
     });
 
     afterEach(function() {
       Corti.unpatch();
+    });
+
+    it('should not change the instructions text if parameter is not a string', function () {
+      expect(getInstructionsText().innerText).toEqual('What can I help you with?');
+      SpeechKITT.setInstructionsText(undefined);
+      expect(getInstructionsText().innerText).toEqual('What can I help you with?');
+      SpeechKITT.setInstructionsText('Talk to me Goose!');
+      expect(getInstructionsText().innerText).toEqual('Talk to me Goose!');
+      SpeechKITT.setInstructionsText(123456789);
+      expect(getInstructionsText().innerText).toEqual('Talk to me Goose!');
+      SpeechKITT.setInstructionsText({});
+      expect(getInstructionsText().innerText).toEqual('Talk to me Goose!');
     });
 
     it('should change the text of the listening instructions', function () {
